@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1250" viewBox="0 0 1400 1250" role="img" aria-labelledby="title desc">
+  <title id="title">Croqui técnico do chassi do carrinho-robô ESP32</title>
+  <desc id="desc">Vista superior de um chassi de 200 por 150 milímetros, com dois motores, duas rodas, um rodízio dianteiro, ESP32, driver TB6612, suporte de pilhas, power bank e carenagem removível.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 z" fill="#334155"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 700 22px Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 17px Arial, sans-serif; fill: #0f172a; }
+      .small { font: 15px Arial, sans-serif; fill: #334155; }
+      .tiny { font: 13px Arial, sans-serif; fill: #475569; }
+      .dim { stroke: #334155; stroke-width: 2; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .guide { stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 6 6; }
+      .part { stroke: #0f172a; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="1250" fill="#f8fafc"/>
+  <text x="70" y="60" class="title">Croqui do chassi — carrinho-robô com ESP32</text>
+  <text x="70" y="96" class="small">Vista superior • medidas em milímetros • versão inicial 0.1</text>
+
+  <text x="350" y="142" class="subtitle">FRENTE</text>
+  <path d="M610 145 L610 105" stroke="#0f766e" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Chassi: escala gráfica aproximada de 3,5 px por mm -->
+  <rect x="350" y="170" width="525" height="700" rx="18" fill="#e2e8f0" stroke="#0f172a" stroke-width="4"/>
+  <text x="612" y="845" text-anchor="middle" class="small">CHASSI MDF/ACRÍLICO 3 mm</text>
+
+  <!-- Carenagem -->
+  <rect x="411" y="223" width="403" height="595" rx="34" fill="#dbeafe" fill-opacity="0.38" stroke="#2563eb" stroke-width="3" stroke-dasharray="12 8"/>
+  <text x="612" y="245" text-anchor="middle" class="small" fill="#1d4ed8">limite da carenagem removível 170 × 115 × 55</text>
+
+  <!-- Rodízio -->
+  <circle cx="612" cy="240" r="34" fill="#cbd5e1" class="part"/>
+  <circle cx="612" cy="240" r="10" fill="#64748b"/>
+  <text x="612" y="291" text-anchor="middle" class="label">Rodízio livre</text>
+
+  <!-- ESP32 -->
+  <rect x="520" y="320" width="184" height="88" rx="8" fill="#bbf7d0" class="part"/>
+  <rect x="535" y="337" width="120" height="54" rx="4" fill="#166534"/>
+  <rect x="655" y="346" width="38" height="36" rx="3" fill="#cbd5e1"/>
+  <text x="612" y="372" text-anchor="middle" class="label" fill="#ffffff">ESP32</text>
+  <text x="612" y="428" text-anchor="middle" class="small">centro (75, 55)</text>
+
+  <!-- TB6612 -->
+  <rect x="546" y="454" width="132" height="70" rx="8" fill="#fde68a" class="part"/>
+  <text x="612" y="484" text-anchor="middle" class="label">TB6612FNG</text>
+  <text x="612" y="507" text-anchor="middle" class="tiny">driver 2 canais</text>
+
+  <!-- Motores -->
+  <rect x="356" y="573" width="112" height="100" rx="10" fill="#fca5a5" class="part"/>
+  <rect x="757" y="573" width="112" height="100" rx="10" fill="#fca5a5" class="part"/>
+  <text x="412" y="616" text-anchor="middle" class="label">Motor E</text>
+  <text x="813" y="616" text-anchor="middle" class="label">Motor D</text>
+  <line x1="350" y1="642" x2="875" y2="642" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="612" y="632" text-anchor="middle" class="tiny">eixo das rodas — Y ≈ 135</text>
+
+  <!-- Rodas -->
+  <rect x="305" y="528" width="45" height="228" rx="20" fill="#334155" stroke="#0f172a" stroke-width="3"/>
+  <rect x="875" y="528" width="45" height="228" rx="20" fill="#334155" stroke="#0f172a" stroke-width="3"/>
+  <path d="M315 545 H340 M315 570 H340 M315 595 H340 M315 620 H340 M315 645 H340 M315 670 H340 M315 695 H340 M315 720 H340 M315 745 H340" stroke="#94a3b8" stroke-width="4"/>
+  <path d="M885 545 H910 M885 570 H910 M885 595 H910 M885 620 H910 M885 645 H910 M885 670 H910 M885 695 H910 M885 720 H910 M885 745 H910" stroke="#94a3b8" stroke-width="4"/>
+  <text x="285" y="650" text-anchor="end" class="small">roda Ø65</text>
+  <text x="940" y="650" class="small">roda Ø65</text>
+
+  <!-- Fontes -->
+  <rect x="438" y="681" width="144" height="112" rx="10" fill="#ddd6fe" class="part"/>
+  <text x="510" y="723" text-anchor="middle" class="label">Power bank</text>
+  <text x="510" y="748" text-anchor="middle" class="small">5 V • ESP32</text>
+  <text x="510" y="773" text-anchor="middle" class="tiny">centro ≈ (40, 120)</text>
+
+  <rect x="618" y="663" width="186" height="130" rx="10" fill="#fed7aa" class="part"/>
+  <circle cx="655" cy="700" r="16" fill="#f8fafc" stroke="#64748b"/>
+  <circle cx="700" cy="700" r="16" fill="#f8fafc" stroke="#64748b"/>
+  <circle cx="745" cy="700" r="16" fill="#f8fafc" stroke="#64748b"/>
+  <circle cx="790" cy="700" r="16" fill="#f8fafc" stroke="#64748b"/>
+  <text x="711" y="748" text-anchor="middle" class="label">4 pilhas AA</text>
+  <text x="711" y="773" text-anchor="middle" class="small">6 V • motores</text>
+
+  <!-- Chave -->
+  <rect x="369" y="753" width="49" height="70" rx="6" fill="#fef08a" class="part"/>
+  <text x="393" y="779" text-anchor="middle" class="tiny">ON</text>
+  <text x="393" y="800" text-anchor="middle" class="tiny">OFF</text>
+  <line x1="393" y1="823" x2="393" y2="850" stroke="#0f172a" stroke-width="3"/>
+  <text x="370" y="842" text-anchor="end" class="tiny">chave acessível</text>
+
+  <!-- Cotas -->
+  <line x1="350" y1="895" x2="350" y2="930" class="guide"/>
+  <line x1="875" y1="895" x2="875" y2="930" class="guide"/>
+  <line x1="350" y1="920" x2="875" y2="920" class="dim"/>
+  <text x="612" y="952" text-anchor="middle" class="label">150 mm</text>
+
+  <line x1="950" y1="170" x2="990" y2="170" class="guide"/>
+  <line x1="950" y1="870" x2="990" y2="870" class="guide"/>
+  <line x1="975" y1="170" x2="975" y2="870" class="dim"/>
+  <text x="1010" y="520" class="label" transform="rotate(90 1010 520)">200 mm</text>
+
+  <!-- Notas -->
+  <rect x="1045" y="170" width="300" height="700" rx="16" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="1075" y="215" class="subtitle">Notas de projeto</text>
+  <text x="1075" y="258" class="small">
+    <tspan x="1075" dy="0">1. Origem (0,0): canto</tspan>
+    <tspan x="1075" dy="24">dianteiro esquerdo.</tspan>
+    <tspan x="1075" dy="38">2. X: esquerda → direita.</tspan>
+    <tspan x="1075" dy="28">Y: frente → traseira.</tspan>
+    <tspan x="1075" dy="38">3. Furos devem ser</tspan>
+    <tspan x="1075" dy="24">conferidos com as peças</tspan>
+    <tspan x="1075" dy="24">reais antes do corte.</tspan>
+    <tspan x="1075" dy="38">4. Manter fios afastados</tspan>
+    <tspan x="1075" dy="24">das rodas e dos eixos.</tspan>
+    <tspan x="1075" dy="38">5. Interligar todos os GND.</tspan>
+    <tspan x="1075" dy="38">6. Não conectar os 6 V das</tspan>
+    <tspan x="1075" dy="24">pilhas ao ESP32.</tspan>
+    <tspan x="1075" dy="38">7. Cobertura presa por</tspan>
+    <tspan x="1075" dy="24">quatro parafusos M3 ou</tspan>
+    <tspan x="1075" dy="24">encaixes removíveis.</tspan>
+  </text>
+
+  <!-- Rodapé -->
+  <rect x="70" y="1025" width="1275" height="150" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="95" y="1065" class="subtitle">Resumo</text>
+  <text x="95" y="1103" class="small">Chassi: 200 × 150 × 3 mm  •  Tração: 2WD  •  Rodas: Ø65 mm  •  Controlador: ESP32 DevKit V1</text>
+  <text x="95" y="1135" class="small">Driver: TB6612FNG  •  Motores: 2 × TT 3–6 V  •  Controle: página web via Wi-Fi local</text>
+  <text x="95" y="1167" class="small">Envelope montado estimado: 200 × 190 × 90 mm  •  Todas as medidas devem ser validadas antes da fabricação.</text>
+
+  <text x="70" y="1225" class="tiny">Project-based Maker Lab • Start-up One • Tarefa 13 • 13/08/2026</text>
+</svg>
