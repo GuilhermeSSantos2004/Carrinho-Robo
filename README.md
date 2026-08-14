@@ -15,7 +15,7 @@ Documentação inicial da **Tarefa 13 — Requisitos do projeto**, desenvolvida 
 
 ## Integrantes
 
-|-----------------------------------------|----------|
+
 | Nome completo                           |    RM    |
 |-----------------------------------------|----------|
 | Enricco Rossi de Souza Carvalho Miranda | RM551717 |
@@ -23,7 +23,7 @@ Documentação inicial da **Tarefa 13 — Requisitos do projeto**, desenvolvida 
 | Guilherme Silva dos Santos              | RM551168 |
 | Danilo Urze Aldred                      | RM99465  |
 | Laura Claro Mathias                     | RM98747  |
-|-----------------------------------------|----------|
+
 
 
 ## 1. Objetivo do projeto
