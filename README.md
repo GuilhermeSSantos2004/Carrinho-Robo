@@ -2,20 +2,28 @@
 
 Documentação inicial da **Tarefa 13 — Requisitos do projeto**, desenvolvida para a disciplina **Project-based Maker Lab**.
 
-> Entrega: 13 de agosto de 2026, às 23h59  
-> Grupo: Start-up One
+## Identificação do projeto
 
-## Identificação
+| Campo        | Informação          |
+|--------------|---------------------|
+| Instituição  | FIAP                |
+|   Turma      | 4ESPX               |
+| Professora   | Gedeane Kenshima    |
+|   Grupo      | Start-up One        |
+|   Data       | 13/08/2026          |
+| Repositório  |[Link do repositório](https://github.com/seu-usuario/carrinho-robo-esp32)|
 
+## Integrantes
 
-## Identificação
-
-| Instituição  | FIAP |
-| Turma        | 4ESPX |
-| Professor(a) | Gedeane Kenshima |
-| Integrantes  | Enricco Rossi de Souza Carvalho Miranda — RM551717<br>Gabriel Marquez Trevisan — RM99227 Guilherme Silva dos Santos — RM551168<br>Danilo Urze Aldred — RM99465<br>Laura Claro Mathias — RM98747 |
-| Link do repositório | https://github.com/GuilhermeSSantos2004/Carrinho-Robo |
-| Data | 13/08/2026 |
+|-----------------------------------------|----------|
+| Nome completo                           |    RM    |
+|-----------------------------------------|----------|
+| Enricco Rossi de Souza Carvalho Miranda | RM551717 |
+| Gabriel Marquez Trevisan                | RM99227  |
+| Guilherme Silva dos Santos              | RM551168 |
+| Danilo Urze Aldred                      | RM99465  |
+| Laura Claro Mathias                     | RM98747  |
+|-----------------------------------------|----------|
 
 
 ## 1. Objetivo do projeto
