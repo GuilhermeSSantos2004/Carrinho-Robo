@@ -158,7 +158,28 @@ O croqui digital apresenta a vista superior, as dimensões principais, o eixo da
 
 Arquivo em tamanho completo: [`docs/croqui-chassi.svg`](docs/croqui-chassi.svg).
 
-## 10. Sequência sugerida de montagem
+## 10. Registro visual e vídeo de demonstração
+
+Além da documentação técnica e do croqui, o repositório também contém registros visuais do projeto na pasta `docs/videos/`.
+
+### Imagem do projeto
+
+A imagem abaixo pode ser usada como prévia visual do carrinho-robô no GitHub:
+
+![Imagem do projeto Carrinho Robô ESP32](docs/videos/Media.jpg)
+
+Arquivo em tamanho completo: [`docs/videos/Media.jpg`](docs/videos/Media.jpg).
+
+### Vídeo de demonstração
+
+O vídeo de demonstração mostra o projeto **Carrinho Robô ESP32** e pode ser acessado pelo arquivo abaixo:
+
+[Assistir ao vídeo de demonstração](docs/videos/MicrosoftTeams-video.mp4)
+
+> Observação: no GitHub, arquivos `.mp4` podem aparecer como link para visualização ou download, dependendo do navegador e do tamanho do arquivo.
+
+
+## 11. Sequência sugerida de montagem
 
 1. Cortar e furar o chassi conforme o croqui.
 2. Fixar os motores e conferir o alinhamento das rodas.
@@ -169,7 +190,7 @@ Arquivo em tamanho completo: [`docs/croqui-chassi.svg`](docs/croqui-chassi.svg).
 7. Testar um motor por vez com as rodas suspensas.
 8. Testar os comandos em baixa velocidade e só depois instalar a carenagem.
 
-## 11. Plano de testes inicial
+## 12. Plano de testes inicial
 
 | Teste | Procedimento | Resultado esperado |
 |---|---|---|
@@ -181,7 +202,7 @@ Arquivo em tamanho completo: [`docs/croqui-chassi.svg`](docs/croqui-chassi.svg).
 | Fail-safe | Interromper o envio de comandos durante o movimento | Parada automática em até 1 s |
 | Carenagem | Instalar a cobertura e repetir um trajeto curto | Sem aquecimento excessivo ou contato com partes móveis |
 
-## 12. Próximas etapas
+## 13. Próximas etapas
 
 - Validar as medidas com os componentes físicos disponíveis no laboratório.
 - Fazer a lista definitiva de materiais e custos.
@@ -189,14 +210,15 @@ Arquivo em tamanho completo: [`docs/croqui-chassi.svg`](docs/croqui-chassi.svg).
 - Desenvolver o firmware e a página de controle.
 - Registrar fotos, testes, dificuldades e melhorias neste repositório.
 
-## 13. Publicação no GitHub
+## 14. Publicação no GitHub
 
 1. Criar um repositório chamado `carrinho-robo-esp32`.
 2. Adicionar este arquivo `README.md` na raiz do repositório.
 3. Criar a pasta `docs` e adicionar `croqui-chassi.svg` dentro dela.
-4. Preencher os nomes dos integrantes e os demais campos da seção **Identificação**.
-5. Fazer o primeiro commit com a mensagem `docs: adiciona requisitos e croqui inicial`.
-6. Copiar o endereço do repositório, colá-lo na tabela de identificação e enviar esse link na atividade.
+4. Criar a pasta `docs/videos` e adicionar `Media.jpg` e `MicrosoftTeams-video.mp4`.
+5. Preencher os nomes dos integrantes e os demais campos da seção **Identificação**.
+6. Fazer o primeiro commit com a mensagem `docs: adiciona requisitos, croqui e registros visuais`.
+7. Copiar o endereço do repositório, colá-lo na tabela de identificação e enviar esse link na atividade.
 
 Estrutura esperada:
 
@@ -204,11 +226,15 @@ Estrutura esperada:
 carrinho-robo-esp32/
 ├── README.md
 └── docs/
-    └── croqui-chassi.svg
+    ├── croqui-chassi.svg
+    └── videos/
+        ├── Media.jpg
+        └── MicrosoftTeams-video.mp4
 ```
 
-## 14. Histórico
+## 15. Histórico
 
 | Data | Versão | Alteração |
 |---|---|---|
 | 13/08/2026 | 0.1 | Ficha de requisitos e croqui inicial |
+| 20/08/2026 | 0.2 | Inclusão da imagem do projeto e do vídeo de demonstração |
