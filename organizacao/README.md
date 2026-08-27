@@ -1,6 +1,6 @@
 # Organização do projeto - Carrinho-robô
 
-Documentação da **Tarefa 17 - MVP, prototipagem e gestão do projeto Maker**, da disciplina **Project-based Maker Lab**.
+Documentação de organização das **Tarefas 17 e 18** da disciplina **Project-based Maker Lab**.
 
 ## Identificação
 
@@ -12,7 +12,8 @@ Documentação da **Tarefa 17 - MVP, prototipagem e gestão do projeto Maker**, 
 | Grupo | Start-up One |
 | Projeto | Carrinho-robô com ESP32 |
 | Repositório | [Carrinho-Robo](https://github.com/GuilhermeSSantos2004/Carrinho-Robo) |
-| Prazo da tarefa | 01/09/2026 às 23h59 |
+| Prazo da Tarefa 17 | 01/09/2026 às 23h59 |
+| Prazo da Tarefa 18 | 03/09/2026 às 23h59 |
 
 ## Integrantes
 
@@ -33,6 +34,16 @@ Documentação da **Tarefa 17 - MVP, prototipagem e gestão do projeto Maker**, 
 | [Backlog](BACKLOG.md) | Tarefas, responsáveis, dependências, prazos e estado |
 | [Dependências](DEPENDENCIAS.md) | Ordem de execução e bloqueios entre as tarefas |
 | [Kanban](KANBAN.md) | Situação atual das atividades do projeto |
+| [Planilha de custos](planilha-custos-carrinho-robo.xlsx) | Quantidades, preços, subtotais, cenários de alimentação, lojas e links de referência da Tarefa 18 |
+
+## Tarefa 18 — custos
+
+A planilha possui duas abas:
+
+- **Resumo:** compara o custo com oito pilhas AA e com o pack Li-Ion;
+- **Custos:** apresenta os itens editáveis, quantidades, preços unitários, subtotais calculados por fórmula, status, lojas e URLs.
+
+Os preços foram consultados em **27/08/2026**, sem frete. Carenagem e materiais de montagem ainda estão marcados como `A definir` e não entram nos totais até que o grupo informe os valores.
 
 ## Resumo do planejamento
 
@@ -43,4 +54,3 @@ Documentação da **Tarefa 17 - MVP, prototipagem e gestão do projeto Maker**, 
 | Produto final concluído | 30/09/2026 | Chassi e carenagem impressos, ultrassônico ativo e testes concluídos |
 
 > As datas são metas de planejamento e devem ser atualizadas no Kanban caso ocorram mudanças durante a execução.
-

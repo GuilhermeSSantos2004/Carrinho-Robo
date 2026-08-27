@@ -265,7 +265,11 @@ Carrinho-Robo/
 │       └── README.md
 ├── src/
 │   ├── README.md
-│   └── codigo.ino
+│   ├── codigo.ino
+│   └── v0.2/
+│       ├── README.md
+│       └── carrinho_robo_v0_2/
+│           └── carrinho_robo_v0_2.ino
 ├── docs/
 │   ├── croqui-chassi.svg
 │   └── videos/
@@ -274,7 +278,8 @@ Carrinho-Robo/
     ├── MOSCOW.md
     ├── BACKLOG.md
     ├── DEPENDENCIAS.md
-    └── KANBAN.md
+    ├── KANBAN.md
+    └── planilha-custos-carrinho-robo.xlsx
 ```
 
 Os arquivos STL devem usar versões no nome, por exemplo `chassi-v0.1.stl` e `chassi-v0.2.stl`. O arquivo editável deve ser guardado em `cad/fonte-modelo/` no formato da ferramenta usada pelo grupo.
@@ -287,3 +292,13 @@ Os arquivos STL devem usar versões no nome, por exemplo `chassi-v0.1.stl` e `ch
 | 20/08/2026 | 0.2 | Inclusão da imagem e do vídeo de demonstração (`80e1042`) | [`docs/videos/`](docs/videos/) |
 | 26/08/2026 | 0.3 | Inclusão do MVP, MoSCoW, backlog, dependências e Kanban (`b32e213`) | [`organizacao/`](organizacao/) |
 | 27/08/2026 | 0.4 | Aula 16: estrutura de hardware/CAD/código; troca para L298N; inclusão do HC-SR04; opções de 8 pilhas AA ou pack Li-Ion; precificação e referências | [`hardware/`](hardware/), [`cad/`](cad/) e [`src/`](src/) |
+| 27/08/2026 | 0.5 | Tarefa 18: planilha de custos com fórmulas, lojas e links; firmware identificado e preservado como versão v0.2 com sensor ultrassônico | [`organizacao/planilha-custos-carrinho-robo.xlsx`](organizacao/planilha-custos-carrinho-robo.xlsx) e [`src/v0.2/`](src/v0.2/) |
+
+## 16. Entregáveis da Tarefa 18
+
+| Entregável | Arquivo | Situação |
+|---|---|---|
+| Planilha de custos do projeto | [`organizacao/planilha-custos-carrinho-robo.xlsx`](organizacao/planilha-custos-carrinho-robo.xlsx) | Concluído |
+| Código v0.2 com HC-SR04 | [`src/v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino`](src/v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino) | Concluído |
+
+A planilha permite alterar quantidades e preços unitários; os subtotais e os cenários de alimentação são recalculados automaticamente. O firmware v0.2 mede a distância, mostra o valor no painel web e bloqueia o avanço quando detecta obstáculo a menos de 20 cm.
