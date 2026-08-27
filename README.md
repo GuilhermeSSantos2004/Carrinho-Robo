@@ -11,7 +11,7 @@ Documentação inicial da **Tarefa 13 — Requisitos do projeto**, desenvolvida 
 | Professora   | Gedeane Kenshima    |
 |   Grupo      | Start-up One        |
 |   Data       | 13/08/2026          |
-| Repositório  |[Link do repositório](https://github.com/seu-usuario/carrinho-robo-esp32)|
+| Repositório  | [Acessar o projeto no GitHub](https://github.com/GuilhermeSSantos2004/Carrinho-Robo) |
 
 ## Integrantes
 
@@ -32,13 +32,14 @@ Construir um carrinho-robô pequeno, de baixo custo e fácil montagem, controlad
 
 ## 2. Conceito escolhido
 
-O carrinho utilizará tração diferencial **2WD**: dois motores independentes movimentam as rodas laterais e um rodízio livre apoia a parte dianteira. Para virar, o ESP32 altera o sentido ou a velocidade de cada motor por meio do driver TB6612FNG.
+O carrinho utilizará tração diferencial **2WD**: dois motores independentes movimentam as rodas laterais e um rodízio livre apoia a parte dianteira. Para virar, o ESP32 altera o sentido ou a velocidade de cada motor por meio da ponte H L298N. O sensor HC-SR04 fará a detecção frontal de obstáculos.
 
 ### Por que essa solução?
 
 - O ESP32 já possui Wi-Fi, evitando um módulo de comunicação adicional.
 - Dois motores são suficientes para movimentar e direcionar o carrinho.
-- O TB6612FNG aceita sinais de 3,3 V do ESP32 e tem menor perda de energia que o L298N.
+- O L298N disponível no grupo controla separadamente o sentido e a velocidade dos dois motores.
+- O HC-SR04 acrescenta proteção contra colisões frontais.
 - O chassi retangular pode ser cortado em MDF ou acrílico de 3 mm.
 - A alimentação separada reduz ruídos dos motores e facilita os primeiros testes.
 
@@ -54,7 +55,8 @@ O carrinho utilizará tração diferencial **2WD**: dois motores independentes m
 | Quantidade de motores | 2 motores DC com caixa de redução, modelo TT, 3–6 V |
 | Rodas | 2 rodas de 65 mm para os motores e 1 rodízio livre dianteiro |
 | Placa controladora | ESP32 DevKit V1, módulo ESP32-WROOM-32 |
-| Driver dos motores | TB6612FNG de dois canais |
+| Driver dos motores | Ponte H L298N de dois canais |
+| Sensor de distância | HC-SR04 instalado na parte frontal |
 | Fixação | Parafusos M3, espaçadores e abraçadeiras; componentes sem contato direto com o MDF |
 | Massa-alvo | Até 1,2 kg com as baterias |
 | Carenagem | Cobertura removível de aproximadamente 170 mm × 115 mm × 55 mm |
@@ -66,35 +68,50 @@ O carrinho utilizará tração diferencial **2WD**: dois motores independentes m
 
 | Item | Requisito definido |
 |---|---|
-| Alimentação dos motores | 4 pilhas AA em suporte, total nominal de 6 V |
-| Alimentação do ESP32 | Power bank USB de 5 V |
-| Referência elétrica | Os terras do power bank, ESP32, TB6612FNG e suporte de pilhas devem estar interligados |
+| Opção A de alimentação | 8 pilhas AA Duracell divididas em dois suportes independentes de 4 pilhas (6 V por suporte) |
+| Opção B de alimentação | Pack Li-Ion 7,4 V, 2500 mAh, com BMS |
+| Alimentação dos motores | Um suporte de 4 pilhas (6 V) ou a saída principal do pack Li-Ion, conforme a opção escolhida |
+| Alimentação do ESP32 e sensor | Saída de 5 V regulada por um conversor LM2596 |
+| Referência elétrica | Bateria, LM2596, ESP32, L298N e HC-SR04 devem compartilhar GND |
 | Comunicação | Rede Wi-Fi local criada pelo ESP32, sem necessidade de internet |
 | Interface | Página web acessada pelo celular, com cinco comandos de movimento |
 | Controle de velocidade | PWM independente para cada motor |
 | Segurança de software | Parada automática se nenhum comando for recebido por 1 segundo |
-| Segurança elétrica | Não ligar os 6 V das pilhas ao pino 5 V ou 3V3 do ESP32 |
+| Sensor de obstáculos | HC-SR04 com `TRIG` no GPIO 18 e `ECHO` no GPIO 19 por divisor de tensão |
+| Segurança elétrica | Não ligar bateria diretamente ao pino `3V3` ou ao `VIN/5V` sem regulação adequada |
 
-> Para a montagem final, usar pilhas do mesmo tipo e estado de carga. Não misturar pilhas novas e usadas. Se forem utilizadas pilhas recarregáveis, empregar carregador apropriado.
+> Na opção com 8 pilhas, **não ligar as oito em série**, pois isso produziria aproximadamente 12 V. Usar dois bancos independentes de 4 pilhas: um para os motores e outro para o LM2596. Não misturar pilhas novas e usadas. O BMS do pack Li-Ion protege as células, mas não substitui o carregador 2S apropriado.
 
-## 4. Lista inicial de materiais
+## 4. Lista inicial de materiais e precificação
 
-| Quantidade | Componente | Observação |
-|---:|---|---|
-| 1 | ESP32 DevKit V1 (ESP32-WROOM-32) | Controlador principal |
-| 1 | Módulo TB6612FNG | Driver para os dois motores |
-| 2 | Motor TT DC 3–6 V | Preferencialmente com a mesma redução |
-| 2 | Roda de 65 mm | Compatível com o eixo do motor TT |
-| 1 | Rodízio livre pequeno | Apoio dianteiro |
-| 1 | Chapa de MDF 200 × 150 × 3 mm | Base do chassi |
-| 1 | Suporte para 4 pilhas AA com chave | Alimentação dos motores |
-| 4 | Pilha AA | Não misturar tipos ou cargas |
-| 1 | Power bank USB 5 V | Alimentação do ESP32 |
-| 1 | Cabo USB curto | Compatível com a placa escolhida |
-| 1 | Chave liga/desliga | Caso o suporte de pilhas não tenha chave |
-| — | Jumpers, fios e conectores | Para as ligações elétricas |
-| — | Parafusos M3, porcas e espaçadores | Fixação dos módulos |
-| — | Material leve para carenagem | PP, acetato ou peça impressa |
+Preços consultados em **27/08/2026**, sem frete. Os valores podem variar até a compra.
+
+| Quantidade | Componente | Observação | Preço estimado | Referência |
+|---:|---|---|---:|---|
+| 1 | ESP32 DevKit V1 com cabo USB | Controlador principal; dispensa HC-05/HM-10 | R$ 64,99 | [Casa da Robótica](https://www.casadarobotica.com/placas-embarcadas/esp/placas/placa-esp32-com-wi-fi-bluetooth-esp32s-ide-dual-core-dev-kit-v1-cabo-micro-usb) |
+| 1 | Ponte H L298N | Controle dos dois motores | R$ 14,90 | [Eletrogate](https://www.eletrogate.com/ponte-h-dupla-l298n) |
+| 1 | Kit chassi 2WD | Inclui base, dois motores, rodas e rodízio | R$ 54,99 | [Casa da Robótica](https://www.casadarobotica.com/robotica/chassi-s/carros/kit-chassi-2-rodas) |
+| 1 | Sensor HC-SR04 | Detecção frontal de obstáculos | R$ 9,90 | [Eletrogate](https://www.eletrogate.com/modulo-sensor-de-distancia-ultrassonico-hc-sr04) |
+| 1 | Conversor LM2596 | Ajustar a saída para 5,0 V antes de ligar o ESP32 | R$ 8,90 | [Eletrogate](https://www.eletrogate.com/modulo-regulador-de-tensao-step-down-lm2596) |
+| 3 kits | Jumpers M-M, M-F e F-F | Um kit de cada tipo | R$ 25,70 | [M-M](https://www.eletrogate.com/jumpers-macho-macho-40-unidades-de-10-cm), [M-F](https://www.eletrogate.com/jumpers-macho-femea-40-unidades-de-20-cm) e [F-F](https://www.eletrogate.com/jumpers-femea-femea-40-unidades-de-10-cm) |
+| 2 | Suporte para 4 pilhas AA | Necessários somente na opção com 8 pilhas | R$ 9,80 | [Eletrogate](https://www.eletrogate.com/suporte-para-4-pilhas-aa-branco-) |
+| 8 | Pilhas AA Duracell | Opção A de alimentação | R$ 62,00 | [Amazon](https://www.amazon.com.br/Duralock-Pilha-Alcalina-Unidades-Duracell/dp/B07FKWTQPH) |
+| 1 | Pack Li-Ion 7,4 V 2500 mAh com BMS | Opção B, substitui as 8 pilhas e os suportes | R$ 66,00 | [RoboCore](https://www.robocore.net/baterias-fontes/pack-bateria-li-ion-7_4v-2500mah-com-bms) |
+| 1 | Carregador Li-Ion 2S | Necessário se o grupo não possuir carregador compatível | R$ 37,90 | [RoboCore](https://www.robocore.net/bateria/mini-carregador-bateria-litio-2s) |
+| 1 | Mini protoboard 170 pontos | Opcional para os testes | R$ 2,90 | [Eletrogate](https://www.eletrogate.com/mini-protoboard-170-pontos) |
+| 2 | Resistores de 1 kΩ e 2 kΩ | Divisor do `ECHO` do HC-SR04 | R$ 1,00 | [Categoria de resistores](https://www.eletrogate.com/resistores) |
+| — | Chave, fios, parafusos e carenagem | Verificar materiais disponíveis no grupo/laboratório | A definir | — |
+
+### 4.1 Resumo de custos
+
+| Cenário | Total estimado |
+|---|---:|
+| Componentes comuns, sem alimentação, frete, mini protoboard e carenagem | R$ 180,38 |
+| Total com 8 pilhas Duracell e dois suportes | **R$ 252,18** |
+| Total com pack Li-Ion e carregador 2S | **R$ 284,28** |
+| Total com pack Li-Ion, caso o grupo já tenha carregador 2S | **R$ 246,38** |
+
+A lista detalhada e a conferência dos itens mínimos estão em [`hardware/componentes/README.md`](hardware/componentes/README.md).
 
 ## 5. Posição dos componentes
 
@@ -103,30 +120,46 @@ Adota-se como origem o canto dianteiro esquerdo do chassi. A coordenada **X** é
 | Componente | Centro aproximado (X, Y) | Justificativa |
 |---|---:|---|
 | Rodízio livre | (75 mm, 20 mm) | Apoio central na dianteira |
-| ESP32 | (75 mm, 55 mm) | Protegido, acessível e afastado dos motores |
-| TB6612FNG | (75 mm, 85 mm) | Próximo do ESP32 e com fios curtos até os motores |
+| HC-SR04 | (75 mm, 35 mm) | Campo de detecção livre na dianteira |
+| ESP32 | (75 mm, 60 mm) | Protegido, acessível e afastado dos motores |
+| L298N | (75 mm, 90 mm) | Próximo do ESP32 e com fios curtos até os motores |
+| LM2596 | (75 mm, 115 mm) | Próximo das fontes e da entrada de 5 V do ESP32 |
 | Motor esquerdo | (18 mm, 135 mm) | Alinhado ao motor direito |
 | Motor direito | (132 mm, 135 mm) | Alinhado ao motor esquerdo |
-| Suporte de 4 pilhas AA | (100 mm, 120 mm) | Massa baixa e próxima ao eixo das rodas |
-| Power bank | (40 mm, 120 mm) | Equilibra lateralmente o suporte de pilhas |
+| Suportes de 4 pilhas AA | (40 mm, 145 mm) e (110 mm, 145 mm) | Distribuem as 8 pilhas em dois bancos independentes |
+| Pack Li-Ion alternativo | (75 mm, 145 mm) | Posição central quando esta opção for utilizada |
 | Chave dos motores | (15 mm, 175 mm) | Acesso externo sem retirar a carenagem |
 
-## 6. Sugestão de pinos do ESP32
+## 6. Ligações e pinos do ESP32
 
-| Função no TB6612FNG | Pino do ESP32 | Função |
+### 6.1 ESP32 e L298N
+
+| L298N | ESP32/alimentação | Função |
 |---|---:|---|
-| PWMA | GPIO 25 | Velocidade do motor esquerdo |
-| AIN1 | GPIO 26 | Sentido do motor esquerdo |
-| AIN2 | GPIO 27 | Sentido do motor esquerdo |
-| PWMB | GPIO 33 | Velocidade do motor direito |
-| BIN1 | GPIO 32 | Sentido do motor direito |
-| BIN2 | GPIO 14 | Sentido do motor direito |
-| STBY | GPIO 13 | Habilita ou desabilita o driver |
-| VCC | 3V3 | Alimentação lógica do driver |
-| GND | GND | Terra comum |
-| VM | 6 V das pilhas | Alimentação exclusiva dos motores |
+| ENA | GPIO 25 | PWM do motor esquerdo |
+| IN1 | GPIO 26 | Direção do motor esquerdo |
+| IN2 | GPIO 27 | Direção do motor esquerdo |
+| ENB | GPIO 33 | PWM do motor direito |
+| IN3 | GPIO 32 | Direção do motor direito |
+| IN4 | GPIO 14 | Direção do motor direito |
+| 5 V lógico | Saída de 5 V do LM2596 | Alimentação lógica com o jumper `5V-EN` removido |
+| GND | GND comum | Referência elétrica comum |
+| 12V/Vs | Banco de motores | Entrada de potência; usar 6 V das AA ou o pack Li-Ion |
+| OUT1/OUT2 | Motor esquerdo | Saída do canal A |
+| OUT3/OUT4 | Motor direito | Saída do canal B |
 
-Os terminais A01/A02 devem ser ligados ao motor esquerdo e B01/B02 ao motor direito. Se uma roda girar no sentido oposto ao esperado, basta inverter os dois fios desse motor ou corrigir o sentido no programa.
+Remover os jumpers `ENA` e `ENB` para permitir PWM. Se uma roda girar no sentido oposto ao esperado, inverter os dois fios desse motor ou ajustar a constante de inversão no programa.
+
+### 6.2 ESP32 e HC-SR04
+
+| HC-SR04 | Ligação |
+|---|---|
+| VCC | Saída regulada de 5 V do LM2596 |
+| GND | GND comum |
+| TRIG | GPIO 18 |
+| ECHO | GPIO 19 por divisor: 1 kΩ em série e 2 kΩ para GND |
+
+O diagrama completo está em [`hardware/arquitetura`](hardware/arquitetura/README.md).
 
 ## 7. Requisitos funcionais
 
@@ -137,7 +170,8 @@ Os terminais A01/A02 devem ser ligados ao motor esquerdo e B01/B02 ao motor dire
 | RF-03 | Executar cinco comandos | O carrinho avança, recua, gira para os dois lados e para |
 | RF-04 | Controlar os motores separadamente | Cada motor responde ao canal correspondente do driver |
 | RF-05 | Parar em caso de perda de comando | Os dois motores param após 1 s sem atualização |
-| RF-06 | Permitir manutenção | A carenagem pode ser retirada sem remover rodas ou motores |
+| RF-06 | Evitar colisão frontal | O avanço é interrompido ao detectar obstáculo a menos de 20 cm |
+| RF-07 | Permitir manutenção | A carenagem pode ser retirada sem remover rodas ou motores |
 
 ## 8. Requisitos não funcionais
 
@@ -184,8 +218,8 @@ O vídeo de demonstração mostra o projeto **Carrinho Robô ESP32** e pode ser 
 1. Cortar e furar o chassi conforme o croqui.
 2. Fixar os motores e conferir o alinhamento das rodas.
 3. Fixar o rodízio dianteiro e verificar se o chassi fica nivelado.
-4. Instalar ESP32 e TB6612FNG sobre espaçadores.
-5. Prender o suporte de pilhas e o power bank com abraçadeiras ou fita de fixação removível.
+4. Instalar ESP32, L298N, LM2596 e HC-SR04 sobre suportes ou espaçadores.
+5. Prender os dois suportes de pilhas ou o pack Li-Ion com abraçadeiras ou fita de fixação removível.
 6. Fazer as ligações com todas as fontes desligadas e conferir o terra comum.
 7. Testar um motor por vez com as rodas suspensas.
 8. Testar os comandos em baixa velocidade e só depois instalar a carenagem.
@@ -200,41 +234,56 @@ O vídeo de demonstração mostra o projeto **Carrinho Robô ESP32** e pode ser 
 | Movimento | Executar os cinco comandos no piso | Resposta correta a cada comando |
 | Comunicação | Afastar o celular gradualmente em ambiente interno | Controle estável na área prevista para demonstração |
 | Fail-safe | Interromper o envio de comandos durante o movimento | Parada automática em até 1 s |
+| Ultrassônico | Aproximar um obstáculo frontal até menos de 20 cm | Avanço bloqueado e motores parados |
 | Carenagem | Instalar a cobertura e repetir um trajeto curto | Sem aquecimento excessivo ou contato com partes móveis |
 
 ## 13. Próximas etapas
 
 - Validar as medidas com os componentes físicos disponíveis no laboratório.
-- Fazer a lista definitiva de materiais e custos.
+- Confirmar preços e comprar a opção de alimentação escolhida.
 - Produzir o chassi e a carenagem.
-- Desenvolver o firmware e a página de controle.
+- Validar o firmware e a página de controle em `src/codigo.ino` no carrinho montado.
 - Registrar fotos, testes, dificuldades e melhorias neste repositório.
 
-## 14. Publicação no GitHub
+## 14. Estrutura do repositório — Aula 16
 
-1. Criar um repositório chamado `carrinho-robo-esp32`.
-2. Adicionar este arquivo `README.md` na raiz do repositório.
-3. Criar a pasta `docs` e adicionar `croqui-chassi.svg` dentro dela.
-4. Criar a pasta `docs/videos` e adicionar `Media.jpg` e `MicrosoftTeams-video.mp4`.
-5. Preencher os nomes dos integrantes e os demais campos da seção **Identificação**.
-6. Fazer o primeiro commit com a mensagem `docs: adiciona requisitos, croqui e registros visuais`.
-7. Copiar o endereço do repositório, colá-lo na tabela de identificação e enviar esse link na atividade.
-
-Estrutura esperada:
+A estrutura foi incrementada para separar hardware, modelos CAD, código-fonte, mídia e gestão do projeto:
 
 ```text
-carrinho-robo-esp32/
+Carrinho-Robo/
 ├── README.md
-└── docs/
-    ├── croqui-chassi.svg
-    └── videos/
-        ├── Media.jpg
-        └── MicrosoftTeams-video.mp4
+├── hardware/
+│   ├── arquitetura/
+│   │   ├── README.md
+│   │   └── diagrama-ligacoes.svg
+│   └── componentes/
+│       └── README.md
+├── cad/
+│   ├── STL/
+│   │   └── README.md
+│   └── fonte-modelo/
+│       └── README.md
+├── src/
+│   ├── README.md
+│   └── codigo.ino
+├── docs/
+│   ├── croqui-chassi.svg
+│   └── videos/
+└── organizacao/
+    ├── MVP.md
+    ├── MOSCOW.md
+    ├── BACKLOG.md
+    ├── DEPENDENCIAS.md
+    └── KANBAN.md
 ```
+
+Os arquivos STL devem usar versões no nome, por exemplo `chassi-v0.1.stl` e `chassi-v0.2.stl`. O arquivo editável deve ser guardado em `cad/fonte-modelo/` no formato da ferramenta usada pelo grupo.
 
 ## 15. Histórico
 
-| Data | Versão | Alteração |
-|---|---|---|
-| 13/08/2026 | 0.1 | Ficha de requisitos e croqui inicial |
-| 20/08/2026 | 0.2 | Inclusão da imagem do projeto e do vídeo de demonstração |
+| Data | Versão | Alteração observada nos commits | Evidência |
+|---|---:|---|---|
+| 13/08/2026 | 0.1 | Criação da documentação inicial, ficha de requisitos e croqui (`dee98bf` a `edfc01b`) | [`README.md`](README.md) e [`docs/croqui-chassi.svg`](docs/croqui-chassi.svg) |
+| 20/08/2026 | 0.2 | Inclusão da imagem e do vídeo de demonstração (`80e1042`) | [`docs/videos/`](docs/videos/) |
+| 26/08/2026 | 0.3 | Inclusão do MVP, MoSCoW, backlog, dependências e Kanban (`b32e213`) | [`organizacao/`](organizacao/) |
+| 27/08/2026 | 0.4 | Aula 16: estrutura de hardware/CAD/código; troca para L298N; inclusão do HC-SR04; opções de 8 pilhas AA ou pack Li-Ion; precificação e referências | [`hardware/`](hardware/), [`cad/`](cad/) e [`src/`](src/) |
