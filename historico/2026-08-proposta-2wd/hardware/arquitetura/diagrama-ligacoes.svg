@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .title { font: 700 34px Arial, sans-serif; fill: #14213d; }
+      .subtitle { font: 400 18px Arial, sans-serif; fill: #475569; }
+      .box { fill: #ffffff; stroke: #334155; stroke-width: 3; rx: 18; }
+      .power { fill: #fff7d6; stroke: #c58b00; }
+      .logic { fill: #e8f2ff; stroke: #2563eb; }
+      .motor { fill: #ebfbef; stroke: #16803a; }
+      .sensor { fill: #f4eafe; stroke: #7e22ce; }
+      .label { font: 700 23px Arial, sans-serif; fill: #172033; text-anchor: middle; }
+      .small { font: 400 16px Arial, sans-serif; fill: #334155; text-anchor: middle; }
+      .wire { fill: none; stroke-width: 5; marker-end: url(#arrow); }
+      .red { stroke: #dc2626; }
+      .blue { stroke: #2563eb; }
+      .green { stroke: #16803a; }
+      .purple { stroke: #7e22ce; }
+      .gray { stroke: #475569; }
+      .dash { stroke-dasharray: 12 10; }
+      .legend { font: 600 16px Arial, sans-serif; fill: #334155; }
+      .warning { font: 700 18px Arial, sans-serif; fill: #991b1b; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1400" height="900"/>
+  <text class="title" x="700" y="52" text-anchor="middle">Carrinho-robô — ESP32, L298N e HC-SR04</text>
+  <text class="subtitle" x="700" y="83" text-anchor="middle">Escolha somente uma opção de bateria; todas as conexões usam GND comum</text>
+
+  <rect class="box power" x="55" y="135" width="290" height="150"/>
+  <text class="label" x="200" y="172">Opção A — 8 pilhas AA</text>
+  <text class="small" x="200" y="207">Banco A: 4 AA = 6 V motores</text>
+  <text class="small" x="200" y="238">Banco B: 4 AA = 6 V lógica</text>
+  <text class="warning" x="200" y="269" text-anchor="middle">Nunca 8 pilhas em série</text>
+
+  <rect class="box power" x="55" y="365" width="290" height="130"/>
+  <text class="label" x="200" y="405">Opção B — Li-Ion</text>
+  <text class="small" x="200" y="440">7,4 V · 2500 mAh · BMS</text>
+  <text class="small" x="200" y="468">Usar carregador 2S</text>
+
+  <rect class="box power" x="455" y="335" width="250" height="140"/>
+  <text class="label" x="580" y="377">LM2596</text>
+  <text class="small" x="580" y="411">Saída ajustada: 5,0 V</text>
+  <text class="small" x="580" y="440">Medir antes de conectar</text>
+
+  <rect class="box logic" x="790" y="125" width="250" height="180"/>
+  <text class="label" x="915" y="165">ESP32 DevKit</text>
+  <text class="small" x="915" y="200">ENA 25 · IN1 26 · IN2 27</text>
+  <text class="small" x="915" y="230">ENB 33 · IN3 32 · IN4 14</text>
+  <text class="small" x="915" y="260">TRIG 18 · ECHO 19</text>
+
+  <rect class="box motor" x="790" y="405" width="250" height="180"/>
+  <text class="label" x="915" y="445">Ponte H L298N</text>
+  <text class="small" x="915" y="480">Remover ENA e ENB</text>
+  <text class="small" x="915" y="510">Remover 5V-EN</text>
+  <text class="small" x="915" y="540">5 V lógico pelo LM2596</text>
+
+  <rect class="box sensor" x="1125" y="125" width="220" height="180"/>
+  <text class="label" x="1235" y="165">HC-SR04</text>
+  <text class="small" x="1235" y="200">VCC: 5 V</text>
+  <text class="small" x="1235" y="230">TRIG: GPIO 18</text>
+  <text class="small" x="1235" y="260">ECHO: divisor 1 kΩ / 2 kΩ</text>
+
+  <rect class="box motor" x="1125" y="400" width="220" height="90"/>
+  <text class="label" x="1235" y="440">Motor esquerdo</text>
+  <text class="small" x="1235" y="468">OUT1 / OUT2</text>
+
+  <rect class="box motor" x="1125" y="530" width="220" height="90"/>
+  <text class="label" x="1235" y="570">Motor direito</text>
+  <text class="small" x="1235" y="598">OUT3 / OUT4</text>
+
+  <path class="wire red" d="M345 185 H740 V455 H790"/>
+  <text class="legend" x="545" y="176">Banco A: 6 V → potência dos motores</text>
+  <path class="wire red" d="M345 238 H400 V370 H455"/>
+  <text class="legend" x="365" y="324">Banco B</text>
+  <path class="wire red dash" d="M345 430 H455"/>
+  <text class="legend" x="400" y="421">Alternativa Li-Ion</text>
+  <path class="wire red dash" d="M345 465 H735 V485 H790"/>
+
+  <path class="wire blue" d="M705 370 H750 V215 H790"/>
+  <path class="wire blue" d="M705 405 H790"/>
+  <path class="wire blue" d="M705 440 H1080 V285 H1125"/>
+  <text class="legend" x="735" y="358">5 V regulados</text>
+
+  <path class="wire gray" d="M915 305 V405"/>
+  <text class="legend" x="935" y="355">6 sinais</text>
+  <path class="wire purple" d="M1040 205 H1125"/>
+  <text class="legend" x="1082" y="195">TRIG / ECHO</text>
+
+  <path class="wire green" d="M1040 455 H1125"/>
+  <path class="wire green" d="M1040 535 H1080 V575 H1125"/>
+
+  <line x1="80" y1="735" x2="1320" y2="735" stroke="#111827" stroke-width="7"/>
+  <text class="label" x="700" y="780">GND comum: fontes, LM2596, ESP32, L298N e HC-SR04</text>
+  <path class="wire gray" d="M200 495 V735"/>
+  <path class="wire gray" d="M580 475 V735"/>
+  <path class="wire gray" d="M915 585 V735"/>
+  <path class="wire gray" d="M1235 305 V735"/>
+
+  <text class="subtitle" x="700" y="845" text-anchor="middle">Primeiro teste: rodas suspensas, LM2596 em 5,0 V e velocidade baixa</text>
+</svg>
