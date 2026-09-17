@@ -1,0 +1,48 @@
+{
+  "_readme": "Todas as dimensoes em mm. Campos marcados 'assumido' NAO foram confirmados fisicamente pelo usuario e devem ser medidos antes de imprimir a versao final.",
+  "motor": {
+    "width_y_confirmed": 22.0,
+    "length_z_informed": 70.0,
+    "thickness_x_assumed": 18.5,
+    "shaft_diam_informed": 5.35,
+    "shaft_len_assumed": 10.0,
+    "shaft_boss_diam_assumed": 9.0,
+    "shaft_height_from_gearbox_bottom_assumed": 9.5,
+    "gearbox_zone_height_assumed": 24.0
+  },
+  "fit": {
+    "side_clearance_per_side": 0.2,
+    "cradle_internal_width_y": 22.4
+  },
+  "structure": {
+    "base_thickness_z": 7.0,
+    "side_wall_thickness_x": 5.5,
+    "back_wall_thickness_x": 5.5,
+    "wall_height_z": 82.0,
+    "base_margin_front_x": 2.5,
+    "fillet_internal": 3.0,
+    "fillet_external": 1.5
+  },
+  "front_cap": {
+    "_comment": "Pilha em X (face do motor -> face externa da tampa) e CRITICA: soma base_margin_front_x + boss_protrusion_x + thickness_x deve ficar perto do comprimento livre do eixo (assumido 10mm). Ver relatorio.",
+    "thickness_x": 4.5,
+    "shaft_clear_hole_diam": 12.0,
+    "hub_relief_diam": 15.0,
+    "hub_relief_depth": 2.5
+  },
+  "screws": {
+    "clearance_hole_diam": 3.6,
+    "nut_across_flats_assumed": 5.6,
+    "nut_thickness_assumed": 2.4,
+    "nut_pocket_depth": 2.2,
+    "boss_width_y": 13.0,
+    "boss_height_z": 12.0,
+    "boss_protrusion_x": 5.0,
+    "boss_z_low": 14.0,
+    "boss_z_high": 62.0
+  },
+  "rear_window": {
+    "width_y": 16.0,
+    "height_z": 16.0
+  }
+}
