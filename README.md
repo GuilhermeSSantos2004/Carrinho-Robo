@@ -13,44 +13,25 @@
 | Danilo Urze Aldred | RM99465 |
 | Laura Claro Mathias | RM98747 |
 
+## Carrinho-robô finalizado
+
+![Carrinho-robô CUBI-04 montado](docs/videos/Media.jpg)
+
+**Protótipo físico montado**, com chassi e suportes impressos em 3D, quatro motores TT, rodas, HC-SR04, alimentação e integração eletrônica.
+
 ## 1. Objetivo e descrição
 
-O CUBI-04 é um carrinho-robô desenvolvido para integrar projeto mecânico, fabricação digital, eletrônica, programação, sensores e comunicação sem fio. O chassi e a carenagem foram desenvolvidos pela equipe para fabricação por impressão 3D. O controle é realizado pelo celular através de uma página web hospedada pelo próprio ESP32, sem necessidade de internet ou aplicativo externo.
+O CUBI-04 é um carrinho-robô desenvolvido para integrar projeto mecânico, fabricação digital, eletrônica, programação, sensores e comunicação sem fio. O chassi, a carenagem e os suportes foram desenvolvidos pela equipe para fabricação por impressão 3D. O controle é realizado pelo celular através de uma página web hospedada pelo próprio ESP32, sem necessidade de internet ou aplicativo externo.
 
-O conceito inicial passou por diversas revisões. A arquitetura atual utiliza quatro motores TT, ponte H L298N, ESP32, alimentação por baterias 18650, sensor ultrassônico HC-SR04 e LDR.
+A arquitetura atual utiliza quatro motores TT, ponte H L298N, ESP32, alimentação por baterias 18650, sensor ultrassônico HC-SR04 e LDR.
 
-## 2. Visão do projeto e evolução visual
-
-### Proposta mecânica / render
-
-![Render do desenvolvimento mecânico](cad/versoes/v1/PREVIAS/CUBI_04_previa.png)
-
-### Vista aberta
-
-![Vista aberta do projeto](cad/versoes/v1/PREVIAS/CUBI_04_aberto.png)
-
-### Vista explodida
-
-![Vista explodida](cad/versoes/v1/PREVIAS/CUBI_04_explodido.png)
-
-### Evolução do suporte do motor
-
-![Evolução do suporte do motor](cad/versoes/v3/preview_01_frontal.png)
-
-### Registro físico disponível no repositório
-
-![Registro físico do projeto](docs/videos/Media.jpg)
-
-> O repositório preserva renders e registros de diferentes etapas para demonstrar o processo de desenvolvimento. As versões anteriores não devem ser confundidas com a geometria mecânica final.
-
-## 3. Principais funcionalidades
+## 2. Principais funcionalidades
 
 - quatro motores TT, dois por lado;
 - movimentação para frente e para trás;
 - curvas para esquerda e direita;
 - parada;
 - controle de velocidade por PWM;
-- ponte H L298N;
 - controle remoto por Wi-Fi;
 - ESP32 cria sua própria rede local;
 - interface web acessível pelo celular;
@@ -59,77 +40,109 @@ O conceito inicial passou por diversas revisões. A arquitetura atual utiliza qu
 - bloqueio da ré a 5 cm ou menos;
 - LDR no GPIO 34 para leitura de luminosidade;
 - interface com modos AUTO, CLARO e ESCURO;
-- chassi, carenagem e suportes desenvolvidos para fabricação 3D.
+- chassi, carenagem e suportes próprios fabricados em impressão 3D.
 
-## 4. Chassi, projeto mecânico e fabricação 3D
+## 3. Projeto mecânico e fabricação 3D
 
-O projeto utiliza chassi próprio. O processo não foi feito em uma única versão: medidas, encaixes, suportes e carenagem foram alterados conforme os testes de montagem e impressão.
+O projeto utiliza **chassi próprio modelado e impresso em 3D**. O desenvolvimento foi iterativo: medidas, encaixes, suportes, fixações, posição das rodas e carenagem foram alterados conforme os testes de montagem e fabricação.
+
+### T01 — chassi/base final
+
+![T01 chassi final no fatiador](docs/evidencias/cad_chassi_T01_final.jpg)
+
+O T01 é a base estrutural atual. A versão final foi otimizada para aproximadamente **147 × 140 × 10 mm**, com pontos de fixação e área para os componentes.
+
+### T02 — carenagem final
+
+![T02 carenagem final no fatiador](docs/evidencias/cad_carenagem_T02_final.jpg)
+
+A carenagem T02 foi reduzida e redesenhada para manter acesso aos componentes. As aberturas laterais são funcionais e precisam permanecer abertas para a passagem/encaixe dos suportes dos motores.
+
+### Suportes dos quatro motores
+
+![Suportes dos motores preparados para impressão](docs/evidencias/cad_suportes_motores_final.jpg)
+
+Os quatro suportes foram preparados para fabricação por impressão 3D. O suporte passou por diversas versões até o conceito T03A/T03B v7.
 
 ### Peças da configuração atual
 
 | Peça | Função / estado |
 |---|---|
-| T01 — base/chassi | base própria otimizada, aproximadamente 147 × 140 × 10 mm |
-| T02 — carenagem | carenagem baixa, aproximadamente 140 × 133 × 24 mm, com aberturas funcionais |
-| T03A — suporte de motor | suporte v7 |
-| T03B — presilha | retenção do motor v7 |
-| T04 — tampa | 2 mm; opcional no conceito atual |
-| T05 — trava | trava vertical suporte ↔ chassi |
-| T06 — pino/parafuso impresso | dois por motor, oito previstos |
+| T01 | base/chassi próprio otimizado |
+| T02 | carenagem baixa com aberturas funcionais |
+| T03A | suporte de motor v7 |
+| T03B | presilha de retenção v7 |
+| T04 | tampa de 2 mm, opcional no conceito atual |
+| T05 | trava vertical suporte ↔ chassi |
+| T06 | pino/parafuso impresso; dois por motor |
 
-Os arquivos e versões mecânicas estão em [`cad/`](cad/). O repositório contém versões anteriores, arquivos STL, arquivos-fonte/STEP, scripts de geração e validação e renders. A evolução existente em `cad/versoes/` é mantida propositalmente como evidência do processo, em vez de mostrar somente o resultado final.
+Os arquivos mecânicos, STL/STEP, fontes, versões e validações estão em [`cad/`](cad/). O pacote final verificado está documentado em [`cad/PACOTE_FINAL_VERIFICADO.md`](cad/PACOTE_FINAL_VERIFICADO.md).
 
-## 5. Problemas mecânicos e adaptações
+## 4. Evolução do projeto mecânico
 
-### 15/09/2026 — suporte, chassi e alinhamento das rodas
+O repositório preserva as versões anteriores propositalmente para demonstrar o processo de desenvolvimento, e não apenas o resultado final.
 
-Durante a montagem foi identificado que o posicionamento inicialmente previsto não deixava o conjunto motor/roda corretamente alinhado com o chassi. Em determinadas versões, havia folga lateral no suporte e a posição do motor deixava a roda distante ou inadequadamente posicionada em relação à borda.
+### Proposta inicial
 
-As adaptações realizadas incluíram reposicionamento dos suportes, centralização do eixo, ajuste à largura real de aproximadamente 22 mm do motor TT, reforço das laterais e região frontal e manutenção das rodas para fora do perímetro útil do chassi. As aberturas laterais da carenagem também precisaram permanecer abertas, pois os suportes dos motores atravessam/ocupam essas regiões durante a montagem.
+![Render do desenvolvimento mecânico](cad/versoes/v1/PREVIAS/CUBI_04_previa.png)
 
-A versão do suporte evoluiu até o conceito T03A/T03B v7, separando suporte e presilha e permitindo melhor montagem e manutenção. As travas inferiores e os pontos de fixação também passaram a fazer parte do sistema mecânico.
+### Vista aberta da arquitetura inicial
 
-### Outras correções realizadas
+![Vista aberta](cad/versoes/v1/PREVIAS/CUBI_04_aberto.png)
 
-- folga excessiva nas primeiras versões do suporte;
-- região frontal do suporte frágil durante o aperto;
-- cortes CAD realizados fora do material real;
-- peças aparentemente válidas contendo corpos desconectados;
-- pedestais e apoios ultrapassando a área real da base;
-- necessidade de porcas cativas para a fixação;
-- revisão do encaixe do HC-SR04;
-- redução da tampa de 3 mm para 2 mm;
-- remoção de pedestais para reduzir material e tempo;
-- redesign da carenagem para não envolver completamente os suportes;
-- aproximadamente 45 minutos extras de suporte detectados no fatiador;
-- criação/reposicionamento de apoios para melhorar a impressão;
-- redução aproximada de 8% no volume da carenagem em uma das etapas de otimização.
+### Vista explodida
 
-O relato detalhado está em [`historico/HISTORICO_PROJETO_CUBI04.md`](historico/HISTORICO_PROJETO_CUBI04.md).
+![Vista explodida](cad/versoes/v1/PREVIAS/CUBI_04_explodido.png)
+
+### Evolução do suporte
+
+![Evolução do suporte](cad/versoes/v3/preview_01_frontal.png)
+
+Esses renders representam etapas do desenvolvimento e não devem ser confundidos com a geometria mecânica final mostrada nas imagens do T01, T02 e suportes acima.
+
+## 5. Problemas e adaptações — 15/09/2026
+
+Durante a montagem foi identificado que o posicionamento inicialmente previsto para os suportes não deixava o conjunto motor/roda corretamente alinhado com o chassi. Em algumas versões havia folga lateral e a roda não ocupava a posição desejada para girar livremente fora da estrutura.
+
+As adaptações realizadas incluíram:
+
+- reposicionamento dos suportes em relação às bordas do T01;
+- centralização do eixo do motor;
+- ajuste à largura real de aproximadamente 22 mm do motor TT;
+- redução das folgas laterais;
+- reforço das laterais e da região frontal do suporte;
+- rodas mantidas para fora do perímetro útil do chassi;
+- revisão das aberturas laterais do T02;
+- preservação de acesso aos pontos de fixação;
+- utilização das travas inferiores e parafusos/porcas no sistema de fixação.
+
+Outros problemas encontrados incluíram cortes CAD fora do material real, corpos desconectados, porcas sem espaço suficiente, alterações no encaixe do HC-SR04 e aproximadamente 45 minutos adicionais de suporte detectados no fatiador. A carenagem também passou por otimização de volume de aproximadamente 8% em uma das etapas.
+
+O histórico completo está em [`historico/HISTORICO_PROJETO_CUBI04.md`](historico/HISTORICO_PROJETO_CUBI04.md).
 
 ## 6. Hardware e eletrônica
 
 ### Componentes principais
 
 - ESP32 DevKit V1 / NodeMCU-ESP32;
-- L298N — ponte H dupla;
+- ponte H L298N;
 - 4 × motores TT amarelos 3–6 V, redução 48:1;
-- suporte para 3 × células 18650 em série;
+- 3 × células 18650 em série no suporte utilizado;
 - HC-SR04;
 - LDR;
-- resistores para divisor do ECHO e divisor do LDR;
+- resistores para divisores;
 - fios/conectores;
 - rodas, fixadores e peças impressas em 3D.
 
-A lista detalhada está em [`hardware/componentes/README.md`](hardware/componentes/README.md).
+Lista detalhada: [`hardware/componentes/README.md`](hardware/componentes/README.md).
 
-### Diagrama de conexões
+### Diagrama das conexões
 
 ![Diagrama elétrico](hardware/arquitetura/diagrama-ligacoes.svg)
 
-Documentação elétrica completa: [`hardware/arquitetura/README.md`](hardware/arquitetura/README.md).
+Documentação completa: [`hardware/arquitetura/README.md`](hardware/arquitetura/README.md).
 
-### L298N ↔ ESP32
+### ESP32 ↔ L298N
 
 | L298N | ESP32 | Função |
 |---|---:|---|
@@ -141,30 +154,30 @@ Documentação elétrica completa: [`hardware/arquitetura/README.md`](hardware/a
 | IN4 | GPIO 23 | direção B |
 | GND | GND | referência comum |
 
-Os jumpers ENA e ENB são removidos para permitir o controle por PWM.
+Os jumpers ENA/ENB são removidos para permitir o PWM.
 
 ## 7. Alimentação
 
-O protótipo utiliza suporte com três células 18650 em série, resultando em aproximadamente 11,1 V nominais e até 12,6 V quando totalmente carregadas. O pack alimenta a entrada de potência da L298N. Durante os testes, o ESP32 é alimentado separadamente por USB/power bank, mantendo GND comum entre os circuitos.
+O suporte utiliza três células 18650 em série: aproximadamente **11,1 V nominais e até 12,6 V carregadas**. O pack alimenta a entrada de potência da L298N. Durante os testes, o ESP32 pode ser alimentado separadamente por USB/power bank, mantendo GND comum.
 
-**Limitação conhecida:** os motores TT utilizados são especificados para 3–6 V. A tensão do pack 3S é superior a essa faixa. O PWM baixo foi utilizado como limitação durante testes, mas isso não equivale a um regulador de tensão. A limitação permanece documentada como parte das decisões e riscos do protótipo.
+**Limitação conhecida:** os motores TT utilizados são especificados para 3–6 V e o pack 3S possui tensão superior. O PWM baixo foi usado como limitação de teste, mas não substitui um regulador de tensão adequado. Essa limitação foi mantida documentada como parte das decisões do protótipo.
 
 ## 8. Controle remoto sem fio
 
-O ESP32 cria uma rede Wi-Fi própria. Portanto, o carrinho não depende de roteador ou acesso à internet.
+O ESP32 cria sua própria rede Wi-Fi, sem necessidade de roteador ou internet.
 
 | Item | Valor |
 |---|---|
 | SSID | `tony` |
 | Senha | `stark369` |
-| IP do controle | `192.168.4.1` |
+| IP | `192.168.4.1` |
 | Serial | `115200 baud` |
 
-A página web permite comandar frente, ré, esquerda, direita e parada, além de alterar o PWM.
+O painel web permite comandar frente, ré, esquerda, direita, parada e velocidade PWM.
 
 ## 9. Sensores integrados
 
-### HC-SR04 — sensor de estacionamento de ré
+### HC-SR04 — estacionamento de ré
 
 | HC-SR04 | ESP32 |
 |---|---:|
@@ -173,55 +186,24 @@ A página web permite comandar frente, ré, esquerda, direita e parada, além de
 | TRIG | GPIO 18 |
 | ECHO | GPIO 19 através de divisor resistivo |
 
-O sensor teve sua função alterada durante o desenvolvimento. Inicialmente foi experimentado como bloqueio frontal em aproximadamente 20 cm. Na versão atual ele auxilia a ré: os bipes do celular ficam progressivamente mais rápidos com a aproximação e a ré é interrompida a 5 cm ou menos.
-
-Divisor do ECHO utilizado na documentação atual:
-
-```text
-ECHO ── 1 kΩ ──┬── GPIO 19
-                │
-               1 kΩ
-                │
-               1 kΩ
-                │
-               GND
-```
+Na versão atual, o HC-SR04 funciona como sensor de estacionamento de ré. O celular produz bipes progressivamente mais rápidos conforme o obstáculo se aproxima e, a **5 cm ou menos**, o firmware bloqueia/interrompe a ré.
 
 ### LDR
 
-O LDR está ligado ao GPIO 34 e fornece uma leitura de luminosidade para a interface. No modo AUTO, essa leitura altera o tema do painel. O firmware também apresenta ADC bruto e percentual para facilitar calibração e diagnóstico.
-
-```text
-3V3 ── LDR ──┬── GPIO 34
-              │
-           resistor
-              │
-             GND
-```
+O LDR está ligado ao **GPIO 34**. Sua leitura é apresentada no painel e, no modo AUTO, é utilizada para adaptar o tema da interface conforme a luminosidade. O firmware também exibe ADC bruto para calibração.
 
 ## 10. Software
 
-O firmware principal está em [`src/codigo.ino`](src/codigo.ino). A versão funcional congelada está em [`src/v0.3/carrinho_robo_v0_3.ino`](src/v0.3/carrinho_robo_v0_3.ino).
+Firmware principal: [`src/codigo.ino`](src/codigo.ino).  
+Versão funcional preservada: [`src/v0.3/carrinho_robo_v0_3.ino`](src/v0.3/carrinho_robo_v0_3.ino).
 
-O software integra:
+O software integra Wi-Fi Access Point, servidor HTTP, DNS/captive portal, comandos direcionais, PWM, HC-SR04, bloqueio de ré, alertas sonoros no navegador, LDR, interface para celular e logs de diagnóstico.
 
-- geração do Access Point Wi-Fi;
-- servidor HTTP local;
-- DNS/captive portal;
-- comandos de movimento;
-- controle PWM dos dois lados do carrinho;
-- leitura do HC-SR04;
-- proteção/bloqueio da ré na faixa crítica;
-- alerta sonoro no navegador;
-- leitura do LDR;
-- interface responsiva para celular;
-- logs de diagnóstico no Serial Monitor.
-
-Mais detalhes em [`src/README.md`](src/README.md).
+Documentação: [`src/README.md`](src/README.md).
 
 ## 11. Requisitos, planejamento e evolução
 
-Os materiais de planejamento foram preservados em [`organizacao/`](organizacao/), incluindo:
+Os materiais produzidos durante o desenvolvimento estão em [`organizacao/`](organizacao/):
 
 - [`BACKLOG.md`](organizacao/BACKLOG.md);
 - [`MVP.md`](organizacao/MVP.md);
@@ -230,88 +212,87 @@ Os materiais de planejamento foram preservados em [`organizacao/`](organizacao/)
 - [`DEPENDENCIAS.md`](organizacao/DEPENDENCIAS.md);
 - planilha de custos.
 
-Além disso, [`historico/HISTORICO_PROJETO_CUBI04.md`](historico/HISTORICO_PROJETO_CUBI04.md) consolida decisões, erros, correções e mudanças mecânicas/eletrônicas/software.
+As decisões, dificuldades e mudanças estão consolidadas no histórico do projeto.
 
-## 12. Testes, problemas e resultados
+## 12. Testes e resultados
 
-O projeto foi desenvolvido de forma iterativa. Foram realizados testes de reconhecimento do ESP32, upload de firmware, rede Wi-Fi local, controle web, PWM e leituras dos sensores, além de verificações mecânicas de encaixe e fabricação.
+Foram registrados testes de reconhecimento do ESP32/CP2102, upload de firmware, Wi-Fi local, controle web, PWM, sensores, encaixe mecânico e fabricação. Entre os problemas encontrados estão folgas nos suportes, fragilidade em versões anteriores, desalinhamento das rodas, colisões geométricas, suporte excessivo no fatiador e alterações no encaixe do ultrassônico.
 
-Problemas registrados durante o desenvolvimento incluem driver CP2102 ausente no Windows, folgas no suporte, quebra/fragilidade de regiões do suporte, desalinhamento da roda, colisões geométricas, suporte excessivo no fatiador, alterações no encaixe do ultrassônico e necessidade de tornar a leitura do LDR observável para calibração.
+As correções foram preservadas no GitHub para demonstrar a evolução real do projeto.
 
-Esses problemas não foram removidos do histórico: foram mantidos como evidência da evolução do projeto.
+## 13. Evidências finais
 
-## 13. Evidências
+### Foto do carrinho montado
 
-### Imagens/renders de desenvolvimento
+![Carrinho final](docs/videos/Media.jpg)
 
-| Evidência | Arquivo |
-|---|---|
-| render geral da primeira arquitetura | [`CUBI_04_previa.png`](cad/versoes/v1/PREVIAS/CUBI_04_previa.png) |
-| montagem aberta | [`CUBI_04_aberto.png`](cad/versoes/v1/PREVIAS/CUBI_04_aberto.png) |
-| vista explodida | [`CUBI_04_explodido.png`](cad/versoes/v1/PREVIAS/CUBI_04_explodido.png) |
-| vista traseira | [`CUBI_04_traseira.png`](cad/versoes/v1/PREVIAS/CUBI_04_traseira.png) |
-| suporte v2 | [`T03_motor_v2_previa.png`](cad/versoes/v2/PREVIA/T03_motor_v2_previa.png) |
-| suporte v3 | [`preview_01_frontal.png`](cad/versoes/v3/preview_01_frontal.png) |
-| registro físico disponível | [`Media.jpg`](docs/videos/Media.jpg) |
+### Fabricação/modelagem final
 
-### Vídeo disponível
+![T01 final](docs/evidencias/cad_chassi_T01_final.jpg)
 
-[`MicrosoftTeams-video.mp4`](docs/videos/MicrosoftTeams-video.mp4)
+![T02 final](docs/evidencias/cad_carenagem_T02_final.jpg)
 
-O vídeo acima é mantido como mídia de evidência existente no repositório. Para a avaliação presencial/final, a demonstração deve permitir ao avaliador observar claramente as funções que forem apresentadas no protótipo real.
+![Suportes finais](docs/evidencias/cad_suportes_motores_final.jpg)
+
+### Vídeos
+
+- [Vídeo de evidência em `docs/videos`](docs/videos/MicrosoftTeams-video.mp4)
+- [Vídeo final adicionado ao repositório](WhatsApp%20Video%202026-09-17%20at%207.53.06%20PM.mp4)
+
+A página [`docs/EVIDENCIAS_CHECKPOINT.md`](docs/EVIDENCIAS_CHECKPOINT.md) centraliza as evidências da entrega.
 
 ## 14. Como utilizar
 
-1. conferir toda a fiação com a alimentação desligada;
-2. deixar as rodas suspensas no primeiro teste após qualquer alteração elétrica;
-3. alimentar o ESP32 por USB/power bank;
-4. abrir `src/codigo.ino` na Arduino IDE;
-5. selecionar `ESP32 Dev Module` ou `DOIT ESP32 DEVKIT V1` e a porta CP210x;
-6. realizar o upload;
-7. abrir o Serial Monitor em 115200 baud;
-8. conectar o celular à rede Wi-Fi `tony`, senha `stark369`;
-9. acessar `192.168.4.1`;
-10. ativar o áudio no painel para permitir os alertas do sensor de ré;
-11. iniciar com PWM baixo;
-12. testar parada, frente, ré e curvas;
-13. durante a ré, aproximar um obstáculo do HC-SR04 e observar o alerta progressivo e o bloqueio próximo de 5 cm;
-14. alterar a iluminação sobre o LDR e observar a leitura/tema da interface.
+1. conferir a fiação com o circuito desligado;
+2. alimentar o ESP32 por USB/power bank;
+3. abrir `src/codigo.ino` na Arduino IDE;
+4. selecionar `ESP32 Dev Module` ou `DOIT ESP32 DEVKIT V1`;
+5. realizar o upload;
+6. abrir o Serial Monitor em 115200 baud;
+7. conectar o celular à rede `tony`, senha `stark369`;
+8. acessar `192.168.4.1`;
+9. ativar o áudio do navegador;
+10. iniciar com PWM baixo;
+11. testar parada, frente, ré e curvas;
+12. durante a ré, aproximar um obstáculo do HC-SR04 e observar o alerta/bloqueio próximo de 5 cm;
+13. variar a iluminação do LDR e observar a interface.
 
 ## 15. Organização do repositório
 
 ```text
 Carrinho-Robo/
-├── README.md                         # apresentação principal
-├── CHECKPOINT_01_VALIDACAO.md        # checklist contra a rubrica
-├── cad/                              # projeto mecânico
-│   ├── STL/                          # documentação dos STLs atuais
-│   ├── fonte-modelo/                 # fontes de modelagem
-│   └── versoes/                      # histórico mecânico e arquivos de versões
-├── docs/                             # croqui e mídias
-│   └── videos/                       # foto e vídeo existentes
+├── README.md
+├── CHECKPOINT_01_VALIDACAO.md
+├── cad/
+│   ├── STL/
+│   ├── fonte-modelo/
+│   └── versoes/
+├── docs/
+│   ├── evidencias/
+│   └── videos/
 ├── hardware/
-│   ├── arquitetura/                  # esquema e pinagem
-│   └── componentes/                  # lista de componentes
-├── historico/                        # problemas, decisões e correções
-├── organizacao/                      # backlog, MVP, planejamento e custos
-└── src/                              # firmware e versões
+│   ├── arquitetura/
+│   └── componentes/
+├── historico/
+├── organizacao/
+└── src/
 ```
 
-## 16. Relação direta com os critérios do Check Point 01
+## 16. Relação com os critérios do Check Point 01
 
-| Critério | Evidência no projeto |
+| Critério | Evidência |
 |---|---|
-| Chassi e projeto mecânico | CAD próprio, versões, fontes, STL, renders e histórico em `cad/` |
-| Movimentação e sistema elétrico | quatro motores, L298N, PWM, comandos direcionais e alimentação documentados |
+| Chassi e projeto mecânico | chassi próprio, CAD, STL/STEP, versões, renders, fabricação e histórico |
+| Movimentação e sistema elétrico | quatro motores, L298N, PWM, alimentação e comandos direcionais |
 | Controle remoto sem fio | Wi-Fi próprio do ESP32 + interface web |
-| Sensor integrado | HC-SR04 de ré e LDR integrados ao firmware |
-| Carenagem e acabamento | T02 e evolução da carenagem documentados no CAD/histórico |
-| README e apresentação | este documento contém equipe, objetivo, funções, imagens e organização |
+| Sensor integrado | HC-SR04 de ré + LDR integrados ao firmware |
+| Carenagem e acabamento | T02 final e evolução documentada |
+| README e apresentação | equipe/RMs, objetivo, funções, foto final e organização |
 | Requisitos, planejamento e evolução | `organizacao/` + `historico/` |
-| Projeto mecânico e fabricação | `cad/`, arquivos-fonte, STEP/STL, renders e versões |
-| Hardware e eletrônica | `hardware/`, componentes e diagrama de conexões |
-| Software | `src/`, firmware atual e versões |
-| Testes e resultados | histórico de testes, dificuldades e correções |
-| Evidências | imagens/renders, `Media.jpg`, vídeo e instruções de utilização |
+| Projeto mecânico e fabricação | `cad/`, STL/STEP, fontes, renders e imagens do fatiador |
+| Hardware e eletrônica | componentes, pinagem e diagrama em `hardware/` |
+| Software | firmware completo e versão v0.3 em `src/` |
+| Testes e resultados | histórico de problemas, testes e correções |
+| Evidências finais | foto real, imagens de fabricação, vídeos e instruções |
 
-Consulte também [`CHECKPOINT_01_VALIDACAO.md`](CHECKPOINT_01_VALIDACAO.md) para a conferência específica da rubrica.
+Consulte também [`CHECKPOINT_01_VALIDACAO.md`](CHECKPOINT_01_VALIDACAO.md).
