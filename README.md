@@ -1,7 +1,7 @@
 # Carrinho-robô com ESP32 — CUBI-04
 
-**Project-based Maker Lab — FIAP**  
-**Grupo: Start-up One**
+> **Project-based Maker Lab — FIAP**  
+> **Grupo: Start-up One**
 
 ## Integrantes
 
@@ -13,286 +13,255 @@
 | Danilo Urze Aldred | RM99465 |
 | Laura Claro Mathias | RM98747 |
 
-## Carrinho-robô finalizado
+---
+
+## Resultado final
 
 ![Carrinho-robô CUBI-04 montado](docs/videos/Media.jpg)
 
-**Protótipo físico montado**, com chassi e suportes impressos em 3D, quatro motores TT, rodas, HC-SR04, alimentação e integração eletrônica.
+O **CUBI-04** é um carrinho-robô funcional desenvolvido para integrar **projeto mecânico, fabricação digital, eletrônica, programação, sensores e comunicação sem fio**. O protótipo utiliza chassi, carenagem e suportes desenvolvidos para impressão 3D, quatro motores TT, ESP32, ponte H L298N e sensores.
 
-## 1. Objetivo e descrição
+### Vídeo de demonstração
 
-O CUBI-04 é um carrinho-robô desenvolvido para integrar projeto mecânico, fabricação digital, eletrônica, programação, sensores e comunicação sem fio. O chassi, a carenagem e os suportes foram desenvolvidos pela equipe para fabricação por impressão 3D. O controle é realizado pelo celular através de uma página web hospedada pelo próprio ESP32, sem necessidade de internet ou aplicativo externo.
+- [▶ Assistir ao vídeo final do carrinho](WhatsApp%20Video%202026-09-17%20at%207.53.06%20PM.mp4)
+- [▶ Vídeo de evidência em `docs/videos`](docs/videos/MicrosoftTeams-video.mp4)
 
-A arquitetura atual utiliza quatro motores TT, ponte H L298N, ESP32, alimentação por baterias 18650, sensor ultrassônico HC-SR04 e LDR.
+---
 
-## 2. Principais funcionalidades
+## Funcionalidades implementadas
 
-- quatro motores TT, dois por lado;
+- 4 motores TT, dois por lado;
 - movimentação para frente e para trás;
 - curvas para esquerda e direita;
 - parada;
-- controle de velocidade por PWM;
-- controle remoto por Wi-Fi;
-- ESP32 cria sua própria rede local;
-- interface web acessível pelo celular;
-- HC-SR04 integrado como sensor de estacionamento de ré;
+- controle remoto pelo celular via Wi-Fi;
+- ESP32 operando como Access Point e servidor web;
+- controle de velocidade dos motores;
+- sensor ultrassônico HC-SR04 para estacionamento de ré;
 - bipes progressivos conforme o obstáculo se aproxima;
-- bloqueio da ré a 5 cm ou menos;
-- LDR no GPIO 34 para leitura de luminosidade;
-- interface com modos AUTO, CLARO e ESCURO;
-- chassi, carenagem e suportes próprios fabricados em impressão 3D.
+- bloqueio/interrupção da ré a aproximadamente 5 cm;
+- LDR para leitura de luminosidade;
+- interface web com modos AUTO, CLARO e ESCURO;
+- chassi, carenagem, suportes e travas fabricados em impressão 3D.
 
-## 3. Projeto mecânico e fabricação 3D
+---
 
-O projeto utiliza **chassi próprio modelado e impresso em 3D**. O desenvolvimento foi iterativo: medidas, encaixes, suportes, fixações, posição das rodas e carenagem foram alterados conforme os testes de montagem e fabricação.
+## Arquitetura do projeto
 
-### T01 — chassi/base final
-
-![T01 chassi final no fatiador](docs/evidencias/cad_chassi_T01_final.jpg)
-
-O T01 é a base estrutural atual. A versão final foi otimizada para aproximadamente **147 × 140 × 10 mm**, com pontos de fixação e área para os componentes.
-
-### T02 — carenagem final
-
-![T02 carenagem final no fatiador](docs/evidencias/cad_carenagem_T02_final.jpg)
-
-A carenagem T02 foi reduzida e redesenhada para manter acesso aos componentes. As aberturas laterais são funcionais e precisam permanecer abertas para a passagem/encaixe dos suportes dos motores.
-
-### Suportes dos quatro motores
-
-![Suportes dos motores preparados para impressão](docs/evidencias/cad_suportes_motores_final.jpg)
-
-Os quatro suportes foram preparados para fabricação por impressão 3D. O suporte passou por diversas versões até o conceito T03A/T03B v7.
-
-### Peças da configuração atual
-
-| Peça | Função / estado |
-|---|---|
-| T01 | base/chassi próprio otimizado |
-| T02 | carenagem baixa com aberturas funcionais |
-| T03A | suporte de motor v7 |
-| T03B | presilha de retenção v7 |
-| T04 | tampa de 2 mm, opcional no conceito atual |
-| T05 | trava vertical suporte ↔ chassi |
-| T06 | pino/parafuso impresso; dois por motor |
-
-Os arquivos mecânicos, STL/STEP, fontes, versões e validações estão em [`cad/`](cad/). O pacote final verificado está documentado em [`cad/PACOTE_FINAL_VERIFICADO.md`](cad/PACOTE_FINAL_VERIFICADO.md).
-
-## 4. Evolução do projeto mecânico
-
-O repositório preserva as versões anteriores propositalmente para demonstrar o processo de desenvolvimento, e não apenas o resultado final.
-
-### Proposta inicial
-
-![Render do desenvolvimento mecânico](cad/versoes/v1/PREVIAS/CUBI_04_previa.png)
-
-### Vista aberta da arquitetura inicial
-
-![Vista aberta](cad/versoes/v1/PREVIAS/CUBI_04_aberto.png)
-
-### Vista explodida
-
-![Vista explodida](cad/versoes/v1/PREVIAS/CUBI_04_explodido.png)
-
-### Evolução do suporte
-
-![Evolução do suporte](cad/versoes/v3/preview_01_frontal.png)
-
-Esses renders representam etapas do desenvolvimento e não devem ser confundidos com a geometria mecânica final mostrada nas imagens do T01, T02 e suportes acima.
-
-## 5. Problemas e adaptações — 15/09/2026
-
-Durante a montagem foi identificado que o posicionamento inicialmente previsto para os suportes não deixava o conjunto motor/roda corretamente alinhado com o chassi. Em algumas versões havia folga lateral e a roda não ocupava a posição desejada para girar livremente fora da estrutura.
-
-As adaptações realizadas incluíram:
-
-- reposicionamento dos suportes em relação às bordas do T01;
-- centralização do eixo do motor;
-- ajuste à largura real de aproximadamente 22 mm do motor TT;
-- redução das folgas laterais;
-- reforço das laterais e da região frontal do suporte;
-- rodas mantidas para fora do perímetro útil do chassi;
-- revisão das aberturas laterais do T02;
-- preservação de acesso aos pontos de fixação;
-- utilização das travas inferiores e parafusos/porcas no sistema de fixação.
-
-Outros problemas encontrados incluíram cortes CAD fora do material real, corpos desconectados, porcas sem espaço suficiente, alterações no encaixe do HC-SR04 e aproximadamente 45 minutos adicionais de suporte detectados no fatiador. A carenagem também passou por otimização de volume de aproximadamente 8% em uma das etapas.
-
-O histórico completo está em [`historico/HISTORICO_PROJETO_CUBI04.md`](historico/HISTORICO_PROJETO_CUBI04.md).
-
-## 6. Hardware e eletrônica
-
-### Componentes principais
-
-- ESP32 DevKit V1 / NodeMCU-ESP32;
-- ponte H L298N;
-- 4 × motores TT amarelos 3–6 V, redução 48:1;
-- 3 × células 18650 em série no suporte utilizado;
-- HC-SR04;
-- LDR;
-- resistores para divisores;
-- fios/conectores;
-- rodas, fixadores e peças impressas em 3D.
-
-Lista detalhada: [`hardware/componentes/README.md`](hardware/componentes/README.md).
-
-### Diagrama das conexões
+O celular conecta diretamente à rede criada pelo ESP32. Pela interface web, o usuário envia comandos de movimento. O ESP32 controla a ponte H L298N, que aciona os quatro motores. O HC-SR04 mede a distância durante a ré e o LDR fornece a leitura de luminosidade.
 
 ![Diagrama elétrico](hardware/arquitetura/diagrama-ligacoes.svg)
 
-Documentação completa: [`hardware/arquitetura/README.md`](hardware/arquitetura/README.md).
+Documentação elétrica completa: [`hardware/arquitetura/README.md`](hardware/arquitetura/README.md).
+
+---
+
+## Projeto mecânico e fabricação 3D
+
+O desenvolvimento mecânico foi **iterativo**. As peças foram modeladas, impressas, testadas fisicamente e corrigidas de acordo com os problemas encontrados na montagem.
+
+### T01 — chassi/base final
+
+![T01 chassi final](docs/evidencias/cad_chassi_T01_final.jpg)
+
+Base estrutural otimizada para aproximadamente **147 × 140 × 10 mm**, com pontos de fixação e espaço para os componentes.
+
+### T02 — carenagem final
+
+![T02 carenagem final](docs/evidencias/cad_carenagem_T02_final.jpg)
+
+A carenagem foi redesenhada para reduzir material e manter acesso aos componentes. As aberturas laterais são funcionais e permitem a passagem/encaixe dos conjuntos dos motores.
+
+### Suportes dos motores
+
+![Suportes finais](docs/evidencias/cad_suportes_motores_final.jpg)
+
+Os suportes passaram por várias versões até o conjunto final T03A/T03B v7.
+
+| Peça | Função |
+|---|---|
+| T01 | Base/chassi estrutural |
+| T02 | Carenagem com aberturas funcionais |
+| T03A | Suporte do motor v7 |
+| T03B | Presilha de retenção v7 |
+| T04 | Tampa opcional de 2 mm |
+| T05 | Trava vertical suporte ↔ chassi |
+| T06 | Pino/parafuso impresso; dois por motor |
+
+Arquivos STL/STEP, fontes e versões: [`cad/`](cad/).  
+Pacote final: [`cad/PACOTE_FINAL_VERIFICADO.md`](cad/PACOTE_FINAL_VERIFICADO.md).
+
+---
+
+## Evolução e problemas encontrados
+
+O repositório preserva versões anteriores para demonstrar o **processo de engenharia**, não apenas o resultado final.
+
+Durante os testes foram encontrados problemas reais de fabricação e montagem, entre eles:
+
+- folga lateral nos primeiros suportes de motor;
+- laterais frágeis em versões anteriores;
+- desalinhamento entre motor, eixo, roda e chassi;
+- necessidade de adequação à largura real de aproximadamente 22 mm do motor TT;
+- necessidade de reforçar frente e laterais dos suportes;
+- ajustes nos furos, parafusos, porcas e travas inferiores;
+- colisões e cortes CAD fora do material útil;
+- corpos desconectados em versões intermediárias;
+- ajustes no encaixe do HC-SR04;
+- excesso de suporte detectado durante o fatiamento;
+- revisão das aberturas laterais da carenagem para permitir a montagem dos motores.
+
+As correções incluíram centralização do eixo, redução das folgas, reforço estrutural, reposicionamento dos suportes e revisão da carenagem. O histórico detalhado está em [`historico/HISTORICO_PROJETO_CUBI04.md`](historico/HISTORICO_PROJETO_CUBI04.md).
+
+### Registro visual do processo
+
+| Etapa 1 | Etapa 2 |
+|---|---|
+| ![](docs/evidencias/processo/01-montagem.png) | ![](docs/evidencias/processo/02-montagem.png) |
+| **Etapa 3** | **Etapa 4** |
+| ![](docs/evidencias/processo/03-montagem.png) | ![](docs/evidencias/processo/04-montagem.png) |
+
+Essas imagens foram retiradas da raiz do repositório e centralizadas em `docs/evidencias/processo/`, mantendo a raiz limpa e as evidências fáceis de localizar.
+
+---
+
+## Hardware
+
+| Componente | Especificação / uso |
+|---|---|
+| ESP32 | DevKit V1 / NodeMCU-ESP32 |
+| Ponte H | L298N, dois canais |
+| Motores | 4 × TT amarelos, 3–6 V, redução 48:1 |
+| Alimentação | suporte com 3 × 18650 em série |
+| Ultrassônico | HC-SR04 |
+| Luminosidade | LDR |
+| Estrutura | peças próprias impressas em 3D |
+
+Lista detalhada: [`hardware/componentes/README.md`](hardware/componentes/README.md).
 
 ### ESP32 ↔ L298N
 
 | L298N | ESP32 | Função |
 |---|---:|---|
-| ENA | GPIO 25 | PWM canal A |
+| ENA | GPIO 25 | controle canal A |
 | IN1 | GPIO 26 | direção A |
 | IN2 | GPIO 27 | direção A |
-| ENB | GPIO 33 | PWM canal B |
+| ENB | GPIO 33 | controle canal B |
 | IN3 | GPIO 32 | direção B |
 | IN4 | GPIO 23 | direção B |
 | GND | GND | referência comum |
 
-Os jumpers ENA/ENB são removidos para permitir o PWM.
-
-## 7. Alimentação
-
-O suporte utiliza três células 18650 em série: aproximadamente **11,1 V nominais e até 12,6 V carregadas**. O pack alimenta a entrada de potência da L298N. Durante os testes, o ESP32 pode ser alimentado separadamente por USB/power bank, mantendo GND comum.
-
-**Limitação conhecida:** os motores TT utilizados são especificados para 3–6 V e o pack 3S possui tensão superior. O PWM baixo foi usado como limitação de teste, mas não substitui um regulador de tensão adequado. Essa limitação foi mantida documentada como parte das decisões do protótipo.
-
-## 8. Controle remoto sem fio
-
-O ESP32 cria sua própria rede Wi-Fi, sem necessidade de roteador ou internet.
-
-| Item | Valor |
-|---|---|
-| SSID | `tony` |
-| Senha | `stark369` |
-| IP | `192.168.4.1` |
-| Serial | `115200 baud` |
-
-O painel web permite comandar frente, ré, esquerda, direita, parada e velocidade PWM.
-
-## 9. Sensores integrados
-
-### HC-SR04 — estacionamento de ré
+### HC-SR04
 
 | HC-SR04 | ESP32 |
 |---|---:|
 | VCC | 5 V |
 | GND | GND comum |
 | TRIG | GPIO 18 |
-| ECHO | GPIO 19 através de divisor resistivo |
+| ECHO | GPIO 19 via divisor resistivo |
 
-Na versão atual, o HC-SR04 funciona como sensor de estacionamento de ré. O celular produz bipes progressivamente mais rápidos conforme o obstáculo se aproxima e, a **5 cm ou menos**, o firmware bloqueia/interrompe a ré.
+> **Atenção:** o ECHO do HC-SR04 trabalha em nível de 5 V e deve chegar ao ESP32 através do divisor resistivo previsto no projeto.
 
-### LDR
+### Alimentação
 
-O LDR está ligado ao **GPIO 34**. Sua leitura é apresentada no painel e, no modo AUTO, é utilizada para adaptar o tema da interface conforme a luminosidade. O firmware também exibe ADC bruto para calibração.
+O suporte utiliza três células 18650 em série, resultando em aproximadamente **11,1 V nominais e até 12,6 V com as células totalmente carregadas**. O pack alimenta a entrada de potência da L298N. Durante testes, o ESP32 pode ser alimentado separadamente por USB/power bank, sempre mantendo **GND comum**.
 
-## 10. Software
+Os motores TT são especificados para 3–6 V; portanto, a diferença entre a tensão do pack e a tensão adequada aos motores é uma limitação conhecida do protótipo e deve ser considerada na alimentação/controle.
+
+---
+
+## Software e controle remoto
 
 Firmware principal: [`src/codigo.ino`](src/codigo.ino).  
-Versão funcional preservada: [`src/v0.3/carrinho_robo_v0_3.ino`](src/v0.3/carrinho_robo_v0_3.ino).
-
-O software integra Wi-Fi Access Point, servidor HTTP, DNS/captive portal, comandos direcionais, PWM, HC-SR04, bloqueio de ré, alertas sonoros no navegador, LDR, interface para celular e logs de diagnóstico.
-
+Versão funcional preservada: [`src/v0.3/carrinho_robo_v0_3.ino`](src/v0.3/carrinho_robo_v0_3.ino).  
 Documentação: [`src/README.md`](src/README.md).
 
-## 11. Requisitos, planejamento e evolução
+O firmware integra Wi-Fi Access Point, servidor HTTP, comandos direcionais, acionamento dos motores, HC-SR04, bloqueio de ré, alertas sonoros no navegador, LDR, interface responsiva para celular e logs de diagnóstico.
 
-Os materiais produzidos durante o desenvolvimento estão em [`organizacao/`](organizacao/):
+### Como executar
 
-- [`BACKLOG.md`](organizacao/BACKLOG.md);
-- [`MVP.md`](organizacao/MVP.md);
-- [`MOSCOW.md`](organizacao/MOSCOW.md);
-- [`KANBAN.md`](organizacao/KANBAN.md);
-- [`DEPENDENCIAS.md`](organizacao/DEPENDENCIAS.md);
-- planilha de custos.
+1. Confira toda a fiação com o circuito desligado.
+2. Alimente o ESP32 por USB/power bank durante os primeiros testes.
+3. Abra [`src/codigo.ino`](src/codigo.ino) na Arduino IDE.
+4. Selecione a placa compatível com o ESP32 utilizado.
+5. Faça o upload do firmware.
+6. Abra o Serial Monitor em `115200 baud`.
+7. Conecte o celular à rede Wi-Fi criada pelo ESP32.
+8. Abra no navegador o endereço exibido/configurado pelo firmware.
+9. Teste primeiro parada e movimentos em condição segura, com as rodas livres.
+10. Teste o HC-SR04 durante a ré aproximando um obstáculo gradualmente.
+11. Varie a iluminação sobre o LDR e confira a leitura/interface.
 
-As decisões, dificuldades e mudanças estão consolidadas no histórico do projeto.
+---
 
-## 12. Testes e resultados
+## Planejamento e documentação
 
-Foram registrados testes de reconhecimento do ESP32/CP2102, upload de firmware, Wi-Fi local, controle web, PWM, sensores, encaixe mecânico e fabricação. Entre os problemas encontrados estão folgas nos suportes, fragilidade em versões anteriores, desalinhamento das rodas, colisões geométricas, suporte excessivo no fatiador e alterações no encaixe do ultrassônico.
+A organização do projeto também registra requisitos, prioridades e evolução:
 
-As correções foram preservadas no GitHub para demonstrar a evolução real do projeto.
+- [`organizacao/BACKLOG.md`](organizacao/BACKLOG.md) — backlog;
+- [`organizacao/MVP.md`](organizacao/MVP.md) — definição do MVP;
+- [`organizacao/MOSCOW.md`](organizacao/MOSCOW.md) — priorização MoSCoW;
+- [`organizacao/KANBAN.md`](organizacao/KANBAN.md) — acompanhamento das atividades;
+- [`organizacao/DEPENDENCIAS.md`](organizacao/DEPENDENCIAS.md) — dependências;
+- [`CHECKPOINT_01_VALIDACAO.md`](CHECKPOINT_01_VALIDACAO.md) — validação da entrega;
+- [`docs/EVIDENCIAS_CHECKPOINT.md`](docs/EVIDENCIAS_CHECKPOINT.md) — central de evidências.
 
-## 13. Evidências finais
+---
 
-### Foto do carrinho montado
+## Evidências finais
 
-![Carrinho final](docs/videos/Media.jpg)
+### Carrinho montado
 
-### Fabricação/modelagem final
+![Carrinho final](docs/evidencias/foto-carrinho-montado.jpg)
 
-![T01 final](docs/evidencias/cad_chassi_T01_final.jpg)
+### Evidências de fabricação
 
-![T02 final](docs/evidencias/cad_carenagem_T02_final.jpg)
-
-![Suportes finais](docs/evidencias/cad_suportes_motores_final.jpg)
+| Chassi T01 | Carenagem T02 | Suportes |
+|---|---|---|
+| ![](docs/evidencias/cad_chassi_T01_final.jpg) | ![](docs/evidencias/cad_carenagem_T02_final.jpg) | ![](docs/evidencias/cad_suportes_motores_final.jpg) |
 
 ### Vídeos
 
-- [Vídeo de evidência em `docs/videos`](docs/videos/MicrosoftTeams-video.mp4)
-- [Vídeo final adicionado ao repositório](WhatsApp%20Video%202026-09-17%20at%207.53.06%20PM.mp4)
+- [Vídeo final — 17/09/2026](WhatsApp%20Video%202026-09-17%20at%207.53.06%20PM.mp4)
+- [Vídeo de demonstração — Microsoft Teams](docs/videos/MicrosoftTeams-video.mp4)
 
-A página [`docs/EVIDENCIAS_CHECKPOINT.md`](docs/EVIDENCIAS_CHECKPOINT.md) centraliza as evidências da entrega.
+---
 
-## 14. Como utilizar
-
-1. conferir a fiação com o circuito desligado;
-2. alimentar o ESP32 por USB/power bank;
-3. abrir `src/codigo.ino` na Arduino IDE;
-4. selecionar `ESP32 Dev Module` ou `DOIT ESP32 DEVKIT V1`;
-5. realizar o upload;
-6. abrir o Serial Monitor em 115200 baud;
-7. conectar o celular à rede `tony`, senha `stark369`;
-8. acessar `192.168.4.1`;
-9. ativar o áudio do navegador;
-10. iniciar com PWM baixo;
-11. testar parada, frente, ré e curvas;
-12. durante a ré, aproximar um obstáculo do HC-SR04 e observar o alerta/bloqueio próximo de 5 cm;
-13. variar a iluminação do LDR e observar a interface.
-
-## 15. Organização do repositório
+## Organização do repositório
 
 ```text
 Carrinho-Robo/
 ├── README.md
 ├── CHECKPOINT_01_VALIDACAO.md
-├── cad/
-│   ├── STL/
-│   ├── fonte-modelo/
-│   └── versoes/
+├── cad/                    # CAD, STL, STEP, fontes e versões
 ├── docs/
-│   ├── evidencias/
-│   └── videos/
+│   ├── evidencias/         # fotos, CAD final e processo de montagem
+│   │   └── processo/
+│   └── videos/             # registros em vídeo
 ├── hardware/
-│   ├── arquitetura/
-│   └── componentes/
-├── historico/
-├── organizacao/
-└── src/
+│   ├── arquitetura/        # diagrama e ligações
+│   └── componentes/        # componentes utilizados
+├── historico/              # problemas, decisões e evolução
+├── organizacao/            # backlog, MVP, MoSCoW, Kanban etc.
+└── src/                    # firmware do ESP32
 ```
 
-## 16. Relação com os critérios do Check Point 01
+---
 
-| Critério | Evidência |
+## Relação com o Check Point 01
+
+| Critério | Evidência no repositório |
 |---|---|
-| Chassi e projeto mecânico | chassi próprio, CAD, STL/STEP, versões, renders, fabricação e histórico |
-| Movimentação e sistema elétrico | quatro motores, L298N, PWM, alimentação e comandos direcionais |
-| Controle remoto sem fio | Wi-Fi próprio do ESP32 + interface web |
-| Sensor integrado | HC-SR04 de ré + LDR integrados ao firmware |
-| Carenagem e acabamento | T02 final e evolução documentada |
-| README e apresentação | equipe/RMs, objetivo, funções, foto final e organização |
-| Requisitos, planejamento e evolução | `organizacao/` + `historico/` |
-| Projeto mecânico e fabricação | `cad/`, STL/STEP, fontes, renders e imagens do fatiador |
-| Hardware e eletrônica | componentes, pinagem e diagrama em `hardware/` |
-| Software | firmware completo e versão v0.3 em `src/` |
-| Testes e resultados | histórico de problemas, testes e correções |
-| Evidências finais | foto real, imagens de fabricação, vídeos e instruções |
+| Projeto mecânico | chassi próprio, CAD, STL/STEP, versões e renders |
+| Fabricação digital | peças impressas, imagens do fatiador e registros de montagem |
+| Movimentação | quatro motores TT + L298N + comandos direcionais |
+| Controle sem fio | ESP32 + Wi-Fi + interface web pelo celular |
+| Sensor integrado | HC-SR04 com alerta/bloqueio de ré e LDR |
+| Eletrônica | componentes, pinagem, alimentação e diagrama |
+| Programação | firmware completo em `src/` |
+| Planejamento | backlog, MVP, MoSCoW, Kanban e dependências |
+| Evolução | versões anteriores e histórico dos problemas/correções |
+| Evidência final | fotos do protótipo e vídeos de demonstração |
+| Documentação | README principal + validação + central de evidências |
 
-Consulte também [`CHECKPOINT_01_VALIDACAO.md`](CHECKPOINT_01_VALIDACAO.md).
+Para uma conferência objetiva da entrega, consulte também [`CHECKPOINT_01_VALIDACAO.md`](CHECKPOINT_01_VALIDACAO.md).
