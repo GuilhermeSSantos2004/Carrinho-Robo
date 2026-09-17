@@ -1,76 +1,124 @@
-# Arquitetura eletrônica
+# Arquitetura eletrônica — estado atual
 
-O protótipo utiliza ESP32 DevKit V1, ponte H L298N, dois motores TT e sensor ultrassônico HC-SR04. O ESP32 cria a rede Wi-Fi e hospeda a página de controle local.
+O protótipo atual usa **ESP32 DevKit V1**, ponte H **L298N**, **4 motores TT amarelos 3–6 V**, sensor ultrassônico **HC-SR04**, LDR e alimentação por células 18650. O ESP32 cria sua própria rede Wi-Fi e hospeda o painel de controle local.
 
-![Diagrama de ligações do carrinho](diagrama-ligacoes.svg)
+## Alimentação atual
 
-## Opções de alimentação
+O suporte disponível usa **3 células 18650 em série**:
 
-### Opção A — 8 pilhas AA Duracell
+- tensão nominal aproximada: **11,1 V**;
+- tensão máxima com as três células totalmente carregadas: **12,6 V**;
+- positivo do pack vai para `12V/Vs` da L298N;
+- negativo do pack vai para o GND da L298N;
+- durante os testes, o ESP32 pode ser alimentado por USB do notebook ou power bank;
+- ESP32, L298N, HC-SR04 e LDR precisam compartilhar referência de GND.
 
-As oito pilhas são divididas em **dois suportes independentes de quatro pilhas**:
+> **Atenção:** os motores TT usados são especificados para 3–6 V. O pack 3S é maior que a tensão nominal dos motores. O firmware limita o PWM para testes, mas PWM não substitui uma alimentação adequada dos motores. Evitar PWM alto e observar aquecimento. Para solução definitiva, usar alimentação/regulação compatível com os motores.
 
-- banco A, 6 V: alimenta a entrada `12V/Vs` da L298N e os motores;
-- banco B, 6 V: entra no LM2596, ajustado para 5,0 V, que alimenta ESP32, HC-SR04 e lógica da L298N;
-- todos os GNDs devem permanecer interligados.
-
-> Não ligar as oito pilhas em série. Um suporte de oito pilhas em série entregaria aproximadamente 12 V e pode danificar os motores de 3–6 V.
-
-### Opção B — Pack Li-Ion 7,4 V 2500 mAh com BMS
-
-- a saída do pack alimenta a entrada `12V/Vs` da L298N;
-- em paralelo, a saída do pack entra no LM2596;
-- o LM2596 deve ser regulado e medido em **5,0 V antes** de conectar ESP32, HC-SR04 e lógica da L298N;
-- usar carregador Li-Ion 2S compatível; o BMS não substitui o carregador.
+> Nunca ligar 11,1–12,6 V diretamente no `3V3`, `5V` ou GPIO do ESP32.
 
 ## ESP32 → L298N
 
-Remover os jumpers `ENA` e `ENB` para usar PWM. Ao alimentar a lógica da L298N pelo LM2596, remover também o jumper `5V-EN`.
+Os jumpers `ENA` e `ENB` foram removidos porque agora há controle de velocidade por PWM.
 
 | ESP32 | L298N | Função |
 |---:|---|---|
-| GPIO 25 | ENA | Velocidade do motor esquerdo |
-| GPIO 26 | IN1 | Direção do motor esquerdo |
-| GPIO 27 | IN2 | Direção do motor esquerdo |
-| GPIO 33 | ENB | Velocidade do motor direito |
-| GPIO 32 | IN3 | Direção do motor direito |
-| GPIO 14 | IN4 | Direção do motor direito |
-| GND | GND | Terra comum |
+| GPIO 25 | ENA | PWM do canal A |
+| GPIO 26 | IN1 | Direção canal A |
+| GPIO 27 | IN2 | Direção canal A |
+| GPIO 33 | ENB | PWM do canal B |
+| GPIO 32 | IN3 | Direção canal B |
+| GPIO 23 | IN4 | Direção canal B |
+| GND | GND | Referência comum |
 
-## Motores → L298N
+A saída `5V` da L298N não é usada para alimentar o ESP32 no arranjo atual de testes.
 
-| Componente | L298N |
+## Quatro motores TT → L298N
+
+O carrinho usa dois motores por lado:
+
+| Lado | Ligação |
 |---|---|
-| Motor esquerdo | OUT1 e OUT2 |
-| Motor direito | OUT3 e OUT4 |
+| 2 motores do lado A | em paralelo em `OUT1/OUT2` |
+| 2 motores do lado B | em paralelo em `OUT3/OUT4` |
 
-Se um motor girar invertido, trocar os dois fios desse motor ou ajustar a constante correspondente em `src/codigo.ino`.
+Os quatro motores são TT amarelos, 3–6 V, redução anunciada de 48:1.
 
 ## HC-SR04 → ESP32
 
 | HC-SR04 | Ligação |
 |---|---|
-| VCC | 5 V regulados pelo LM2596 |
+| VCC | 5 V do ESP32 enquanto ele é alimentado por USB/power bank |
 | GND | GND comum |
 | TRIG | GPIO 18 |
-| ECHO | GPIO 19 por divisor de tensão |
+| ECHO | GPIO 19 através de divisor de tensão |
 
-O `ECHO` do HC-SR04 trabalha em 5 V e não deve ser ligado diretamente ao ESP32. Usar:
+O `ECHO` do HC-SR04 pode chegar a aproximadamente 5 V e **não deve ser ligado diretamente** ao GPIO 19. O divisor montado com os resistores disponíveis usa três resistores de 1 kΩ:
 
 ```text
-ECHO ── resistor 1 kΩ ──┬── GPIO 19
-                         │
-                    resistor 2 kΩ
-                         │
-                        GND
+ECHO ── 1 kΩ ──┬── GPIO 19
+                │
+               1 kΩ
+                │
+               1 kΩ
+                │
+               GND
 ```
+
+Isso forma 1 kΩ no ramo superior e 2 kΩ no ramo inferior.
+
+## LDR → ESP32
+
+O sensor de luminosidade usa o **GPIO 34** como entrada analógica.
+
+```text
+3V3
+ │
+ LDR
+ │
+ ├──────── GPIO 34
+ │
+ resistor
+ │
+ GND
+```
+
+- alimentar o divisor do LDR com `3V3`;
+- não aplicar 5 V ao GPIO 34;
+- o firmware faz média de 10 leituras;
+- o valor bruto ADC e a luminosidade percentual aparecem no painel;
+- logs do LDR são enviados ao Serial Monitor aproximadamente a cada 5 s.
+
+## GND comum
+
+A referência final deve ser comum:
+
+```text
+GND ESP32 ─────┬──── GND HC-SR04
+               ├──── GND do divisor do ECHO
+               ├──── GND do LDR
+               └──── GND L298N / negativo da bateria
+```
+
+## Comportamento do ultrassônico no firmware atual
+
+O HC-SR04 deixou de bloquear o avanço a 20 cm. Ele agora funciona como **sensor de estacionamento de ré**:
+
+- frente: liberada normalmente;
+- ré: liberada enquanto a distância for maior que 5 cm;
+- ré a `<= 5 cm`: motores param e o estado passa para `RE_BLOQUEADA`;
+- painel mostra a distância;
+- durante a ré, o celular emite bipes que aceleram conforme o obstáculo se aproxima;
+- em distância crítica, o alerta se torna contínuo.
 
 ## Verificação antes de ligar
 
-1. Fazer todas as conexões com as fontes desligadas.
-2. Ajustar o LM2596 para 5,0 V usando multímetro.
-3. Conferir polaridade e GND comum.
-4. Verificar os jumpers `ENA`, `ENB` e `5V-EN`.
-5. Fazer o primeiro teste com as rodas suspensas.
-6. Começar com velocidade baixa e observar aquecimento da L298N.
-
+1. Montar tudo com a alimentação desligada.
+2. Conferir polaridade das três 18650.
+3. Não conectar o pack 3S diretamente ao ESP32.
+4. Conferir GND comum.
+5. Conferir divisor do `ECHO` antes de ligar o HC-SR04.
+6. Conferir que `ENA` e `ENB` estão sem jumper para PWM.
+7. Fazer o primeiro teste com as rodas suspensas.
+8. Começar com PWM baixo por causa dos motores 3–6 V.
+9. Abrir o Serial Monitor em 115200 baud para conferir sensores e estados.
