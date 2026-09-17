@@ -1,9 +1,29 @@
 # Histórico preservado
 
-A pasta [2026-08-proposta-2wd](2026-08-proposta-2wd/README.md) preserva integralmente os 22 arquivos existentes no repositório no commit `bbbeb3bf51269db3218d59d2d5bc2f44bc8ebf24` (27/08/2026, UTC).
+A pasta [`2026-08-proposta-2wd`](2026-08-proposta-2wd/README.md) preserva a proposta inicial do projeto: dois motores, chassi simples, rodízio, alimentação AA/2S e firmware anterior.
 
-Ela descreve a proposta inicial: 2 motores, chassi de MDF/acrílico, rodízio, alimentação AA ou 2S, firmware v0.2, planejamento e custos das aulas. Esses dados são históricos; o projeto atual passou para 4 motores verticais e estrutura própria impressa.
+O desenvolvimento atual evoluiu para quatro motores TT, peças mecânicas próprias impressas em 3D, PWM, sensor ultrassônico de ré, LDR e painel Wi-Fi adaptativo.
 
-As datas dos commits originais continuam no GitHub. A importação dos modelos produzidos fora do GitHub é retrospectiva e foi organizada agora em commits separados; ela não representa datas fictícias de impressão ou de ensaios.
+## Histórico atual consolidado
 
-Consulte a apresentação na raiz para a configuração vigente. Não use preços, alimentação ou dimensões desta cópia como especificação atual.
+O processo completo das revisões mecânicas, erros encontrados, correções, mudanças eletrônicas e evolução do firmware está em:
+
+- [`HISTORICO_PROJETO_CUBI04.md`](HISTORICO_PROJETO_CUBI04.md)
+
+Esse arquivo registra, entre outros pontos:
+
+- evolução do suporte T03A/T03B até v7;
+- criação e otimização do T01/T02;
+- problemas de overhang e corpos desconectados;
+- alterações do encaixe do ultrassônico;
+- redução de material da carcaça;
+- mudança para quatro motores;
+- adoção de PWM;
+- mudança para três células 18650 em série;
+- LDR no GPIO 34;
+- mudança do HC-SR04 para sensor de estacionamento de ré;
+- alerta sonoro progressivo;
+- bloqueio da ré a 5 cm;
+- dificuldades e lições aprendidas.
+
+As pastas históricas continuam preservadas para mostrar a evolução do projeto e não devem ser usadas como especificação do estado físico atual.
