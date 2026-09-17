@@ -1,6 +1,6 @@
-# Check Point 01 — Checklist de validação
+# Check Point 01 — Validação da entrega
 
-Este arquivo relaciona os critérios oficiais do Check Point 01 com as evidências existentes no repositório e destaca o que ainda precisa ser registrado fisicamente antes da entrega.
+Este arquivo relaciona os critérios oficiais do Check Point 01 com a documentação atualmente disponível no repositório.
 
 ## Grupo
 
@@ -14,50 +14,45 @@ Este arquivo relaciona os critérios oficiais do Check Point 01 com as evidênci
 
 ## 1. Carrinho-robô — 60%
 
-| Critério | Peso | Situação documental | Evidência / ação |
-|---|---:|---|---|
-| Chassi e projeto mecânico | 15% | Documentado | CAD próprio, fontes, STLs, versões, renders e histórico em `cad/` e `historico/`. A avaliação dos 15% depende do chassi próprio estar efetivamente impresso/montado. |
-| Movimentação e sistema elétrico | 15% | Implementado no firmware; precisa evidência final | Código contempla frente, ré, curvas, parada e PWM. Registrar vídeo do carrinho montado funcionando por bateria e demonstrando estabilidade. |
-| Controle remoto sem fio | 10% | Implementado | ESP32 cria Wi-Fi próprio e página web local em `192.168.4.1`. O vídeo final deve mostrar o celular comandando o carrinho. |
-| Sensor integrado | 10% | Implementado | HC-SR04 integrado como sensor de estacionamento de ré, com bipes progressivos e bloqueio da ré a 5 cm ou menos. LDR também está integrado à interface. Demonstrar ao menos um sensor no vídeo final. |
-| Carenagem e acabamento | 10% | Projeto documentado; precisa evidência final | T02/carenagem está documentada. Registrar fotos da carenagem instalada, fixação, acabamento e acesso aos componentes. |
+| Critério | Peso | Evidência documental |
+|---|---:|---|
+| Chassi e projeto mecânico | 15% | Chassi próprio, CAD, arquivos-fonte, STEP/STL, renders, versões e histórico em `cad/` e `historico/`. |
+| Movimentação e sistema elétrico | 15% | Firmware contém frente, ré, curvas, parada e PWM; arquitetura documenta ESP32, L298N, quatro motores e alimentação. A pontuação prática depende da demonstração do protótipo físico. |
+| Controle remoto sem fio | 10% | Wi-Fi próprio criado pelo ESP32 e interface web local em `192.168.4.1`. |
+| Sensor integrado | 10% | HC-SR04 integrado como sensor de estacionamento de ré; LDR integrado à interface. |
+| Carenagem e acabamento | 10% | T02 e evolução da carenagem documentados em CAD e histórico. A avaliação de acabamento depende da peça física apresentada. |
 
 ## 2. Repositório GitHub — 40%
 
-| Critério | Peso | Situação | Evidência / ação |
-|---|---:|---|---|
-| README e apresentação | 5% | Parcial | README possui nome, grupo, objetivo, descrição, funcionalidades e organização. **Falta colocar no README uma foto identificada como carrinho finalizado.** |
-| Requisitos, planejamento e evolução | 7% | Atendido | `organizacao/` contém backlog, MVP, MoSCoW, Kanban, dependências e planejamento; `historico/` registra decisões e evolução. |
-| Projeto mecânico e fabricação | 8% | Quase completo | Existem arquivos-fonte, STEP/STL, renders e versões em `cad/`. **Faltam fotos/registros claros da fabricação/impressão das peças finais e da montagem física final.** |
-| Hardware e eletrônica | 5% | Parcial | Componentes, ESP32, motores, L298N, alimentação, sensores, Wi-Fi e diagrama estão documentados. **Faltam fotos claras da montagem elétrica real.** |
-| Software | 7% | Atendido | Código-fonte em `src/`, versão congelada, documentação de PWM, motores, Wi-Fi, HC-SR04, LDR e interface web. |
-| Testes e resultados | 4% | Parcial | Histórico registra problemas e correções. **Adicionar evidência do teste final integrado e seu resultado.** |
-| Evidências finais | 4% | Parcial | Já existem mídia e vídeo em `docs/videos/`, mas a entrega deve deixar inequívoco que mostram a versão final. **Adicionar/renomear evidências finais e documentar o que cada foto/vídeo demonstra.** |
+| Critério | Peso | Evidência no repositório |
+|---|---:|---|
+| README e apresentação | 5% | Nome, integrantes/RM, objetivo, funcionalidades, imagens de desenvolvimento, registro físico existente e organização do conteúdo no `README.md`. |
+| Requisitos, planejamento e evolução | 7% | `organizacao/` contém backlog, MVP, MoSCoW, Kanban, dependências e custos; `historico/` registra decisões, erros e alterações. |
+| Projeto mecânico e fabricação | 8% | `cad/` preserva fontes, STEP/STL, renders e diversas versões do desenvolvimento do chassi/suportes/carenagem. |
+| Hardware e eletrônica | 5% | `hardware/` documenta componentes, ESP32, quatro motores TT, L298N, bateria 3S, sensores, Wi-Fi, pinagem e diagrama. |
+| Software | 7% | `src/` contém firmware principal, versão v0.3 e explicação do funcionamento. |
+| Testes e resultados | 4% | `historico/HISTORICO_PROJETO_CUBI04.md` registra problemas, testes, correções e decisões; README resume os principais resultados. |
+| Evidências finais | 4% | `docs/EVIDENCIAS_CHECKPOINT.md` centraliza renders, registro físico, vídeo existente, software, hardware e instruções. Evidências físicas apresentadas devem corresponder ao protótipo real. |
 
-## Evidências finais que ainda devem ser produzidas
+## Evidências organizadas
 
-Para fechar os itens que dependem do protótipo físico, registrar:
+A página [`docs/EVIDENCIAS_CHECKPOINT.md`](docs/EVIDENCIAS_CHECKPOINT.md) reúne os materiais já disponíveis e explica o papel de cada evidência. O README também incorpora imagens do processo diretamente na apresentação principal.
 
-1. foto geral do carrinho completamente montado, com chassi e carenagem;
-2. foto da parte interna mostrando ESP32, L298N, bateria, fiação e sensores;
-3. foto ou pequeno registro do processo de impressão/fabricação das peças finais;
-4. vídeo mostrando frente, ré, curva para os dois lados e parada;
-5. no mesmo vídeo ou em outro, mostrar o celular conectado ao Wi-Fi do ESP32 e comandando o carrinho;
-6. demonstração do HC-SR04 durante a ré, incluindo os bipes e, se possível, o bloqueio próximo de 5 cm;
-7. demonstração do LDR alterando a indicação/tema da interface;
-8. registrar no README a foto final e links para os vídeos finais.
+## Adaptação mecânica registrada em 15/09/2026
 
-## Roteiro recomendado para o vídeo final
+O histórico registra especificamente o problema de alinhamento do conjunto motor/roda e as adaptações realizadas no chassi e nos suportes: reposicionamento, centralização do eixo, redução de folga, reforço, rodas para fora do perímetro do chassi e preservação das aberturas da carenagem necessárias ao encaixe dos suportes.
 
-1. mostrar rapidamente o carrinho montado;
-2. mostrar a alimentação por bateria;
-3. mostrar o celular conectado à rede do ESP32 e abrir `192.168.4.1`;
-4. executar frente, ré, esquerda e direita;
-5. variar o PWM pelo controle;
-6. aproximar um obstáculo durante a ré para demonstrar o HC-SR04 e os bipes;
-7. cobrir/iluminar o LDR para demonstrar a mudança de luminosidade/tema;
-8. finalizar mostrando a carenagem e a montagem interna.
+## Conferência para apresentação física
 
-## Observação
+A documentação foi organizada para cobrir todos os tópicos pedidos na rubrica. A nota dos critérios físicos continua dependendo do que o protótipo realmente demonstrar ao avaliador. Para tornar a apresentação inequívoca, a demonstração deve mostrar o carrinho montado, alimentação, frente/ré/curvas, controle pelo celular, sensor e carenagem. Uma foto ou vídeo só deve ser chamado de "final" quando representar a montagem efetivamente entregue.
 
-O repositório contém grande parte da documentação exigida. Os pontos ainda pendentes são principalmente **evidências físicas finais**. Não é correto marcar esses itens como concluídos antes de existirem fotos/vídeos reais da versão que será apresentada. Após adicionar as evidências, atualizar este checklist e o README com os caminhos definitivos.
+## Roteiro curto para demonstração
+
+1. mostrar o carrinho e a carenagem;
+2. mostrar a alimentação e eletrônica;
+3. conectar o celular à rede `tony` e abrir `192.168.4.1`;
+4. demonstrar frente, ré, esquerda, direita e parada;
+5. variar o PWM;
+6. demonstrar o HC-SR04 durante a ré;
+7. demonstrar o LDR alterando a leitura/interface;
+8. mostrar rapidamente os componentes internos e finalizar com o carrinho completo.
