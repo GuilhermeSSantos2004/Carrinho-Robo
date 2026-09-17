@@ -1,48 +1,87 @@
-# Componentes e precificação
+# Componentes — configuração atual do protótipo
 
-Preços consultados em **27/08/2026**, sem frete. Valores promocionais e estoque podem mudar.
+Esta página registra o hardware que está sendo realmente usado na montagem atual. A lista antiga de alternativas (8 pilhas AA / pack 2S) foi substituída pelo estado físico atual do carrinho.
 
-## Conferência da lista mínima da aula
+## Componentes principais
 
-| Requisito | Item escolhido | Situação |
-|---|---|---|
-| Placa controladora com cabo USB | ESP32 DevKit V1 com cabo | Atendido |
-| Módulo Bluetooth | Não necessário: o ESP32 possui Wi-Fi e Bluetooth | Não se aplica |
-| Ponte H | L298N de dois canais | Atendido |
-| Cabos jumpers | Kits macho-macho, macho-fêmea e fêmea-fêmea | Atendido |
-| Sensor | HC-SR04 | Atendido |
-| Alimentação | 8 pilhas AA em dois suportes **ou** pack Li-Ion 7,4 V com BMS | Atendido |
-| Chassi, motores e rodas | Kit chassi 2WD com dois motores | Atendido |
-| Carenagem | Material definido pelo grupo ou peça impressa em 3D | A definir |
-| Mini protoboard | 170 pontos | Opcional |
+| Quantidade | Componente | Estado atual |
+|---:|---|---|
+| 1 | ESP32 DevKit V1 / NodeMCU-ESP32 | Em uso |
+| 1 | Ponte H dupla L298N | Em uso, com PWM em ENA/ENB |
+| 4 | Motores TT amarelos 3–6 V, redução anunciada 48:1 | Em uso |
+| 1 | Sensor ultrassônico HC-SR04 | Em uso como sensor de estacionamento de ré |
+| 1 | LDR | Em uso no GPIO 34 para luminosidade/tema do painel |
+| 3 | Células 18650 no suporte em série | Alimentação de potência atual |
+| 3 | Resistores de 1 kΩ | Divisor do ECHO do HC-SR04 (1 kΩ / 2 kΩ) |
+| — | Jumpers | Interligações |
+| 1 | Chassi impresso T01 | Versão atual otimizada |
+| 1 | Carcaça impressa T02 | Versão atual baixa/otimizada |
+| 4 | Suportes T03A | v7 |
+| 4 | Presilhas T03B | v7 |
+| 4 | Travas T05 | Fixação vertical dos suportes |
+| 8 | Pinos/parafusos impressos T06 | 2 por motor |
 
-## Tabela de preços
+## Alimentação
 
-| Quantidade | Componente | Preço estimado | Subtotal | Referência |
-|---:|---|---:|---:|---|
-| 1 | ESP32 DevKit V1 com cabo USB | R$ 64,99 | R$ 64,99 | [Casa da Robótica](https://www.casadarobotica.com/placas-embarcadas/esp/placas/placa-esp32-com-wi-fi-bluetooth-esp32s-ide-dual-core-dev-kit-v1-cabo-micro-usb) |
-| 1 | Ponte H L298N | R$ 14,90 | R$ 14,90 | [Eletrogate](https://www.eletrogate.com/ponte-h-dupla-l298n) |
-| 1 | Kit chassi 2WD com dois motores, rodas e rodízio | R$ 54,99 | R$ 54,99 | [Casa da Robótica](https://www.casadarobotica.com/robotica/chassi-s/carros/kit-chassi-2-rodas) |
-| 1 | Sensor ultrassônico HC-SR04 | R$ 9,90 | R$ 9,90 | [Eletrogate](https://www.eletrogate.com/modulo-sensor-de-distancia-ultrassonico-hc-sr04) |
-| 1 | Conversor step-down LM2596 | R$ 8,90 | R$ 8,90 | [Eletrogate](https://www.eletrogate.com/modulo-regulador-de-tensao-step-down-lm2596) |
-| 1 | Kit jumper macho-macho | R$ 8,90 | R$ 8,90 | [Eletrogate](https://www.eletrogate.com/jumpers-macho-macho-40-unidades-de-10-cm) |
-| 1 | Kit jumper macho-fêmea | R$ 8,90 | R$ 8,90 | [Eletrogate](https://www.eletrogate.com/jumpers-macho-femea-40-unidades-de-20-cm) |
-| 1 | Kit jumper fêmea-fêmea | R$ 7,90 | R$ 7,90 | [Eletrogate](https://www.eletrogate.com/jumpers-femea-femea-40-unidades-de-10-cm) |
-| 2 | Resistores de 1 kΩ e 2 kΩ | R$ 0,50 | R$ 1,00 | [Categoria de resistores](https://www.eletrogate.com/resistores) |
-| 1 | Mini protoboard 170 pontos | R$ 2,90 | R$ 2,90 | [Eletrogate](https://www.eletrogate.com/mini-protoboard-170-pontos) |
+O suporte em uso comporta **3 células 18650 em série**:
 
-Subtotal dos itens comuns obrigatórios, sem alimentação, mini protoboard, carenagem e frete: **R$ 180,38**.
+- 3,7 V nominais por célula;
+- aproximadamente **11,1 V nominal** no conjunto;
+- até aproximadamente **12,6 V** com as três células carregadas a 4,2 V;
+- pack ligado à entrada de potência da L298N;
+- ESP32 alimentado separadamente por USB/power bank durante os testes;
+- todos os GNDs devem permanecer em comum.
 
-## Escolha da alimentação
+### Atenção aos motores
 
-| Opção | Itens | Valor | Observação |
-|---|---|---:|---|
-| A — pilhas | 8 pilhas AA Duracell | R$ 62,00 | [Pack com 8 unidades](https://www.amazon.com.br/Duralock-Pilha-Alcalina-Unidades-Duracell/dp/B07FKWTQPH) |
-| A — suportes | 2 suportes para 4 pilhas AA | R$ 9,80 | [Suporte individual](https://www.eletrogate.com/suporte-para-4-pilhas-aa-branco-) |
-| **Total da opção A** | Pilhas + suportes | **R$ 71,80** | Custo total do projeto: **R$ 252,18** |
-| B — bateria | Pack Li-Ion 7,4 V 2500 mAh com BMS | R$ 66,00 | [RoboCore](https://www.robocore.net/baterias-fontes/pack-bateria-li-ion-7_4v-2500mah-com-bms) |
-| B — carregador | Carregador Li-Ion 2S | R$ 37,90 | [RoboCore](https://www.robocore.net/bateria/mini-carregador-bateria-litio-2s) |
-| **Total da opção B** | Pack + carregador | **R$ 103,90** | Custo total do projeto: **R$ 284,28** |
+Os motores TT são 3–6 V, portanto a tensão do pack 3S é superior à especificação dos motores. O firmware trabalha com PWM reduzido durante os testes, mas isso não transforma 12,6 V em uma alimentação 6 V equivalente. Evitar velocidade máxima e verificar aquecimento. A alimentação definitiva dos motores deve ser adequada à tensão deles.
 
-Se o grupo já possuir carregador 2S compatível, o total com o pack Li-Ion cai para **R$ 246,38**. Materiais de carenagem, chave, parafusos e frete ainda devem ser acrescentados quando forem definidos.
+## Pinagem consolidada
 
+| Função | GPIO |
+|---|---:|
+| PWM canal A (`ENA`) | 25 |
+| IN1 | 26 |
+| IN2 | 27 |
+| PWM canal B (`ENB`) | 33 |
+| IN3 | 32 |
+| IN4 | 23 |
+| HC-SR04 TRIG | 18 |
+| HC-SR04 ECHO | 19 (com divisor) |
+| LDR analógico | 34 |
+
+## Divisor do HC-SR04
+
+Foram usados três resistores `MPV` (marrom-preto-vermelho), equivalentes a **1 kΩ** cada:
+
+```text
+ECHO HC-SR04
+   │
+  1 kΩ
+   │
+   ├──── GPIO 19
+   │
+  1 kΩ
+   │
+  1 kΩ
+   │
+  GND
+```
+
+## LDR
+
+Ligação prevista:
+
+```text
+3V3 ── LDR ──┬── GPIO 34
+              │
+           resistor
+              │
+             GND
+```
+
+O firmware exibe o ADC bruto para facilitar a calibração real de DIA / MEIA-LUZ / NOITE.
+
+## Mecânica atual
+
+O projeto deixou de usar o conceito inicial de kit 2WD simples. A versão atual possui **quatro motores TT**, suportes impressos individuais e peças CAD próprias. Consulte [`../../cad`](../../cad) e o histórico de desenvolvimento para as revisões mecânicas.
