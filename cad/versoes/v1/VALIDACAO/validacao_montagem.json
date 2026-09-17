@@ -1,0 +1,54 @@
+{
+  "status": "APROVADO NO MODELO NOMINAL",
+  "scope": "Verificacao geometrica CAD; nao e ensaio fisico, estrutural, termico, de carga ou validacao em fatiador.",
+  "boolean_checks": 58,
+  "printed_part_intersections": [],
+  "component_envelope_intersections": [],
+  "pivot_check": [
+    {
+      "tilt_degrees": -10,
+      "intersection_mm3": 0.0
+    },
+    {
+      "tilt_degrees": 0,
+      "intersection_mm3": 0.0
+    },
+    {
+      "tilt_degrees": 10,
+      "intersection_mm3": 0.0
+    }
+  ],
+  "assumed_clearances_mm": {
+    "carcaca_lingueta_base_por_lado": 0.4,
+    "carcaca_aba_tampa_por_lado": 0.3,
+    "pescoco_garfo_por_lado": 0.3,
+    "chave_pescoco_largura_total": 0.4,
+    "suporte_bateria_folga_total_por_eixo": 1.4,
+    "suporte_bateria_altura_livre_sobre_envelope_26mm": 4.4,
+    "rodas_carcaca_lateral": 2.0,
+    "pneu_70mm_solo_base": 18.0,
+    "rodas_dianteira_traseira_distancia_bordas": 25.0,
+    "ultrassom_furo_menos_diametro": 2.4,
+    "ultrassom_frente_adiantada_ao_aro": 1.0,
+    "hex_9mm_folga_total_socket": 0.4,
+    "hex_folga_axial_ate_labio": 0.3,
+    "presilha_motores_altura_acima_do_pneu": 6.0
+  },
+  "hardware_budget": {
+    "M4x27": 7,
+    "porcas_M4": 7,
+    "M3x9": 6,
+    "hex_29mm": 6
+  },
+  "not_validated": [
+    "Medidas reais do motor e linguetas laterais",
+    "Modelo e pinos da placa ESP32",
+    "Rosca e medidas reais de todas as ferragens",
+    "Comprimento util do eixo e insercao no cubo da roda",
+    "Acesso dos fios e conectores reais",
+    "Contracao e tolerancia da impressora",
+    "Resistencia das travas e torque dos parafusos",
+    "Carga, tracao, estabilidade, corrente e aquecimento",
+    "Suportes, primeira camada, material e tempo reais no fatiador"
+  ]
+}

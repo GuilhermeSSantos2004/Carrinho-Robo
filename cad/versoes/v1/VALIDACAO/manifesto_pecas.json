@@ -1,0 +1,326 @@
+[
+  {
+    "code": "01",
+    "name": "base_bercos_verticais",
+    "file": "STL/01_base_bercos_verticais.stl",
+    "quantity": 1,
+    "size_mm": [
+      163.0,
+      156.0,
+      89.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 210210.85,
+    "color": "#3c4853",
+    "notes": "Fundo no prato; 4 paredes; 30% preenchimento. Suportes localizados so se o fatiador exigir nos furos.",
+    "rotations": []
+  },
+  {
+    "code": "02",
+    "name": "bandeja_placas",
+    "file": "STL/02_bandeja_placas.stl",
+    "quantity": 1,
+    "size_mm": [
+      108.0,
+      140.0,
+      11.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 42491.56,
+    "color": "#536674",
+    "notes": "Face plana embaixo. Rasgos para cintas de nylon; seis parafusos M3.",
+    "rotations": []
+  },
+  {
+    "code": "03",
+    "name": "carcaca_cubo",
+    "file": "STL/03_carcaca_cubo.stl",
+    "quantity": 1,
+    "size_mm": [
+      160.0,
+      161.55,
+      128.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 184290.08,
+    "color": "#e9ad38",
+    "notes": "Borda inferior no prato. SUPORTES apenas sob os tetos das 4 janelas laterais, aberturas de 38 mm.",
+    "rotations": []
+  },
+  {
+    "code": "04",
+    "name": "tampa_com_travas",
+    "file": "STL/04_tampa_com_travas.stl",
+    "quantity": 1,
+    "size_mm": [
+      160.0,
+      160.0,
+      11.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 79183.59,
+    "color": "#c68b27",
+    "notes": "Ja invertida: face externa plana embaixo; linguetas para cima. PETG preferivel para travas.",
+    "rotations": [
+      [
+        "X",
+        180
+      ]
+    ]
+  },
+  {
+    "code": "05",
+    "name": "presilha_motor",
+    "file": "STL/05_presilha_motor.stl",
+    "quantity": 4,
+    "size_mm": [
+      30.0,
+      24.0,
+      3.4
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 2163.49,
+    "color": "#485b67",
+    "notes": "4 copias. Testar junto do berco de teste antes da base.",
+    "rotations": [
+      [
+        "Y",
+        90
+      ]
+    ]
+  },
+  {
+    "code": "06",
+    "name": "pescoco",
+    "file": "STL/06_pescoco.stl",
+    "quantity": 1,
+    "size_mm": [
+      32.0,
+      49.0,
+      30.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 12157.48,
+    "color": "#596572",
+    "notes": "Deitado. SUPORTES localizados sob ressalto do pe e regiao da articulacao.",
+    "rotations": [
+      [
+        "X",
+        90
+      ]
+    ]
+  },
+  {
+    "code": "07",
+    "name": "chave_pescoco",
+    "file": "STL/07_chave_pescoco.stl",
+    "quantity": 1,
+    "size_mm": [
+      33.0,
+      8.0,
+      2.4
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 331.87,
+    "color": "#cc8830",
+    "notes": "Inserir pela lateral sob a tampa; a passagem de fios fica separada da chave.",
+    "rotations": []
+  },
+  {
+    "code": "08",
+    "name": "cabeca_ultrassom",
+    "file": "STL/08_cabeca_ultrassom.stl",
+    "quantity": 1,
+    "size_mm": [
+      72.0,
+      59.0,
+      39.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 30998.79,
+    "color": "#d7a044",
+    "notes": "Olhos no prato. SUPORTES a partir do prato em torno dos aros e sob o garfo; excluir furos dos olhos.",
+    "rotations": [
+      [
+        "X",
+        90
+      ]
+    ]
+  },
+  {
+    "code": "09",
+    "name": "tampa_cabeca",
+    "file": "STL/09_tampa_cabeca.stl",
+    "quantity": 1,
+    "size_mm": [
+      72.0,
+      38.0,
+      28.6
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 9037.07,
+    "color": "#54616a",
+    "notes": "Face externa no prato; dedos internos para cima.",
+    "rotations": [
+      [
+        "X",
+        -90
+      ]
+    ]
+  },
+  {
+    "code": "10",
+    "name": "pino_tampa_cabeca",
+    "file": "STL/10_pino_tampa_cabeca.stl",
+    "quantity": 2,
+    "size_mm": [
+      6.6,
+      6.6,
+      11.8
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 150.81,
+    "color": "#d5a348",
+    "notes": "2 copias; teste o furo 3,4 mm. Lixe levemente se ficar excessivamente justo.",
+    "rotations": []
+  },
+  {
+    "code": "11",
+    "name": "espacador_articulacao",
+    "file": "STL/11_espacador_articulacao.stl",
+    "quantity": 1,
+    "size_mm": [
+      10.0,
+      10.0,
+      8.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 495.37,
+    "color": "#6b7882",
+    "notes": "Consumir comprimento do M4 de 27 mm no lado da cabeca do parafuso.",
+    "rotations": []
+  },
+  {
+    "code": "12",
+    "name": "calco_motor_0p5mm",
+    "file": "STL/12_calco_motor_0p5mm.stl",
+    "quantity": 4,
+    "size_mm": [
+      18.0,
+      15.0,
+      0.5
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 135.0,
+    "color": "#555e63",
+    "notes": "OPCIONAL: usar somente para retirar folga; nao forcar carcaca do motor.",
+    "rotations": [
+      [
+        "Y",
+        90
+      ]
+    ]
+  },
+  {
+    "code": "13",
+    "name": "calco_motor_1mm",
+    "file": "STL/13_calco_motor_1mm.stl",
+    "quantity": 4,
+    "size_mm": [
+      18.0,
+      15.0,
+      1.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 270.0,
+    "color": "#555e63",
+    "notes": "OPCIONAL: usar somente para retirar folga; nao forcar carcaca do motor.",
+    "rotations": [
+      [
+        "Y",
+        90
+      ]
+    ]
+  },
+  {
+    "code": "T01",
+    "name": "teste_parafusos_porcas",
+    "file": "TESTES/T01_teste_parafusos_porcas.stl",
+    "quantity": 1,
+    "size_mm": [
+      100.0,
+      56.0,
+      10.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 26636.48,
+    "color": "#aaa",
+    "notes": "",
+    "rotations": []
+  },
+  {
+    "code": "T02",
+    "name": "teste_hex_com_trava",
+    "file": "TESTES/T02_teste_hex_com_trava.stl",
+    "quantity": 1,
+    "size_mm": [
+      86.0,
+      30.0,
+      34.4
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 19421.31,
+    "color": "#aaa",
+    "notes": "",
+    "rotations": []
+  },
+  {
+    "code": "T03",
+    "name": "teste_berco_motor_em_pe",
+    "file": "TESTES/T03_teste_berco_motor_em_pe.stl",
+    "quantity": 1,
+    "size_mm": [
+      30.0,
+      39.0,
+      89.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 23578.35,
+    "color": "#aaa",
+    "notes": "",
+    "rotations": []
+  },
+  {
+    "code": "T04",
+    "name": "teste_olhos_hcsr04",
+    "file": "TESTES/T04_teste_olhos_hcsr04.stl",
+    "quantity": 1,
+    "size_mm": [
+      64.0,
+      28.0,
+      3.0
+    ],
+    "cad_valid": true,
+    "solids": 1,
+    "volume_mm3": 3757.4,
+    "color": "#aaa",
+    "notes": "",
+    "rotations": []
+  }
+]

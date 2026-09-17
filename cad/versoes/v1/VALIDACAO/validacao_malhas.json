@@ -1,0 +1,393 @@
+[
+  {
+    "triangles": 12014,
+    "vertices": 5961,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 210195.691,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        163.0,
+        156.0,
+        89.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/01_base_bercos_verticais.stl"
+  },
+  {
+    "triangles": 23604,
+    "vertices": 11694,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 42491.875,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        108.0,
+        140.0,
+        11.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/02_bandeja_placas.stl"
+  },
+  {
+    "triangles": 5796,
+    "vertices": 2820,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 184284.901,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        160.0,
+        161.55,
+        128.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/03_carcaca_cubo.stl"
+  },
+  {
+    "triangles": 5560,
+    "vertices": 2760,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 79183.399,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      [
+        160.0,
+        160.0,
+        11.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/04_tampa_com_travas.stl"
+  },
+  {
+    "triangles": 420,
+    "vertices": 210,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 2163.52,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        30.0,
+        24.0,
+        3.4
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/05_presilha_motor.stl"
+  },
+  {
+    "triangles": 700,
+    "vertices": 346,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 12156.677,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        32.0,
+        49.0,
+        30.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/06_pescoco.stl"
+  },
+  {
+    "triangles": 84,
+    "vertices": 44,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 331.872,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        33.0,
+        8.0,
+        2.4
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/07_chave_pescoco.stl"
+  },
+  {
+    "triangles": 3712,
+    "vertices": 1846,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 30997.643,
+    "bounds_mm": [
+      [
+        -0.0,
+        0.0,
+        0.0
+      ],
+      [
+        72.0,
+        59.0,
+        39.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/08_cabeca_ultrassom.stl"
+  },
+  {
+    "triangles": 696,
+    "vertices": 348,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 9037.091,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        72.0,
+        38.0,
+        28.6
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/09_tampa_cabeca.stl"
+  },
+  {
+    "triangles": 1456,
+    "vertices": 730,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 150.681,
+    "bounds_mm": [
+      [
+        0.002,
+        0.0,
+        0.0
+      ],
+      [
+        6.6,
+        6.6,
+        11.8
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/10_pino_tampa_cabeca.stl"
+  },
+  {
+    "triangles": 776,
+    "vertices": 388,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 495.02,
+    "bounds_mm": [
+      [
+        0.003,
+        0.001,
+        0.0
+      ],
+      [
+        10.0,
+        9.999,
+        8.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/11_espacador_articulacao.stl"
+  },
+  {
+    "triangles": 12,
+    "vertices": 8,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 135.0,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        18.0,
+        15.0,
+        0.5
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/12_calco_motor_0p5mm.stl"
+  },
+  {
+    "triangles": 12,
+    "vertices": 8,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 270.0,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        18.0,
+        15.0,
+        1.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "STL/13_calco_motor_1mm.stl"
+  },
+  {
+    "triangles": 15790,
+    "vertices": 7885,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 26636.675,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        100.0,
+        56.0,
+        10.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "TESTES/T01_teste_parafusos_porcas.stl"
+  },
+  {
+    "triangles": 8852,
+    "vertices": 4428,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 19412.065,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        86.0,
+        30.0,
+        34.4
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "TESTES/T02_teste_hex_com_trava.stl"
+  },
+  {
+    "triangles": 1380,
+    "vertices": 684,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 23578.963,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        30.0,
+        39.0,
+        89.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "TESTES/T03_teste_berco_motor_em_pe.stl"
+  },
+  {
+    "triangles": 1196,
+    "vertices": 596,
+    "open_edges": 0,
+    "nonmanifold_edges": 0,
+    "degenerate_triangles": 0,
+    "signed_volume_mm3": 3758.456,
+    "bounds_mm": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        64.0,
+        28.0,
+        3.0
+      ]
+    ],
+    "watertight": true,
+    "positive_volume": true,
+    "file": "TESTES/T04_teste_olhos_hcsr04.stl"
+  }
+]

@@ -1,0 +1,9 @@
+IMPRIMA PRIMEIRO, SEM BATERIAS
+
+1. T01 testa passagem de parafusos e alojamentos das porcas M4.
+2. T02 testa um espaçador hexagonal de 29 mm x 9 mm. O soquete da base é o 9,4 mm. Se o seu hexágono tiver outra medida, ajuste antes de imprimir a base.
+3. T03 + uma presilha 05 testam o motor vertical e um parafuso M4 x 27 com porca. Confira eixo, ressaltos e fixação da roda.
+4. T04 testa as duas cápsulas do HC-SR04 e o espaçamento de 26 mm.
+
+Unidades mm, escala 100%. PETG é preferível para os soquetes com trava.
+Não force peças que não encaixem. Envie medidas e fotos com régua para ajustar o projeto.
