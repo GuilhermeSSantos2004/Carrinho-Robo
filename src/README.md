@@ -1,48 +1,108 @@
 # Código-fonte do ESP32
 
-Esta pasta contém o firmware do carrinho-robô. O arquivo [`codigo.ino`](codigo.ino) sempre representa a versão mais recente.
+Esta pasta contém o firmware do carrinho-robô. O arquivo [`codigo.ino`](codigo.ino) representa sempre a versão mais recente em uso.
 
 ## Versões
 
 | Versão | Arquivo | Alterações principais |
 |---:|---|---|
-| **v0.2** | [`v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino`](v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino) | Inclusão do HC-SR04, medição da distância, exibição no painel e bloqueio do avanço abaixo de 20 cm |
+| **v0.2** | [`v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino`](v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino) | HC-SR04, distância no painel e bloqueio frontal experimental |
+| **v0.3** | [`v0.3/carrinho_robo_v0_3.ino`](v0.3/carrinho_robo_v0_3.ino) | PWM no L298N, LDR, tema automático claro/escuro, alerta sonoro de ré e bloqueio da ré somente abaixo de 5 cm |
 
-O `codigo.ino` e o arquivo versionado da `v0.2` possuem o mesmo conteúdo nesta entrega. A cópia versionada preserva o estado exigido pela **Tarefa 18**.
+## Estado atual — v0.3
 
-## Recursos implementados
+- ESP32 cria a rede Wi-Fi local `tony`;
+- senha: `stark369`;
+- painel em `http://192.168.4.1`;
+- comandos: frente, ré, esquerda, direita e parar;
+- velocidade controlada por PWM;
+- interface responsiva para celular;
+- HC-SR04 mostra a distância em tempo real;
+- o ultrassônico funciona como sensor de estacionamento para a ré;
+- o alerta sonoro no celular acelera conforme o obstáculo se aproxima;
+- abaixo de **5 cm**, a ré é bloqueada;
+- a frente continua liberada;
+- LDR no GPIO 34 mede a luminosidade;
+- tema do painel pode ficar em `AUTO`, `CLARO` ou `ESCURO`;
+- no modo `AUTO`, a luminosidade altera o tema do controle;
+- o painel mostra percentual de luminosidade e ADC bruto;
+- o Serial Monitor registra o LDR aproximadamente a cada 5 segundos.
 
-- rede Wi-Fi própria `Carrinho-ESP32`;
-- página web disponível em `http://192.168.4.1`;
-- comandos avançar, recuar, esquerda, direita e parar;
-- controle de velocidade por PWM na L298N;
-- leitura do HC-SR04;
-- bloqueio de avanço quando há obstáculo a menos de 20 cm;
-- parada automática se o celular deixar de enviar comandos.
+## Pinagem atual
 
-## Sensor ultrassônico — versão v0.2
+### L298N
 
-| HC-SR04 | ESP32 | Observação |
+| L298N | ESP32 | Função |
 |---|---:|---|
-| VCC | 5 V regulados | Usar a saída do LM2596 |
-| GND | GND | Deve ser comum ao ESP32 e à L298N |
-| TRIG | GPIO 18 | Pulso de disparo |
-| ECHO | GPIO 19 | Usar divisor de tensão com resistores de 1 kΩ e 2 kΩ |
+| ENA | GPIO 25 | PWM do lado A |
+| IN1 | GPIO 26 | Sentido A |
+| IN2 | GPIO 27 | Sentido A |
+| ENB | GPIO 33 | PWM do lado B |
+| IN3 | GPIO 32 | Sentido B |
+| IN4 | GPIO 23 | Sentido B |
 
-Comportamento implementado:
+Os jumpers `ENA` e `ENB` devem ser removidos quando o PWM é comandado pelo ESP32.
 
-1. o sensor é consultado a cada 100 ms;
-2. a distância aparece na página web;
-3. se um obstáculo estiver a menos de 20 cm, o avanço é interrompido;
-4. recuar e girar continuam disponíveis para permitir que o carrinho saia do obstáculo.
+### HC-SR04
+
+| HC-SR04 | ESP32 |
+|---|---:|
+| VCC | 5 V |
+| GND | GND comum |
+| TRIG | GPIO 18 |
+| ECHO | GPIO 19 através de divisor resistivo |
+
+Divisor utilizado no protótipo com três resistores de 1 kΩ:
+
+```text
+ECHO ── 1 kΩ ──┬── GPIO 19
+                │
+               1 kΩ
+                │
+               1 kΩ
+                │
+               GND
+```
+
+### LDR
+
+Ligação esperada pelo firmware:
+
+```text
+3V3 ── LDR ──┬── GPIO 34
+              │
+           resistor
+              │
+             GND
+```
+
+O LDR deve trabalhar a partir de **3,3 V**, não de 5 V no GPIO 34.
+
+## Comportamento do sensor de ré
+
+A distância é lida continuamente. O som do navegador funciona como auxílio de estacionamento:
+
+| Distância | Comportamento |
+|---:|---|
+| acima de 100 cm | sem som |
+| 60–100 cm | bipes lentos |
+| 40–60 cm | bipes moderados |
+| 25–40 cm | bipes rápidos |
+| 15–25 cm | bipes mais rápidos |
+| 5–15 cm | bipes muito rápidos |
+| até 5 cm | som contínuo e ré bloqueada |
+
+O navegador do celular exige uma interação do usuário para liberar áudio; por isso existe o botão **Ativar alerta sonoro**.
 
 ## Gravação
 
-1. Abrir `codigo.ino` ou `v0.2/carrinho_robo_v0_2/carrinho_robo_v0_2.ino` na Arduino IDE com o pacote **ESP32 by Espressif Systems 3.x**.
-2. Selecionar `ESP32 Dev Module` e a porta COM da placa.
-3. Enviar o código.
-4. Conectar o celular à rede `Carrinho-ESP32`, senha `carrinho123`.
-5. Manter a conexão mesmo se o celular informar que a rede está sem internet.
-6. Abrir `http://192.168.4.1`.
+1. Abrir [`codigo.ino`](codigo.ino) na Arduino IDE.
+2. Instalar/usar `esp32 by Espressif Systems`.
+3. Selecionar `ESP32 Dev Module`/`DOIT ESP32 DEVKIT V1` conforme a placa reconhecida.
+4. Selecionar a porta do CP210x.
+5. Fazer upload.
+6. Abrir o Serial Monitor em **115200 baud**.
+7. Conectar o celular à rede `tony`.
+8. Abrir `http://192.168.4.1`.
 
-Fazer o primeiro teste com as rodas suspensas e conferir o esquema em [`hardware/arquitetura`](../hardware/arquitetura/README.md).
+Para os primeiros testes, deixar as rodas suspensas e começar com PWM baixo.
