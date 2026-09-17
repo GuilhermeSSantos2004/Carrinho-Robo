@@ -1,0 +1,318 @@
+{
+  "pieces": [
+    {
+      "file": "STL/T03A_suporte_motor_em_pe_v2.stl",
+      "quantity": 1,
+      "dimensions_mm": [
+        33.002,
+        66.002,
+        56.001
+      ],
+      "cad_volume_mm3": 22190.642,
+      "cad_valid": true,
+      "mesh": {
+        "triangles": 2292,
+        "closed": true,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "signed_volume_mm3": 22190.829
+      },
+      "sha256": "0928070ee0a1435d4d6b3a877d3e5214a0cd483916f3abe3e7bc0dc6d3a1800b"
+    },
+    {
+      "file": "STL/T03B_presilha_regulavel_v2.stl",
+      "quantity": 1,
+      "dimensions_mm": [
+        16.0,
+        62.0,
+        4.002
+      ],
+      "cad_volume_mm3": 3886.57,
+      "cad_valid": true,
+      "mesh": {
+        "triangles": 860,
+        "closed": true,
+        "components": 1,
+        "degenerate_triangles": 0,
+        "signed_volume_mm3": 3886.619
+      },
+      "sha256": "38d773f146e561c5cbbf3110e712873ca8e227f032e5a0a86ce74bb0409c239a"
+    }
+  ],
+  "assembly_checks": [
+    {
+      "name": "body_18.0_22.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_18.0_22.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_18.0_22.5_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_18.0_22.5_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_18.0_37.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_18.0_37.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "clamp_18.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_-2.0_16.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_-2.0_16.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_0.0_16.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_0.0_16.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_2.0_16.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_2.0_16.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_-2.0_20.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_-2.0_20.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_0.0_20.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_0.0_20.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_2.0_20.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_2.0_20.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_-2.0_27.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_-2.0_27.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_0.0_27.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_0.0_27.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_2.0_27.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_18.0_2.0_27.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "boss_18.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "boss_18.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "tab_18.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_18.0_-1_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_18.0_-1_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_18.0_1_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_18.0_1_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "wheel_18.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "wheel_18.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_22.5_22.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_22.5_22.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_22.5_22.5_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_22.5_22.5_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_22.5_37.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "body_22.5_37.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "clamp_22.5_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_-2.0_16.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_-2.0_16.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_0.0_16.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_0.0_16.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_2.0_16.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_2.0_16.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_-2.0_20.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_-2.0_20.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_0.0_20.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_0.0_20.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_2.0_20.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_2.0_20.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_-2.0_27.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_-2.0_27.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_0.0_27.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_0.0_27.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_2.0_27.0_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "shaft_22.5_2.0_27.0_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "boss_22.5_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "boss_22.5_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "tab_22.5_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_22.5_-1_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_22.5_-1_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_22.5_1_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "screw_22.5_1_clamp",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "wheel_22.5_stand",
+      "overlap_mm3": 0.0
+    },
+    {
+      "name": "wheel_22.5_clamp",
+      "overlap_mm3": 0.0
+    }
+  ],
+  "checks_count": 68,
+  "limitations": "Only CAD envelopes checked. Physical fit and printer settings remain to verify. Shaft position and tab dimensions are assumed clearance envelopes, not measurements."
+}
