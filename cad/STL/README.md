@@ -1,22 +1,29 @@
-# Arquivos STL
+# Arquivos STL — estado atual
 
-Os modelos exportados para impressão 3D serão armazenados nesta pasta com versão no nome.
+A pasta `cad/STL` é o destino dos modelos finais/prontos para impressão 3D.
 
-## Padrão de nomes
+## Arquivos atuais recebidos e validados em 17/09/2026
 
-```text
-chassi-v0.1.stl
-carenagem-v0.1.stl
-suporte-hcsr04-v0.1.stl
-chassi-v0.2.stl
-```
+| Peça | Nome canônico | Dimensões verificadas | Malha | SHA-256 |
+|---|---|---:|---|---|
+| T01 — base/chassi | `T01_base_chassi_v1.stl` | 147 × 140 × 10 mm | watertight, 1 componente | `eb64ccd5b728aa3ce2f8b160ebef9cd1e81fa0a3d14aa14748b384381642305c` |
+| T02 — carcaça | `T02_carcaca_v1.stl` | 140 × 133 × 24 mm | watertight, 1 componente | `9b4c74ce3a754fc66779b3ae2e0d0ffea1d1760d4863c7cae51cd6d99ce83dc4` |
 
-## Controle de versões
+### T01
 
-| Versão | Situação | Descrição |
-|---:|---|---|
-| 0.1 | Pendente de medidas | Primeira versão para validar encaixes, furos e posição dos componentes |
-| 0.2 | Planejada | Correções após a impressão e a montagem de teste da versão 0.1 |
+O chassi atual foi otimizado para impressão mais rápida e menor uso de material. A borda foi reduzida, os pedestais foram removidos e os pontos de fixação passaram para o piso da peça.
 
-Nenhum STL definitivo foi publicado ainda porque as medidas reais dos componentes precisam ser conferidas. Isso evita imprimir um chassi com encaixes incorretos.
+### T02
 
+A carcaça atual é baixa, com aberturas necessárias para os suportes dos motores. Ela foi redesenhada após versões que criavam corpos separados ou pontes que exigiam muito suporte de impressão. A região frontal considera a montagem do ultrassônico.
+
+## Demais peças
+
+A montagem também utiliza as revisões atuais do T03A, T03B, T05 e T06. Consulte o histórico consolidado em [`../../historico/HISTORICO_PROJETO_CUBI04.md`](../../historico/HISTORICO_PROJETO_CUBI04.md).
+
+## Regra de versionamento
+
+- manter o código da peça no início do nome (`T01`, `T02`, ...);
+- preservar revisões antigas na área de versões/histórico;
+- o arquivo sem sufixo adicional deve representar a revisão física vigente;
+- registrar no histórico toda alteração que afete encaixe, furação, impressão ou montagem.
