@@ -8,7 +8,7 @@ Este documento consolida o processo real de desenvolvimento mecânico, eletrôni
 
 ## Sessão 1 — 15/09/2026
 
-Foco: suporte do motor (T03A) e presilha (T03B).
+Foco: suporte do motor (T03A), presilha (T03B), encaixe no chassi e alinhamento das rodas.
 
 - **v3**: suporte com largura interna 22,4 mm, reforços estruturais e furos de 3,6 mm.
 - **v4**: reforços removidos após teste/avaliação; janela frontal e rasgo de eixo ampliado.
@@ -16,12 +16,33 @@ Foco: suporte do motor (T03A) e presilha (T03B).
 - **v6**: tampa frontal eliminada; frente aberta e presilha superior adotada como retenção do motor; furos ajustados para 3,46 mm.
 - **v7 — versão adotada**: suporte T03A separado da presilha T03B; dois furos de 4,5 mm para fixação no chassi e buchas com rebaixo para porca.
 
+### Problema de encaixe do chassi e alinhamento das rodas — 15/09/2026
+
+Durante a montagem física foi identificado que a posição inicialmente prevista para os suportes não deixava o conjunto motor/roda corretamente alinhado com a lateral do chassi. Em algumas tentativas, o suporte ficava afastado demais da borda e a roda não ocupava a posição desejada para girar livremente fora da estrutura.
+
+Também foi observado que as aberturas da carcaça precisavam respeitar a região real ocupada pelos suportes. Fechar essas regiões impedia a entrada/encaixe das peças e dificultava a montagem dos motores.
+
+**Adaptações realizadas:**
+
+1. reposicionamento dos suportes dos motores em relação às bordas do T01;
+2. centralização do eixo do motor para melhorar o alinhamento da roda;
+3. ajuste do suporte para a largura real do motor TT, reduzindo folgas laterais;
+4. reforço das laterais e da região frontal do suporte após quebras observadas nas versões anteriores;
+5. manutenção das rodas para fora do perímetro útil do chassi, evitando contato com a base/carenagem;
+6. revisão das aberturas laterais do T02 para permitir que os suportes atravessem/encaixem corretamente;
+7. preservação de acesso aos pontos de fixação para facilitar montagem, desmontagem e manutenção;
+8. uso das travas inferiores e parafusos/porcas como parte do sistema de fixação dos suportes.
+
+**Resultado da alteração:** o conceito mecânico passou a considerar o conjunto completo — chassi, suporte, motor, eixo e roda — em vez de posicionar cada peça isoladamente. Essa revisão foi necessária para manter as rodas alinhadas, livres para girar e com os suportes efetivamente encaixáveis na estrutura.
+
 ### Dificuldades dessa etapa
 
 1. Folga excessiva em versões iniciais.
 2. Região frontal frágil durante o aperto.
 3. Necessidade de permitir montagem/desmontagem rápida do motor.
 4. Ajuste dos furos a partir dos parafusos realmente disponíveis.
+5. Posição inicial do suporte não garantia alinhamento adequado da roda.
+6. Aberturas da carcaça precisavam acompanhar o volume real ocupado pelos suportes.
 
 ---
 
@@ -41,7 +62,7 @@ A primeira arquitetura usava:
 
 ### Reposicionamento dos motores
 
-A geometria foi alterada para deixar as rodas realmente para fora do chassi e alinhar a face do motor com a borda útil da estrutura.
+A geometria foi alterada para deixar as rodas realmente para fora do chassi e alinhar a face do motor com a borda útil da estrutura. Essa alteração consolidou os testes de encaixe e alinhamento iniciados em 15/09.
 
 ### Porcas cativas
 
@@ -242,6 +263,8 @@ A interface atual mostra:
 6. **O ultrassônico mudou de função conforme o uso real do carrinho:** saiu de bloqueio frontal para auxílio de ré.
 7. **O LDR precisava ser observável para calibração.** Por isso foram adicionados ADC bruto e logs periódicos.
 8. **A alimentação disponível não é ideal para os motores 3–6 V.** Essa limitação permanece documentada para evitar tratar PWM como regulador de tensão.
+9. **O alinhamento das rodas exigiu adaptação física do chassi e dos suportes.** A posição do motor passou a ser definida considerando eixo, roda e borda real da estrutura.
+10. **As aberturas laterais da carcaça são funcionais.** Elas precisam permanecer abertas para permitir a entrada dos suportes e o correto encaixe do conjunto mecânico.
 
 ---
 
