@@ -194,6 +194,12 @@ O firmware integra Wi-Fi Access Point, servidor HTTP, comandos direcionais, acio
 
 ---
 
+## Experimentos em fase de teste
+
+- [Aula 19 — práticas iniciais com TinyML](experimentos/tinyml-aula19/README.md): leitura bruta do HC-SR04, pré-processamento, classes perto/longe e roteiro para coletar o CSV. **Medições físicas e dataset real pendentes.** Códigos isolados do firmware principal.
+
+---
+
 ## Planejamento e documentação
 
 A organização do projeto também registra requisitos, prioridades e evolução:
@@ -241,6 +247,8 @@ Carrinho-Robo/
 ├── hardware/
 │   ├── arquitetura/        # diagrama e ligações
 │   └── componentes/        # componentes utilizados
+├── experimentos/           # atividades e protótipos em fase de teste
+│   └── tinyml-aula19/       # engenharia do dado com HC-SR04
 ├── historico/              # problemas, decisões e evolução
 ├── organizacao/            # backlog, MVP, MoSCoW, Kanban etc.
 └── src/                    # firmware do ESP32
