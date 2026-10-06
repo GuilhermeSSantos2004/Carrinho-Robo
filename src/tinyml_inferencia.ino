@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <math.h>
-#include "../model/model.h"
+#include "model.h"
 
 // =====================================================
 // CUBI-04 - Tarefa 21 - Inferencia TinyML no ESP32
@@ -20,6 +20,11 @@
 //
 // Para esta atividade o sketch NAO aciona os motores.
 // Isso deixa a demonstracao da inferencia isolada e segura.
+//
+// Arduino IDE:
+// copie model/model.h para a MESMA pasta do sketch antes de compilar.
+// O repositorio mantem o model.h em /model porque essa e a estrutura
+// exigida na entrega.
 // =====================================================
 
 // Frente esquerda
