@@ -197,6 +197,7 @@ O firmware integra Wi-Fi Access Point, servidor HTTP, comandos direcionais, acio
 ## Experimentos em fase de teste
 
 - [Aula 19 — práticas iniciais com TinyML](experimentos/tinyml-aula19/README.md): leitura bruta do HC-SR04, pré-processamento, classes perto/longe e roteiro para coletar o CSV. **Medições físicas e dataset real pendentes.** Códigos isolados do firmware principal.
+- [Tarefa 21 — Inferência TinyML no ESP32](docs/TAREFA21_TINYML.md): inferência com os três HC-SR04 frontais, quatro classes (livre/esquerda/centro/direita), `src/tinyml_inferencia.ino`, `model/model.h` e `docs/dataset.csv`. O dataset desta etapa é **sintético e identificado como tal**; a validação física deve ser demonstrada no vídeo da atividade.
 
 ---
 
@@ -241,9 +242,13 @@ Carrinho-Robo/
 ├── CHECKPOINT_01_VALIDACAO.md
 ├── cad/                    # CAD, STL, STEP, fontes e versões
 ├── docs/
+│   ├── dataset.csv         # dataset TinyML da Tarefa 21
+│   ├── TAREFA21_TINYML.md  # treinamento, classes e roteiro de teste
 │   ├── evidencias/         # fotos, CAD final e processo de montagem
 │   │   └── processo/
 │   └── videos/             # registros em vídeo
+├── model/
+│   └── model.h             # pesos do modelo TinyML
 ├── hardware/
 │   ├── arquitetura/        # diagrama e ligações
 │   └── componentes/        # componentes utilizados
@@ -251,7 +256,7 @@ Carrinho-Robo/
 │   └── tinyml-aula19/       # engenharia do dado com HC-SR04
 ├── historico/              # problemas, decisões e evolução
 ├── organizacao/            # backlog, MVP, MoSCoW, Kanban etc.
-└── src/                    # firmware do ESP32
+└── src/                    # firmware do ESP32 + tinyml_inferencia.ino
 ```
 
 ---
