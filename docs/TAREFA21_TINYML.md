@@ -111,14 +111,17 @@ O modelo foi exportado como pesos em `model.h`, portanto a inferência roda dire
 ## Como testar
 
 1. Mantenha a ponte H/motores desligados durante o primeiro teste.
-2. Grave `src/tinyml_inferencia.ino` no ESP32.
-3. Abra o Serial Monitor em **115200 baud**.
-4. Faça quatro situações:
+2. Para compilar no Arduino IDE, crie uma pasta chamada `tinyml_inferencia` e coloque nela:
+   - `src/tinyml_inferencia.ino`;
+   - uma cópia de `model/model.h`.
+3. Abra `tinyml_inferencia.ino` nessa pasta e grave no ESP32.
+4. Abra o Serial Monitor em **115200 baud**.
+5. Faça quatro situações:
    - sem obstáculo próximo na frente;
    - obstáculo a aproximadamente 10–20 cm do sensor esquerdo;
    - obstáculo a aproximadamente 10–20 cm do sensor central;
    - obstáculo a aproximadamente 10–20 cm do sensor direito.
-5. Observe a mudança da classe e da confiança.
+6. Observe a mudança da classe e da confiança.
 
 Exemplo esperado:
 
