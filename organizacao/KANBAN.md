@@ -43,3 +43,18 @@
 |---|---|---|---|---|---|
 | DD/MM/AAAA | BK-XX | A fazer | Em andamento | Nome | Link do commit, foto ou resultado |
 
+## Quadro CP2 — atualização de 13/10/2026
+
+| Backlog | A fazer | Em andamento | Em teste | Concluído |
+|---|---|---|---|---|
+| Coleta física e CSV real | Importar no Edge Impulse | Firmware CP2 com ação | — | Documentação e roteiro; baseline sintético identificado |
+| Biblioteca exportada | Treinar e registrar métricas | — | — | Histórico CP1 → CP2 organizado |
+| Vídeo específico CP2 | Prints de inferência | — | — | — |
+
+### Critério para mover tarefas
+
+Uma tarefa CP2 só pode ir para **Concluído** quando tiver arquivo/print/commit ou
+registro físico correspondente. A existência do sketch não vale como prova de upload
+no ESP32; a existência de `model/model.h` também não vale como prova de export do
+Edge Impulse.
+

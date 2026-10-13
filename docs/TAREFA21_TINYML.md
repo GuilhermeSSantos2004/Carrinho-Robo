@@ -1,5 +1,9 @@
 # Tarefa 21 — Inferência TinyML no ESP32
 
+> Esta página preserva a atividade/base anterior. Para a entrega do Check Point 02,
+> consulte [`CP2_TINYML.md`](CP2_TINYML.md). O dataset desta Tarefa 21 é sintético
+> e não deve ser apresentado como a coleta real do CP2.
+
 ## Objetivo
 
 Implementar inferência TinyML no ESP32 usando os três sensores ultrassônicos frontais do CUBI-04.

@@ -106,3 +106,19 @@ O navegador do celular exige uma interação do usuário para liberar áudio; po
 8. Abrir `http://192.168.4.1`.
 
 Para os primeiros testes, deixar as rodas suspensas e começar com PWM baixo.
+
+## Firmware CP2 — TinyML com ação
+
+O sketch [`tinyml_carrinho_cp2.ino`](tinyml_carrinho_cp2.ino) é a integração de
+referência para o Check Point 02. Ele:
+
+1. lê os três HC-SR04 do perfil CP2;
+2. normaliza as entradas e produz classe/probabilidades;
+3. faz `LIVRE` avançar;
+4. faz obstáculos laterais provocarem giro para o lado oposto;
+5. escolhe o lado mais livre quando a classe é `OBSTACULO_CENTRO`;
+6. para os motores se houver falha de leitura.
+
+No baseline local, copie `model/model.h` para a pasta do sketch antes de compilar.
+Na entrega final, substitua o modelo local pelo header da biblioteca real exportada
+do Edge Impulse e registre essa troca em [`../docs/CP2_EDGE_IMPULSE.md`](../docs/CP2_EDGE_IMPULSE.md).

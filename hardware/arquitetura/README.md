@@ -122,3 +122,26 @@ O HC-SR04 deixou de bloquear o avanço a 20 cm. Ele agora funciona como **sensor
 7. Fazer o primeiro teste com as rodas suspensas.
 8. Começar com PWM baixo por causa dos motores 3–6 V.
 9. Abrir o Serial Monitor em 115200 baud para conferir sensores e estados.
+
+## Perfil de ligação do CP2 — três sensores frontais
+
+O firmware legado descrito no início deste arquivo usa um HC-SR04 no GPIO 18/19.
+Para o experimento do CP2, o carrinho precisa estar ligado conforme o perfil de
+três sensores abaixo, que é o perfil usado nos sketches `experimentos/cp2-tinyml/`
+e `src/tinyml_carrinho_cp2.ino`:
+
+| Sensor | TRIG | ECHO com divisor | Entrada do modelo |
+|---|---:|---:|---|
+| Frontal esquerdo | 19 | 23 | `esquerda_cm` |
+| Frontal central | 5 | 18 | `centro_cm` |
+| Frontal direito | 4 | 13 | `direita_cm` |
+
+O CP2 também usa esta pinagem de controle da L298N no sketch integrado:
+
+| Função | GPIO |
+|---|---:|
+| ENA / IN1 / IN2 | 25 / 26 / 27 |
+| ENB / IN3 / IN4 | 32 / 14 / 33 |
+
+Não misturar esse perfil com a pinagem do firmware legado sem revisar a fiação. A
+especificação completa de 2026 está em [`../../2026/CUBI-04 especificação para gerar o código.md`](../../2026/CUBI-04%20especificação%20para%20gerar%20o%20código.md).

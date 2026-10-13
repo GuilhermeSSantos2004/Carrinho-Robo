@@ -199,6 +199,25 @@ O firmware integra Wi-Fi Access Point, servidor HTTP, comandos direcionais, acio
 - [Aula 19 — práticas iniciais com TinyML](experimentos/tinyml-aula19/README.md): leitura bruta do HC-SR04, pré-processamento, classes perto/longe e roteiro para coletar o CSV. **Medições físicas e dataset real pendentes.** Códigos isolados do firmware principal.
 - [Tarefa 21 — Inferência TinyML no ESP32](docs/TAREFA21_TINYML.md): inferência com os três HC-SR04 frontais, quatro classes (livre/esquerda/centro/direita), `src/tinyml_inferencia.ino`, `model/model.h` e `docs/dataset.csv`. O dataset desta etapa é **sintético e identificado como tal**; a validação física deve ser demonstrada no vídeo da atividade.
 
+## Check Point 02 — entrega TinyML
+
+Página central da entrega: [`docs/CP2_TINYML.md`](docs/CP2_TINYML.md).
+
+O pacote CP2 contém o protocolo para coletar dados reais, o roteiro de configuração
+do Edge Impulse, a matriz de evidências e um firmware de integração que faz a saída
+do modelo alterar os motores:
+
+- [`docs/CP2_COLETA_DATASET.md`](docs/CP2_COLETA_DATASET.md) — sensor, classes, protocolo e CSV;
+- [`docs/CP2_EDGE_IMPULSE.md`](docs/CP2_EDGE_IMPULSE.md) — projeto, métricas, matriz de confusão e export;
+- [`docs/CP2_EVIDENCIAS.md`](docs/CP2_EVIDENCIAS.md) — o que os vídeos/fotos atuais comprovam;
+- [`experimentos/cp2-tinyml/`](experimentos/cp2-tinyml/) — coleta de três sensores e registro físico;
+- [`src/tinyml_carrinho_cp2.ino`](src/tinyml_carrinho_cp2.ino) — inferência + ação na L298N;
+- [`model/edge-impulse/`](model/edge-impulse/) — local reservado para a biblioteca exportada.
+
+**Importante:** `docs/dataset.csv` e `model/model.h` continuam sendo o baseline
+sintético da Tarefa 21. Eles não substituem o CSV real nem a biblioteca exportada
+do Edge Impulse exigidos no CP2.
+
 ---
 
 ## Planejamento e documentação
@@ -212,6 +231,7 @@ A organização do projeto também registra requisitos, prioridades e evolução
 - [`organizacao/DEPENDENCIAS.md`](organizacao/DEPENDENCIAS.md) — dependências;
 - [`CHECKPOINT_01_VALIDACAO.md`](CHECKPOINT_01_VALIDACAO.md) — validação da entrega;
 - [`docs/EVIDENCIAS_CHECKPOINT.md`](docs/EVIDENCIAS_CHECKPOINT.md) — central de evidências.
+- [`docs/CP2_TINYML.md`](docs/CP2_TINYML.md) — central da entrega do Check Point 02.
 
 ---
 
@@ -241,22 +261,29 @@ Carrinho-Robo/
 ├── README.md
 ├── CHECKPOINT_01_VALIDACAO.md
 ├── cad/                    # CAD, STL, STEP, fontes e versões
+├── 2026/                   # vídeo, fotos e STL da versão atual
 ├── docs/
 │   ├── dataset.csv         # dataset TinyML da Tarefa 21
 │   ├── TAREFA21_TINYML.md  # treinamento, classes e roteiro de teste
+│   ├── CP2_TINYML.md       # matriz principal do Check Point 02
+│   ├── CP2_COLETA_DATASET.md
+│   ├── CP2_EDGE_IMPULSE.md
+│   ├── CP2_EVIDENCIAS.md
 │   ├── evidencias/         # fotos, CAD final e processo de montagem
 │   │   └── processo/
 │   └── videos/             # registros em vídeo
 ├── model/
-│   └── model.h             # pesos do modelo TinyML
+│   ├── model.h             # baseline sintético da Tarefa 21
+│   └── edge-impulse/       # biblioteca real exportada no CP2
 ├── hardware/
 │   ├── arquitetura/        # diagrama e ligações
 │   └── componentes/        # componentes utilizados
 ├── experimentos/           # atividades e protótipos em fase de teste
-│   └── tinyml-aula19/       # engenharia do dado com HC-SR04
+│   ├── tinyml-aula19/       # engenharia do dado com HC-SR04
+│   └── cp2-tinyml/          # coleta real e evidências do CP2
 ├── historico/              # problemas, decisões e evolução
 ├── organizacao/            # backlog, MVP, MoSCoW, Kanban etc.
-└── src/                    # firmware do ESP32 + tinyml_inferencia.ino
+└── src/                    # firmware do ESP32 + integração TinyML
 ```
 
 ---

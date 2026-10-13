@@ -48,3 +48,16 @@
 | Laura Claro | Requisitos, Kanban, registros, evidências e revisão da documentação |
 
 Todos os integrantes participam da validação do MVP e da revisão final.
+
+## Backlog adicional — Check Point 02 (atualizado em 13/10/2026)
+
+| ID | Prioridade | Tarefa | Responsável | Dependência | Aceitação | Estado |
+|---|---|---|---|---|---|---|
+| CP2-01 | P0 | Fechar pinagem dos três HC-SR04 e divisores | Gabriel | montagem física | foto/diagrama conferidos | Preparado; validar na bancada |
+| CP2-02 | P0 | Coletar quatro classes com o sensor | Todos | CP2-01 | TXT bruto por sessão e registro preenchido | Pendente |
+| CP2-03 | P0 | Consolidar CSV real balanceado | Laura | CP2-02 | CSV sem falhas, quatro labels e contagens registradas | Pendente |
+| CP2-04 | P0 | Importar dataset e configurar Impulse | Guilherme | CP2-03 | prints do dataset, divisão e blocos | Pendente |
+| CP2-05 | P0 | Treinar e analisar métricas | Guilherme/Laura | CP2-04 | acurácia, matriz de confusão e inferências registradas | Pendente |
+| CP2-06 | P0 | Exportar biblioteca Arduino/ESP32 | Guilherme | CP2-05 | pacote e header em `model/edge-impulse/` | Pendente |
+| CP2-07 | P0 | Integrar inferência à ação do carrinho | Guilherme/Danilo | CP2-06 | classe muda motor/giro/parada | Código preparado; validar fisicamente |
+| CP2-08 | P0 | Gravar vídeo e publicar evidências | Todos | CP2-07 | vídeo mostra sensor, classe e ação | Pendente |
