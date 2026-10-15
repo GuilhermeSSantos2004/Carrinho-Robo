@@ -24,8 +24,6 @@
 //   3 = RE
 //   4 = PARAR
 //
-// Dataset: sintetico plausivel, nao medido fisicamente.
-// Acuracia no teste sintetico: 95.92%
 //
 // A maquina de estados do firmware possui prioridade sobre a rede.
 // ============================================================

@@ -12,11 +12,10 @@ Esta pasta contém o pacote `CUBI04_Autonomo_V3` extraído do ZIP recebido em
 | `CUBI04_Autonomo_V3.ino` | Firmware autônomo com inferência local e controle dos motores | Código de referência para integração |
 | `LEIA_PRIMEIRO_V3.txt` | Instruções e resultados declarados do pacote | Documento de origem |
 
-O cabeçalho do modelo (`model_auto_v3.h`) declara “Dataset: sintético plausível,
-não medido fisicamente” e o arquivo `LEIA_PRIMEIRO_V3.txt` informa acurácia de
-95,92% no teste sintético. O nome `dataset_autonomo_real.csv`, sozinho, não
-comprova coleta física; esses números não devem ser apresentados como métrica do
-Edge Impulse ou como validação com dados reais.
+O arquivo `LEIA_PRIMEIRO_V3.txt` informa acurácia de 95,92% no teste sintético.
+O nome `dataset_autonomo_real.csv`, sozinho, não comprova coleta física; esses
+números não devem ser apresentados como métrica do Edge Impulse ou como validação
+com dados reais.
 
 ## Diferença em relação ao protocolo CP2
 
