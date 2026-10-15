@@ -1,0 +1,117 @@
+CUBI-04 AUTONOMO V3
+====================
+
+NOVO TREINAMENTO
+----------------
+Dataset : 6.000 amostras
+Amostras por classe: 1.200
+Treino: 80%
+Teste: 20%
+
+Entradas:
+1. esquerda_cm
+2. centro_cm
+3. direita_cm
+4. tras_cm
+
+Classes:
+0 = FRENTE
+1 = VIRAR_ESQUERDA
+2 = VIRAR_DIREITA
+3 = RE
+4 = PARAR
+
+Modelo:
+MLP 4 -> 128 -> 64 -> 5
+
+Acuracia no teste sintetico:
+95.92%
+
+Matriz de confusao:
+ 217    5    8    8    2
+   5  234    0    1    0
+   6    1  232    0    1
+   3    4    2  231    0
+   1    2    0    0  237
+
+LOGICA NOVA DO "--"
+-------------------
+1. Leitura valida longe:
+   sensor = distancia real.
+
+2. Sensor passa a retornar "--" sem ter estado vermelho:
+   interface mostra "--";
+   planejador usa 150 cm;
+   considera livre;
+   modo automatico pode acelerar.
+
+3. Sensor estava vermelho/perto e em seguida retorna "--":
+   interface continua mostrando "--";
+   caixa continua vermelha;
+   por 2,5 s o planejador conserva a ultima distancia perigosa;
+   o carrinho continua tentando sair/manobrar.
+
+4. Uma nova leitura valida e segura remove imediatamente
+   a memoria de perigo.
+
+AUTONOMO
+--------
+- Analisa os tres sensores da frente.
+- Usa score de frente/esquerda/direita em casos ambiguos.
+- Centro bloqueado:
+  escolhe o lado com mais espaco.
+- Parede:
+  tenta re e depois gira.
+- Se a re estiver bloqueada:
+  tenta giro no proprio eixo.
+- Se continuar preso:
+  aumenta gradualmente o tempo das manobras.
+- Numero maximo de tentativas: 6.
+- Sensor traseiro protege/planeja a re no automatico.
+- Caminho muito livre / "--" seguro:
+  pode usar a velocidade livre maior.
+
+MANUAL
+------
+- Sensores NAO bloqueiam movimento.
+- Frente, re e giros obedecem o usuario.
+- PWM manual configuravel de 0 a 255.
+- Distancia gera apenas alerta sonoro no navegador.
+- O navegador precisa de gesto do usuario para liberar audio;
+  por isso tocar em qualquer botao manual ativa o som automaticamente.
+
+ATENCAO ELETRICA
+----------------
+Liberar PWM ate 255 no manual remove a limitacao de SOFTWARE.
+Isso nao aumenta a tensao suportada fisicamente pelos motores.
+Considere a especificacao dos motores e da alimentacao.
+
+ARDUINO IDE
+-----------
+Deixe SOMENTE estes arquivos na mesma pasta:
+
+CUBI04_Autonomo_V3/
+  CUBI04_Autonomo_V3.ino
+  model_auto_v3.h
+
+Nao coloque tinyml_inferencia.ino nem o V2 na mesma pasta.
+
+WiFi:
+SSID: tony
+Senha: stark369
+Endereco: http://192.168.4.1
+
+TESTE SUGERIDO
+--------------
+1. Rodas suspensas.
+2. Teste manual.
+3. Confirme que manual NAO para por causa de sensor.
+4. Confirme o som no navegador.
+5. Teste "--" com area livre.
+6. Teste leitura vermelha -> "--".
+7. Ligue automatico.
+8. Comece com:
+   velocidade base = 55
+   velocidade livre = 80
+   distancia de desvio = 18 cm
+9. Depois aumente as velocidades aos poucos.

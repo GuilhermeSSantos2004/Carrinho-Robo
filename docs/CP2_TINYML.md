@@ -73,6 +73,18 @@ Enquanto esses itens não forem executados, a entrega deve ser descrita como
 **preparada para o CP2**, e não como TinyML validado em campo. O dataset sintético
 de `docs/dataset.csv` continua preservado apenas como referência da Tarefa 21.
 
+## Atualização da auditoria — 14/10/2026
+
+Foi adicionada a pasta [`../data/CUBI04_Autonomo_V3/`](../data/CUBI04_Autonomo_V3/),
+extraída do pacote recebido. Ela contém firmware e um modelo local, mas o arquivo
+de origem declara que o dataset tem 6.000 amostras **sintéticas**, não medidas no
+carrinho. Esse modelo usa quatro entradas e cinco classes, enquanto o protocolo
+CP2 desta documentação usa três sensores frontais e quatro classes.
+
+Por isso, o material foi organizado e preservado como **baseline V3**, mas não foi
+marcado como dataset real, treinamento Edge Impulse ou biblioteca Edge Impulse. A
+matriz acima continua refletindo somente o que é comprovável no repositório.
+
 ## Checklist final para o Teams
 
 - [ ] Link do GitHub atualizado.

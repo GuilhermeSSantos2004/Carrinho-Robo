@@ -287,6 +287,18 @@ Tarefa 21. Eles não substituem o dataset real nem a biblioteca Edge Impulse do 
 
 ---
 
+## Auditoria dos arquivos recebidos em 14/10/2026
+
+A pasta [`data/CUBI04_Autonomo_V3/`](data/CUBI04_Autonomo_V3/) foi extraída e
+organizada no repositório. O arquivo de origem declara que o CSV contém 6.000
+amostras **sintéticas**, e o pacote contém um modelo MLP local com quatro entradas
+e cinco classes. Ele é útil como baseline de firmware, mas não comprova dataset
+real, treinamento no Edge Impulse ou biblioteca Edge Impulse exportada.
+
+Os prints, o projeto/ID do Edge Impulse, o CSV/TXT medido pelo sensor, a evidência
+de upload/teste no ESP32 e o vídeo que mostre classificação + ação continuam sendo
+os materiais necessários para fechar o CP2 com evidência versionada.
+
 ## Planejamento e documentação
 
 A organização do projeto também registra requisitos, prioridades e evolução:

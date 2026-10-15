@@ -39,6 +39,14 @@ O projeto já tinha:
 - documentada a diferença entre `model.h` local/sintético e a biblioteca real do
   Edge Impulse em `model/README.md`.
 
+## Auditoria complementar — 14/10/2026
+
+Foi recebido e extraído o pacote `data/CUBI04_Autonomo_V3/`. A conferência dos
+arquivos mostrou 6.000 amostras sintéticas, um MLP local com quatro entradas e
+cinco classes, e um firmware autônomo que não usa `run_classifier` nem uma
+biblioteca exportada do Edge Impulse. O pacote foi mantido no histórico como
+baseline V3; não foi reclassificado como coleta real.
+
 ## Próximo registro obrigatório
 
 Depois da execução física, acrescentar um commit para cada etapa relevante, por

@@ -10,6 +10,10 @@ Ele é útil para validar a lógica de leitura, normalização, classificação 
 ESP32, mas **não é a biblioteca exportada pelo Edge Impulse** e não deve ser usado
 como prova de coleta real no CP2.
 
+O pacote V3 em [`../data/CUBI04_Autonomo_V3/`](../data/CUBI04_Autonomo_V3/) também
+é um baseline local: seu modelo tem quatro entradas, cinco classes e foi treinado
+com dados declarados como sintéticos. Ele não comprova exportação do Edge Impulse.
+
 ## Biblioteca do CP2
 
 A biblioteca gerada pelo projeto real do Edge Impulse deve ser copiada para
