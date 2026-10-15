@@ -201,22 +201,89 @@ O firmware integra Wi-Fi Access Point, servidor HTTP, comandos direcionais, acio
 
 ## Check Point 02 — entrega TinyML
 
-Página central da entrega: [`docs/CP2_TINYML.md`](docs/CP2_TINYML.md).
+Esta seção reúne na raiz a documentação principal do CP2. A versão editável e
+detalhada também está em [`docs/CP2_TINYML.md`](docs/CP2_TINYML.md).
 
-O pacote CP2 contém o protocolo para coletar dados reais, o roteiro de configuração
-do Edge Impulse, a matriz de evidências e um firmware de integração que faz a saída
-do modelo alterar os motores:
+### Objetivo e fluxo esperado
+
+O CP2 evolui o carrinho do CP1 com TinyML no ESP32, utilizando o sensor do próprio
+projeto. O ciclo obrigatório é:
+
+**SENSOR → COLETA → CSV → EDGE IMPULSE → TREINAMENTO → INFERÊNCIA → BIBLIOTECA → ESP32 → AÇÃO**
+
+### Materiais do CP2
 
 - [`docs/CP2_COLETA_DATASET.md`](docs/CP2_COLETA_DATASET.md) — sensor, classes, protocolo e CSV;
 - [`docs/CP2_EDGE_IMPULSE.md`](docs/CP2_EDGE_IMPULSE.md) — projeto, métricas, matriz de confusão e export;
-- [`docs/CP2_EVIDENCIAS.md`](docs/CP2_EVIDENCIAS.md) — o que os vídeos/fotos atuais comprovam;
-- [`experimentos/cp2-tinyml/`](experimentos/cp2-tinyml/) — coleta de três sensores e registro físico;
-- [`src/tinyml_carrinho_cp2.ino`](src/tinyml_carrinho_cp2.ino) — inferência + ação na L298N;
-- [`model/edge-impulse/`](model/edge-impulse/) — local reservado para a biblioteca exportada.
+- [`docs/CP2_EVIDENCIAS.md`](docs/CP2_EVIDENCIAS.md) — vídeos, fotos e evidências;
+- [`experimentos/cp2-tinyml/`](experimentos/cp2-tinyml/) — coleta real e registro físico;
+- [`src/tinyml_carrinho_cp2.ino`](src/tinyml_carrinho_cp2.ino) — inferência e ação na L298N;
+- [`model/edge-impulse/`](model/edge-impulse/) — biblioteca exportada do Edge Impulse;
+- [`historico/2026-10-cp2-tinyml.md`](historico/2026-10-cp2-tinyml.md) — evolução CP1 → CP2.
 
-**Importante:** `docs/dataset.csv` e `model/model.h` continuam sendo o baseline
-sintético da Tarefa 21. Eles não substituem o CSV real nem a biblioteca exportada
-do Edge Impulse exigidos no CP2.
+### Equipe
+
+| Integrante | RM |
+|---|---|
+| Enricco Rossi de Souza Carvalho Miranda | RM551717 |
+| Gabriel Marquez Trevisan | RM99227 |
+| Guilherme Silva dos Santos | RM551168 |
+| Danilo Urze Aldred | RM99465 |
+| Laura Claro Mathias | RM98747 |
+
+### Matriz de atendimento
+
+| Critério | Evidência | Situação em 14/10/2026 |
+|---|---|---|
+| Sensor utilizado | HC-SR04, pinagem e divisor em [`hardware/arquitetura/README.md`](hardware/arquitetura/README.md) | Preparado; conferir na bancada |
+| Coleta e dataset real | Sketch em `experimentos/cp2-tinyml/` e protocolo documentado | **Pendente de coleta física** |
+| Classes | Livre, obstáculo à esquerda, centro e direita | Definidas |
+| CSV | Formato e validador em `docs/CP2_COLETA_DATASET.md` | **Pendente de dados reais** |
+| Edge Impulse | Roteiro em `docs/CP2_EDGE_IMPULSE.md` | **Pendente de projeto e prints** |
+| Treinamento/métricas | Campos para acurácia e matriz de confusão | **Pendente de execução** |
+| Biblioteca Edge Impulse | Pasta `model/edge-impulse/` | **Pendente de exportação** |
+| Inferência no ESP32 | `src/tinyml_carrinho_cp2.ino` | Código preparado; validar na placa |
+| Ação no carrinho | `executarAcao()` altera os motores conforme a classe | Validar fisicamente |
+| Vídeo CP2 | `2026/2026-atual.mp4` | Demonstra movimento/Wi-Fi, não TinyML |
+| Evolução CP1 → CP2 | Histórico e commit `0e0c46c` | Organizada |
+
+### Classes e comportamento
+
+| Classe | Interpretação | Ação esperada |
+|---|---|---|
+| `LIVRE` | frente livre | avançar |
+| `OBSTACULO_ESQUERDA` | obstáculo à esquerda | girar para a direita |
+| `OBSTACULO_CENTRO` | obstáculo no centro | escolher o lado mais livre |
+| `OBSTACULO_DIREITA` | obstáculo à direita | girar para a esquerda |
+
+O resultado da inferência deve provocar uma ação física. Mostrar somente a classe no
+Serial Monitor não atende ao enunciado.
+
+### Pendências obrigatórias antes de marcar 100%
+
+1. coletar dados reais das quatro classes;
+2. preservar TXT bruto, CSV e registro das sessões;
+3. importar o CSV no Edge Impulse;
+4. salvar prints do dataset, divisão, Impulse, treinamento e matriz de confusão;
+5. exportar a biblioteca Arduino/ESP32;
+6. integrar a biblioteca exportada e gravar o ESP32;
+7. gravar vídeo com sensor, classe, confiança e ação do carrinho;
+8. atualizar os campos `[PREENCHER]` e registrar commits de cada etapa.
+
+**Transparência:** `docs/dataset.csv` e `model/model.h` são o baseline sintético da
+Tarefa 21. Eles não substituem o dataset real nem a biblioteca Edge Impulse do CP2.
+
+### Checklist de entrega no Teams
+
+- [ ] Link do GitHub atualizado;
+- [ ] seção indicada: `README.md` / `docs/CP2_TINYML.md`;
+- [ ] CSV real e TXT bruto;
+- [ ] link/ID do Edge Impulse;
+- [ ] prints do treinamento e da matriz de confusão;
+- [ ] biblioteca exportada em `model/edge-impulse/`;
+- [ ] firmware compilado e carregado no ESP32;
+- [ ] vídeo demonstrando inferência e ação;
+- [ ] nomes e RMs conferidos.
 
 ---
 

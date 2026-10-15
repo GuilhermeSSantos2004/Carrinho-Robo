@@ -28,7 +28,7 @@ Esta é a página principal da entrega do CP2. Ela concentra a rastreabilidade e
 
 ## Matriz de atendimento ao enunciado
 
-| Critério | Evidência no repositório | Situação real em 13/10/2026 |
+| Critério | Evidência no repositório | Situação real em 14/10/2026 |
 |---|---|---|
 | Sensor utilizado | HC-SR04, pinagem e divisor documentados em [`hardware/arquitetura/README.md`](../hardware/arquitetura/README.md) | Preparado; conferir a fiação final na bancada |
 | Dados próprios do grupo | Protocolo, sketch de coleta e espaço para TXT/CSV em `experimentos/cp2-tinyml/` | **Pendente de coleta física** |
