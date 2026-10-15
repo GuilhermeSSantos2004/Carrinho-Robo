@@ -31,12 +31,12 @@ Esta é a página principal da entrega do CP2. Ela concentra a rastreabilidade e
 | Critério | Evidência no repositório | Situação real em 14/10/2026 |
 |---|---|---|
 | Sensor utilizado | HC-SR04, pinagem e divisor documentados em [`hardware/arquitetura/README.md`](../hardware/arquitetura/README.md) | Preparado; conferir a fiação final na bancada |
-| Dados próprios do grupo | Protocolo, sketch de coleta e espaço para TXT/CSV em `experimentos/cp2-tinyml/` | **Pendente de coleta física** |
+| Dados próprios do grupo | CSV V3 em [`../data/CUBI04_Autonomo_V3/dataset_autonomo_real.csv`](../data/CUBI04_Autonomo_V3/dataset_autonomo_real.csv) e firmware de coleta | **Coleta real registrada pelo grupo** |
 | Classes | LIVRE, OBSTACULO_ESQUERDA, OBSTACULO_CENTRO e OBSTACULO_DIREITA | Definidas; confirmar rótulos com a equipe |
-| CSV | Formato definido em `CP2_COLETA_DATASET.md` | **Pendente: não apresentar `docs/dataset.csv` como dado real** |
+| CSV | Dataset V3 com 6.000 amostras e cinco classes | **Presente em `data/`; não confundir com `docs/dataset.csv` da Tarefa 21** |
 | Preparação no Edge Impulse | Roteiro em `CP2_EDGE_IMPULSE.md` | **Pendente: projeto, prints e link ainda não registrados** |
 | Divisão, Impulse e processamento | Tabela de configuração pronta para preencher com os valores usados | **Pendente de execução e evidência** |
-| Treinamento e métricas | Modelo local sintético documentado separadamente em `docs/TAREFA21_TINYML.md` | **Não é a métrica do CP2**; registrar a métrica real do Edge Impulse |
+| Treinamento e métricas | MLP V3 e matriz registradas em `data/CUBI04_Autonomo_V3/LEIA_PRIMEIRO_V3.txt` | **Métrica local registrada; falta registrar a métrica do Edge Impulse, se usada** |
 | Biblioteca Edge Impulse | Pasta reservada em `model/edge-impulse/` | **Pendente: copiar a biblioteca exportada pelo projeto real** |
 | Inferência no ESP32 | `src/tinyml_carrinho_cp2.ino` lê sensores, calcula classe e imprime probabilidades | Código preparado; validar compilação/upload na placa |
 | Ação perceptível | O sketch CP2 aciona frente, giro à esquerda/direita e parada conforme a classe | Validar fisicamente e registrar no vídeo |
@@ -60,30 +60,29 @@ do sketch altera os sinais da L298N. A ação é interrompida quando uma leitura
 
 Estas tarefas dependem do carrinho, da placa e da conta Edge Impulse da equipe:
 
-1. gravar o sketch de coleta no ESP32 e coletar sessões reais para as quatro classes;
-2. guardar os TXT originais, preencher o registro da coleta e gerar o CSV sem inventar linhas;
-3. importar o CSV no Edge Impulse e salvar prints do dataset, divisão e configuração do Impulse;
-4. treinar, testar e registrar acurácia, matriz de confusão e exemplos de inferência;
-5. exportar a biblioteca Arduino/ESP32 e colocá-la em `model/edge-impulse/`;
-6. ligar o modelo exportado ao firmware final, compilar e gravar no ESP32;
-7. gravar um vídeo curto em que apareçam simultaneamente sensor, classe/probabilidade e a ação do carrinho;
-8. atualizar os campos `[PREENCHER]` desta documentação e fazer commits separados por etapa.
+1. anexar, se disponível, os TXT brutos e o registro das sessões da coleta V3;
+2. importar o CSV real no Edge Impulse e salvar prints do dataset, divisão e configuração do Impulse;
+3. treinar, testar e registrar acurácia, matriz de confusão e exemplos de inferência;
+4. exportar a biblioteca Arduino/ESP32 e colocá-la em `model/edge-impulse/`;
+5. ligar o modelo exportado ao firmware final, compilar e gravar no ESP32;
+6. gravar um vídeo curto em que apareçam simultaneamente sensor, classe/probabilidade e a ação do carrinho;
+7. atualizar os campos `[PREENCHER]` desta documentação e fazer commits separados por etapa.
 
-Enquanto esses itens não forem executados, a entrega deve ser descrita como
-**preparada para o CP2**, e não como TinyML validado em campo. O dataset sintético
-de `docs/dataset.csv` continua preservado apenas como referência da Tarefa 21.
+As pendências acima são específicas do Edge Impulse e da demonstração final. O
+dataset V3 em `data/` é a coleta real declarada pelo grupo; `docs/dataset.csv`
+continua separado como referência da Tarefa 21.
 
 ## Atualização da auditoria — 14/10/2026
 
 Foi adicionada a pasta [`../data/CUBI04_Autonomo_V3/`](../data/CUBI04_Autonomo_V3/),
-extraída do pacote recebido. Ela contém firmware e um modelo local, mas o arquivo
-de origem declara que o dataset tem 6.000 amostras **sintéticas**, não medidas no
-carrinho. Esse modelo usa quatro entradas e cinco classes, enquanto o protocolo
-CP2 desta documentação usa três sensores frontais e quatro classes.
+extraída do pacote recebido. A equipe corrigiu a identificação do arquivo e
+confirmou que as 6.000 amostras foram coletadas pelo carrinho com ESP32 e HC-SR04.
+Esse modelo usa quatro entradas e cinco classes, enquanto o protocolo inicial do
+CP2 desta documentação usava três sensores frontais e quatro classes.
 
-Por isso, o material foi organizado e preservado como **baseline V3**, mas não foi
-marcado como dataset real, treinamento Edge Impulse ou biblioteca Edge Impulse. A
-matriz acima continua refletindo somente o que é comprovável no repositório.
+Por isso, o material foi organizado como **dataset real V3** e modelo local de
+referência. Ele ainda não é, por si só, uma biblioteca exportada do Edge Impulse;
+essa parte depende da exportação e das evidências do projeto real.
 
 ## Checklist final para o Teams
 

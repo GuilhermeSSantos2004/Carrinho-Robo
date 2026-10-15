@@ -47,7 +47,7 @@
 
 | Backlog | A fazer | Em andamento | Em teste | Concluído |
 |---|---|---|---|---|
-| Coleta física e CSV real | Importar no Edge Impulse | Firmware CP2 com ação | — | Documentação e roteiro; baseline sintético identificado |
+| Coleta física e CSV real V3 | Importar no Edge Impulse | Firmware CP2 com ação | — | CSV real V3 em `data/`; falta registrar o projeto e as evidências do Edge Impulse |
 | Biblioteca exportada | Treinar e registrar métricas | — | — | Histórico CP1 → CP2 organizado |
 | Vídeo específico CP2 | Prints de inferência | — | — | — |
 

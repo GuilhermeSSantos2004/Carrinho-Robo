@@ -28,10 +28,10 @@ equivalente que mostre as leituras, a classe e a confiança enquanto o carrinho 
 
 As imagens recentes registradas no repositório mostram o carrinho físico e peças
 CAD, mas não são prints do Edge Impulse. O pacote V3 extraído em
-[`../data/CUBI04_Autonomo_V3/`](../data/CUBI04_Autonomo_V3/) preserva firmware e
-um modelo local, porém seu próprio documento informa que as 6.000 amostras são
-sintéticas. Ele não substitui o vídeo CP2, os prints do Edge Impulse, o dataset
-real ou a biblioteca exportada.
+[`../data/CUBI04_Autonomo_V3/`](../data/CUBI04_Autonomo_V3/) preserva o CSV real
+declarado pela equipe, o firmware e o modelo local. Ele ainda não substitui os
+prints do Edge Impulse, a biblioteca exportada ou o vídeo CP2 com classificação e
+ação simultâneas.
 
 ## Convenção de nomes para novas evidências
 

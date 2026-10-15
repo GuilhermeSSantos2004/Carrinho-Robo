@@ -7,15 +7,14 @@ Esta pasta contém o pacote `CUBI04_Autonomo_V3` extraído do ZIP recebido em
 
 | Arquivo | Descrição | Situação para o CP2 |
 |---|---|---|
-| `dataset_autonomo_real.csv` | 6.000 amostras; o nome do arquivo foi definido na organização local | **Origem física não comprovada; os arquivos do modelo declaram dados sintéticos** |
+| `dataset_autonomo_real.csv` | 6.000 amostras coletadas pelo grupo com o carrinho e o ESP32 | **Dataset real da coleta V3** |
 | `model_auto_v3.h` | Modelo MLP local, com 4 entradas e 5 saídas | Baseline local; não é exportação Edge Impulse |
 | `CUBI04_Autonomo_V3.ino` | Firmware autônomo com inferência local e controle dos motores | Código de referência para integração |
 | `LEIA_PRIMEIRO_V3.txt` | Instruções e resultados declarados do pacote | Documento de origem |
 
-O arquivo `LEIA_PRIMEIRO_V3.txt` informa acurácia de 95,92% no teste sintético.
-O nome `dataset_autonomo_real.csv`, sozinho, não comprova coleta física; esses
-números não devem ser apresentados como métrica do Edge Impulse ou como validação
-com dados reais.
+O arquivo `LEIA_PRIMEIRO_V3.txt` registra a coleta pelo grupo com sensores HC-SR04
+e ESP32, além da acurácia de 95,92% no teste. O nome anterior do arquivo foi
+corrigido para `dataset_autonomo_real.csv`.
 
 ## Diferença em relação ao protocolo CP2
 

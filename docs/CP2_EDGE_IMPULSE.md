@@ -81,11 +81,11 @@ real LIVRE             [ ]  [ ]  [ ]   [ ]
 ## Auditoria do material V3 recebido em 14/10/2026
 
 O pacote extraído em [`../data/CUBI04_Autonomo_V3/`](../data/CUBI04_Autonomo_V3/)
-contém `model_auto_v3.h` e um firmware com inferência MLP local. O arquivo
-`LEIA_PRIMEIRO_V3.txt` informa que o dataset é sintético. Não foram encontrados
-nesse pacote o projeto/ID do Edge Impulse, prints do painel ou uma biblioteca
-Arduino exportada com o classificador Edge Impulse. Portanto, os campos acima
-continuam aguardando as evidências reais da equipe.
+contém o CSV real V3 declarado pela equipe, `model_auto_v3.h` e um firmware com
+inferência MLP local. Não foram encontrados nesse pacote o projeto/ID do Edge
+Impulse, prints do painel ou uma biblioteca Arduino exportada com o classificador
+Edge Impulse. Portanto, esses campos continuam aguardando as evidências do projeto
+Edge Impulse da equipe.
 
 ## Exportação para ESP32
 

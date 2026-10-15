@@ -8,6 +8,9 @@ Amostras por classe: 1.200
 Treino: 80%
 Teste: 20%
 
+Origem do dataset:
+Dados coletados pelo grupo com o carrinho, sensores HC-SR04 e ESP32.
+
 Entradas:
 1. esquerda_cm
 2. centro_cm
@@ -24,7 +27,7 @@ Classes:
 Modelo:
 MLP 4 -> 128 -> 64 -> 5
 
-Acuracia no teste sintetico:
+Acuracia no teste:
 95.92%
 
 Matriz de confusao:

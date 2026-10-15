@@ -47,6 +47,14 @@ cinco classes, e um firmware autônomo que não usa `run_classifier` nem uma
 biblioteca exportada do Edge Impulse. O pacote foi mantido no histórico como
 baseline V3; não foi reclassificado como coleta real.
 
+## Correção de origem do dataset — 14/10/2026
+
+Após a auditoria inicial, a equipe informou que o CSV V3 foi coletado pelo grupo
+com o carrinho, ESP32 e sensores HC-SR04. A identificação como sintético foi um
+erro de nome/documentação e foi corrigida no pacote para
+`dataset_autonomo_real.csv`. A distinção entre esse dataset real e a biblioteca
+Edge Impulse permanece registrada.
+
 ## Próximo registro obrigatório
 
 Depois da execução física, acrescentar um commit para cada etapa relevante, por

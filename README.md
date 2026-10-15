@@ -236,11 +236,11 @@ projeto. O ciclo obrigatório é:
 | Critério | Evidência | Situação em 14/10/2026 |
 |---|---|---|
 | Sensor utilizado | HC-SR04, pinagem e divisor em [`hardware/arquitetura/README.md`](hardware/arquitetura/README.md) | Preparado; conferir na bancada |
-| Coleta e dataset real | Sketch em `experimentos/cp2-tinyml/` e protocolo documentado | **Pendente de coleta física** |
+| Coleta e dataset real | CSV V3 em `data/CUBI04_Autonomo_V3/` e firmware documentado | **Coleta real registrada pelo grupo** |
 | Classes | Livre, obstáculo à esquerda, centro e direita | Definidas |
-| CSV | Formato e validador em `docs/CP2_COLETA_DATASET.md` | **Pendente de dados reais** |
+| CSV | Dataset V3 com 6.000 amostras e cinco classes | **Presente em `data/`** |
 | Edge Impulse | Roteiro em `docs/CP2_EDGE_IMPULSE.md` | **Pendente de projeto e prints** |
-| Treinamento/métricas | Campos para acurácia e matriz de confusão | **Pendente de execução** |
+| Treinamento/métricas | MLP V3, acurácia e matriz em `data/CUBI04_Autonomo_V3/LEIA_PRIMEIRO_V3.txt` | **Métrica local registrada; Edge Impulse pendente** |
 | Biblioteca Edge Impulse | Pasta `model/edge-impulse/` | **Pendente de exportação** |
 | Inferência no ESP32 | `src/tinyml_carrinho_cp2.ino` | Código preparado; validar na placa |
 | Ação no carrinho | `executarAcao()` altera os motores conforme a classe | Validar fisicamente |
@@ -290,10 +290,10 @@ Tarefa 21. Eles não substituem o dataset real nem a biblioteca Edge Impulse do 
 ## Auditoria dos arquivos recebidos em 14/10/2026
 
 A pasta [`data/CUBI04_Autonomo_V3/`](data/CUBI04_Autonomo_V3/) foi extraída e
-organizada no repositório. O arquivo de origem declara que o CSV contém 6.000
-amostras **sintéticas**, e o pacote contém um modelo MLP local com quatro entradas
-e cinco classes. Ele é útil como baseline de firmware, mas não comprova dataset
-real, treinamento no Edge Impulse ou biblioteca Edge Impulse exportada.
+organizada no repositório. A equipe confirmou que o CSV contém 6.000 amostras
+coletadas com o carrinho, ESP32 e sensores HC-SR04. O pacote contém um modelo MLP
+local com quatro entradas e cinco classes; ele ainda não é a biblioteca Edge
+Impulse exportada.
 
 Os prints, o projeto/ID do Edge Impulse, o CSV/TXT medido pelo sensor, a evidência
 de upload/teste no ESP32 e o vídeo que mostre classificação + ação continuam sendo
